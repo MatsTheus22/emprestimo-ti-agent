@@ -1,2 +1,13 @@
 front/
 back/
+
+# Segredos: este repositório é público.
+.env
+.env.*
+!.env.example
+
+# O enunciado traz a senha padrão da turma em texto: nunca versionar.
+pratica-sdd-subagentes.html
+
+# Configuração pessoal do harness.
+.claude/settings.local.json
