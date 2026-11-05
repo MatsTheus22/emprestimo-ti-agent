@@ -12,10 +12,10 @@ Negócio em docs/PRD.md. Stack decidida em docs/adr/001-stack.md.
 
 ## Comandos
 
-- subir o banco local: ainda não rodado nesta máquina
-- rodar o projeto: ainda não rodado nesta máquina
-- rodar os testes: ainda não rodado nesta máquina
-- buildar: ainda não rodado nesta máquina
+- subir o banco local: Docker Desktop aberto; `npx supabase start` em back/ (conferir com `npx supabase status`)
+- rodar o projeto: `npm run start:dev` em back/ (porta 3000) · `npm run dev` em front/ (porta 5173)
+- rodar os testes: `npm test` em back/ (precisa do Docker) e em front/
+- buildar: `npm run build` em back/ e em front/
 
 Só entram comandos que eu já rodei nesta máquina.
 
@@ -32,16 +32,11 @@ Se algo não estiver escrito em lugar nenhum, pergunte — não decida.
 
 ## Estado atual do projeto
 
-Existe: docs/PRD.md, docs/adr/001-stack.md, rules/ (checks.md, migration.md,
-restrictions.md, secrets.md, spec-flow.md), layout.md (spec de layout) e
-ARQUITETURA.md. O projeto está dividido em dois repositórios git separados,
-`front/` e `back/` (remotes em ARQUITETURA.md), cada um só com `.env`,
-`.env.example`, `.gitignore` e `LICENSE`. Esta pasta raiz é o repositório `emprestimo-ti-agent`
-(configuração do agente); `front/` e `back/` estão no .gitignore dela.
+Três repositórios (ARQUITETURA.md): esta raiz é `emprestimo-ti-agent`, com
+regras, skills, subagentes e docs; `back/` e `front/` são repositórios próprios.
 
-Ainda NÃO existe: código de aplicação (front ou back), testes, migrations,
-estrutura de pastas de código, `docs/specs/`, e nenhum comando deste projeto
-foi rodado nesta máquina.
+Em produção: login e `GET /v1/me` (specs 001 parcial e 002). O catálogo e os
+empréstimos ainda são "Em construção". Em andamento: docs/handoff.md.
 
 ## Procedimentos
 Sempre siga as seguintes regras:

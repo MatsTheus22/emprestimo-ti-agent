@@ -1,6 +1,6 @@
 ---
 description: Ao escrever, alterar ou remover qualquer teste.
-globs: ["<CAMINHO-DE-TESTES>"]
+globs: ["back/test/**", "front/src/**/*.test.*"]
 alwaysApply: false
 ---
 
@@ -17,7 +17,9 @@ Ao escrever, alterar ou remover qualquer teste.
    o mesmo dado, com outro usuário, não retorna.
 
 ## Verificação
-<COMANDO-TESTES> passa com o banco local recém-resetado.
+`npm test` passa em `back/` e em `front/`. Os testes de banco do back
+rodam em container novo (Testcontainers), nunca no Supabase local nem no
+remoto.
 
 ## Não faça
 - Não mocke o banco em teste de repositório ou de política de acesso.

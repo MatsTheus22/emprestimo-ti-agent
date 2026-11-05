@@ -13,6 +13,9 @@ alwaysApply: true
 - Push: o agente pode fazer push da branch de trabalho, sempre pedindo
   antes (rules/restrictions.md § Produção). Nunca na `main`, nunca force.
 - A mensagem de commit cita a tarefa e o critério de aceitação.
+- Uma branch por etapa ou spec, com o mesmo nome em todo repositório tocado
+  (ex.: `003-dados-iniciais`). PR com merge commit, sem squash: o ENTREGA.md
+  cita os hashes.
 - Um commit por tarefa. Nunca junte código e mudança de regra
   no mesmo commit.
 
@@ -27,9 +30,12 @@ alwaysApply: true
 | Instalar ou atualizar dependência           | pedir antes    |
 | Criar ou alterar migration                  | pedir antes    |
 | Mexer em variável de ambiente, config de de | pedir antes    |
-| Push, GitHub (secrets/workflow)             | pedir antes    |
-| Vercel (deploy, env, config)                | pedir antes    |
-| Supabase remoto (dados, Auth, migrate dep.) | pedir antes    |
+| Push da branch de trabalho, GitHub (secrets)| pedir antes    |
+| Vercel (preview, env, config)               | pedir antes    |
+| Supabase remoto (dados, Auth, Storage)      | proibido       |
+| `prisma migrate deploy`, seed ou upload rem | proibido       |
+| Merge de PR, push na main, disparar workflo | proibido       |
+| Deploy de produção na Vercel                | proibido       |
 
 O que cada nível significa:
 - livre — faça e siga em frente.

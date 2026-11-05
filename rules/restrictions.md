@@ -33,21 +33,28 @@ alwaysApply: true
 
 ## Produção
 
-Liberado em 2026-10-19, SEMPRE com permissão explícita a cada ação
-(nível "pedir antes" em rules/operacao.md): antes de executar, diga o
-comando, onde ele age (repo/branch, projeto Vercel, projeto Supabase) e
-o efeito; espere o "pode". Permissão vale para aquela ação, não para as
-seguintes.
+O agente nunca escreve em produção. Tudo que escreve no banco ou no
+Storage do deploy é executado por mim, mesmo que eu diga "pode" no meio
+de uma tarefa (nível "proibido" em rules/operacao.md). O agente prepara
+o comando, eu rodo e devolvo a saída.
 
-- Push: só da branch de trabalho. Nunca force push, nunca push direto
-  na `main` (push na main aplica migration em produção pelo CI).
-- GitHub: criar/alterar secrets e disparar workflows.
-- Vercel: deploy de preview, variáveis de ambiente e configuração dos
-  dois projetos. Deploy de produção só com pedido explícito para isso.
-- Supabase remoto: schema SÓ via `prisma migrate deploy` (CI ou
-  comando), nunca SQL avulso de schema; dados (usuários, memberships)
-  e configuração de Auth com permissão a cada vez. Nunca `migrate
-  reset`, `db reset`, DROP ou TRUNCATE no remoto.
+Proibido ao agente:
+- Push na `main`/`master` e force push. Push na `main` do back aplica
+  migration em produção pelo CI.
+- Merge de PR (`gh pr merge`) e disparo de workflow (`gh workflow run`).
+- `prisma migrate deploy`, seed ou upload apontando para o Supabase
+  remoto; SQL no remoto; `migrate reset`, `db reset`, DROP ou TRUNCATE
+  no remoto.
+- Deploy de produção na Vercel.
+
+Com permissão a cada ação (nível "pedir antes"): antes de executar, diga
+o comando, onde ele age (repo/branch, projeto) e o efeito; espere o
+"pode". Permissão vale para aquela ação, não para as seguintes.
+- Push da branch de trabalho.
+- GitHub: criar/alterar secrets.
+- Vercel: deploy de preview, variáveis de ambiente e configuração.
+
+Sempre:
 - Segredos: nunca escreva valor de chave na resposta; passe de arquivo
   para comando sem imprimir (rules/secrets.md).
 - O desenvolvimento continua no banco local.
