@@ -1,7 +1,8 @@
-// Envia as imagens aprovadas ao bucket público, com caminho fixo e upsert:
-// repetir o envio não duplica nada.
+// Envia as imagens aprovadas ao bucket público, com caminho fixo: repetir o envio
+// não duplica nada, e o que já existe fica como está.
 //   --alvo local    --env <arquivo do back>   só aceita localhost/127.0.0.1
 //   --alvo producao                           só no terminal do usuário
+//   --substituir                              grava por cima do que já existe
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { createInterface } from 'node:readline/promises';
@@ -9,10 +10,12 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import sharp from 'sharp';
 import {
+  classificarEnvio,
   exigirCondicoesDeProducao,
   exigirHostLocal,
   lerVariavel,
   semSegredo,
+  sha256,
   validarArquivo,
 } from './lib.mjs';
 
@@ -51,24 +54,43 @@ async function garantirBucketPublico(url, chave) {
   return 'criado';
 }
 
-async function enviarArquivo(url, chave, nome) {
+async function enviarArquivo(url, chave, nome, substituir) {
   const arquivo = path.join(FINAL, nome);
   await validarArquivo(arquivo);
+  const conteudo = readFileSync(arquivo);
   const resposta = await fetch(`${url}/storage/v1/object/${BUCKET}/${nome}`, {
     method: 'POST',
-    headers: { ...cabecalhos(chave), 'content-type': 'image/jpeg', 'x-upsert': 'true' },
-    body: readFileSync(arquivo),
+    headers: {
+      ...cabecalhos(chave),
+      'content-type': 'image/jpeg',
+      'x-upsert': substituir ? 'true' : 'false',
+    },
+    body: conteudo,
   });
-  if (!resposta.ok) throw new Error(`${nome}: envio respondeu HTTP ${resposta.status}`);
+  const situacao = classificarEnvio(resposta.ok, resposta.status, await resposta.text());
+  if (situacao === 'erro') throw new Error(`${nome}: envio respondeu HTTP ${resposta.status}`);
 
   // Prova do contrato: abre pela URL pública, sem login, no tamanho certo.
   const publica = await fetch(`${url}/storage/v1/object/public/${BUCKET}/${nome}`);
   if (!publica.ok) throw new Error(`${nome}: URL pública respondeu HTTP ${publica.status}`);
-  const meta = await sharp(Buffer.from(await publica.arrayBuffer())).metadata();
+  const publicado = Buffer.from(await publica.arrayBuffer());
+  const meta = await sharp(publicado).metadata();
   if (meta.width !== 800 || meta.height !== 600) {
     throw new Error(`${nome}: URL pública entregou ${meta.width}x${meta.height}`);
   }
-  console.log(`${nome}: enviado; URL pública 800x600`);
+
+  if (situacao === 'enviado') {
+    console.log(`${nome}: enviado; URL pública 800x600`);
+    return 'enviado';
+  }
+  if (sha256(publicado) === sha256(conteudo)) {
+    console.log(`${nome}: já existia; URL pública 800x600`);
+    return 'já existia';
+  }
+  console.log(
+    `${nome}: já existia; URL pública 800x600; AVISO: conteúdo diferente do arquivo local, mantido. Para trocar, use --substituir`,
+  );
+  return 'diferente';
 }
 
 async function contarNoBucket(url, chave) {
@@ -112,7 +134,11 @@ let segredo;
 
 async function main() {
   const { values } = parseArgs({
-    options: { alvo: { type: 'string' }, env: { type: 'string' } },
+    options: {
+      alvo: { type: 'string' },
+      env: { type: 'string' },
+      substituir: { type: 'boolean', default: false },
+    },
   });
   const { url, chave } = await resolverDestino(values);
   segredo = chave;
@@ -122,7 +148,13 @@ async function main() {
   if (arquivos.length === 0) throw new Error('Nenhuma imagem final encontrada.');
 
   console.log(`bucket ${BUCKET}: ${await garantirBucketPublico(url, chave)}`);
-  for (const nome of arquivos) await enviarArquivo(url, chave, nome);
+  const contagem = { enviado: 0, 'já existia': 0, diferente: 0 };
+  for (const nome of arquivos) {
+    contagem[await enviarArquivo(url, chave, nome, values.substituir)] += 1;
+  }
+  console.log(
+    `enviados: ${contagem.enviado} · já existiam: ${contagem['já existia'] + contagem.diferente} · com conteúdo diferente: ${contagem.diferente}`,
+  );
   console.log(`objetos no bucket: ${await contarNoBucket(url, chave)}`);
 }
 
