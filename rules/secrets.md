@@ -21,7 +21,7 @@ do banco, ou ao escrever código que lê configuração.
    `.env.local` (sua máquina) · `.env.example` (versionado, sem valor)
    · painel da Vercel (preview e production).
    Exceção: variável lida só por script local, que o deploy nunca
-   executa (ex.: `PEXELS_API_KEY`, `DEMO_SEED_PASSWORD`), fica em
+   executa (ex.: `PIXABAY_API_KEY`, `DEMO_SEED_PASSWORD`), fica em
    `.env.local` e `.env.example`, sem ir para a Vercel: colocar lá só
    espalharia o segredo por um lugar que nunca o usa.
 4. Nenhuma senha, token ou chave em código, em arquivo versionado ou no

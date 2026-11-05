@@ -2,7 +2,7 @@
 
 ## Onde parei
 Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 concluída, sem push. Próxima: etapa 1, subagente verificador.
-Decisões do usuário: docs/entrega/diario.md.
+Decisões do usuário: docs/entrega/diario.md. MUDANÇA: fonte de imagens é Pixabay, não Pexels, com biblioteca de dimensionação (professor, 2026-11-05).
 
 ## Commitado (branch `pratica-sdd`, sem push)
 Agente: .gitignore com .env e enunciado; regras alinhadas (agente nunca escreve em produção); spec 001 CA-03; AGENTS.md, diário e este handoff.
