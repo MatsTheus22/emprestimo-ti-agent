@@ -1,5 +1,5 @@
 # Índice de skills
-> leitor: agente — consulte aqui antes de decidir qual skill usar (ver rules/skill.md)
+> leitor: agente — consulte aqui antes de decidir qual skill usar (ver rules/skills.md)
 
 | Skill | Pasta | Quando usar |
 |---|---|---|

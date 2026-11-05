@@ -1,6 +1,6 @@
 ---
 description: Procedimento para qualquer mudança de schema
-globs: ["supabase/migrations/**", "<CAMINHO-DO-ACESSO-A-DADOS>"]
+globs: ["back/prisma/**", "back/src/modules/**/*.repository.ts"]
 alwaysApply: false
 ---
 

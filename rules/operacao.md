@@ -27,9 +27,12 @@ alwaysApply: true
 | Instalar ou atualizar dependência           | pedir antes    |
 | Criar ou alterar migration                  | pedir antes    |
 | Mexer em variável de ambiente, config de de | pedir antes    |
-| Push, GitHub (secrets/workflow)             | pedir antes    |
-| Vercel (deploy, env, config)                | pedir antes    |
-| Supabase remoto (dados, Auth, migrate dep.) | pedir antes    |
+| Push da branch de trabalho, GitHub (secrets)| pedir antes    |
+| Vercel (preview, env, config)               | pedir antes    |
+| Supabase remoto (dados, Auth, Storage)      | proibido       |
+| `prisma migrate deploy`, seed ou upload rem | proibido       |
+| Merge de PR, push na main, disparar workflo | proibido       |
+| Deploy de produção na Vercel                | proibido       |
 
 O que cada nível significa:
 - livre — faça e siga em frente.
