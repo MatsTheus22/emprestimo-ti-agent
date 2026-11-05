@@ -20,7 +20,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   `node --test hooks/regras.test.mjs`, com testes. **CA-05**
 
 ## Verificação antes de produção
-- [ ] **T7** — Verificador com veredito PRONTA PARA PRODUÇÃO; PR do back, pedindo antes
+- [x] **T7** — Verificador com veredito PRONTA PARA PRODUÇÃO; PR do back, pedindo antes
   para o push. **CA-01**, **CA-02**, **CA-03**, **CA-04**, **CA-05**, **CA-06**
 
 ## Usuário: produção (ordem em plan.md)
