@@ -17,6 +17,23 @@ para a spec correspondente. A senha padrão da turma nunca entra aqui.
 | "Com {pessoa}" no card (layout.md §5.2 e §7.7) | Briefing, item 9; layout.md §7.11 | Card mostra só a situação; layout.md será alterado | Decidido em 2026-11-05 |
 | Conta com senha padrão | ADR-001 §7, cadastro por convite | Criada por fora, por mim | Cadastro segue fechado |
 
+## Prova do verificador (spec 002-login)
+
+Erro plantado: em `back/src/modules/auth/auth.guard.ts`, 401 em vez de 403 para token válido sem acesso, quebrando o CA-04. Commit `af46491`; desfeito em `43a325a`, com a mesma árvore da `main`. Branch `prova-verificador`, nunca mergeada. O verificador não foi avisado do erro.
+
+| rodada | back | veredito | CA-04 |
+|---|---|---|---|
+| 1 | 2358293 (main) | PRONTA | ATENDIDO |
+| 2 | af46491 (erro) | NÃO PRONTA | REPROVADO |
+| 3 | 43a325a (desfeito) | PRONTA | ATENDIDO |
+
+- O verificador achou o arquivo e a linha da causa e não corrigiu nada; o repositório continuou limpo.
+- Ao vivo, com a rodada 2 como a última, o hook bloqueou o Edit de "Status: PRONTA". Depois da rodada 3, `checar-spec` liberou.
+- Defeito achado durante a prova (corrigido em `ce8fdf9`): uma execução com o erro plantado reprovou o CA-04, mas não gerou arquivo de rodada. O agente entregou só pela ferramenta `SubagentHandback`, sem texto final, e o hook só lia o texto final. A spec continuou bloqueada, então não houve aprovação falsa. Agora o hook lê também a entrega e o transcript e não duplica por execução. O verificador rodou de novo, e essa é a rodada 2 gravada. Não escrevi rodada à mão.
+- Limite da comparação: status, veredito e hashes são comparáveis. O texto livre varia. A rodada 2 citou como fora de escopo o redirecionamento de `/operacoes` para o colaborador, e as rodadas 1 e 3, com a mesma regra de front, não citaram.
+- Falso positivo do hook: o guarda lê o texto do comando e barrou comandos que só citavam a pasta de rodadas ou a linha de status. Mantive: bloquear a mais é seguro, e basta separar o comando ou usar Edit.
+- O que as rodadas apontaram como limite da spec 002: CA-01 testa a função do hook sem emitir token pelo Auth; CA-08 simula a sessão, sem reload real.
+
 ## Mudança do professor (2026-11-05)
 
 O professor avisou em sala, oralmente: a fonte de imagens passa a ser o Pixabay
