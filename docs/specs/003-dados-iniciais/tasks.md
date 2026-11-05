@@ -16,7 +16,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 ## Agente: raiz
 - [x] **T5** — `enviar.mjs` sem sobrescrever por padrão e com `--substituir`; testes,
   conferência no Supabase local e `SKILL.md`. **CA-06**
-- [ ] **T6** — Hook bloqueia `seed:iniciais` com `--alvo producao` e libera ao verificador
+- [x] **T6** — Hook bloqueia `seed:iniciais` com `--alvo producao` e libera ao verificador
   `node --test hooks/regras.test.mjs`, com testes. **CA-05**
 
 ## Verificação antes de produção

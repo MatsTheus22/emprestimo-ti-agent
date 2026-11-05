@@ -60,6 +60,38 @@ describe('negarProducao', () => {
   it('texto livre não esconde comando proibido encadeado', () => {
     assert.ok(negarProducao('git commit -m "ok" && git push origin main'));
   });
+
+  // Spec 003 CA-05.
+  for (const comando of [
+    'npm run seed:iniciais -- --alvo producao',
+    'cd back && npm run seed:iniciais -- --alvo=producao',
+    'npm run -s seed:iniciais -- --alvo producao 2>&1 | tail -3',
+    'npx ts-node --transpile-only prisma/seed-iniciais.ts --alvo producao',
+    'node -r ts-node/register/transpile-only prisma/seed-iniciais.ts --alvo producao',
+  ]) {
+    it(`test_ca_05_nega_seed_em_producao: ${comando}`, () => {
+      assert.match(negarProducao(comando), /seed em produção/);
+    });
+  }
+
+  for (const comando of [
+    'npm run seed:iniciais -- --alvo local',
+    'npm run -s seed:iniciais',
+    'npx jest test/seed-iniciais-alvo.spec.ts',
+    'npm run seed:iniciais -- --alvo local && echo producao',
+    'git commit -m "T6: hook nega seed:iniciais com --alvo producao"',
+  ]) {
+    it(`test_ca_05_permite_sem_producao: ${comando}`, () => {
+      assert.equal(negarProducao(comando), null);
+    });
+  }
+
+  it('test_ca_05_decidir_bloqueia_o_agente_principal_e_o_verificador', () => {
+    const comando = 'npm run seed:iniciais -- --alvo producao';
+    assert.match(decidir({ tool_name: 'Bash', tool_input: { command: comando } }, '.'), /seed em produção/);
+    assert.match(decidir({ tool_name: 'PowerShell', tool_input: { command: comando } }, '.'), /seed em produção/);
+    assert.ok(decidir({ agent_type: 'verificador-spec', tool_name: 'Bash', tool_input: { command: comando } }, '.'));
+  });
 });
 
 describe('negarVerificador', () => {
@@ -94,6 +126,34 @@ describe('negarVerificador', () => {
     'curl https://abc.supabase.co',
   ]) {
     it(`nega: ${comando}`, () => assert.ok(negarVerificador(comando)));
+  }
+
+  // Spec 003 CA-05: o verificador precisa rodar os testes do hook para provar o critério.
+  for (const comando of [
+    'node --test hooks/regras.test.mjs',
+    'timeout 120 node --test hooks/regras.test.mjs',
+    'node --test hooks/regras.test.mjs 2>&1 | tail -8',
+    'cd skills/imagens-equipamentos/scripts && npm test',
+  ]) {
+    it(`test_ca_05_permite_ao_verificador: ${comando}`, () => {
+      assert.equal(negarVerificador(comando), null);
+    });
+  }
+
+  for (const comando of [
+    'node --test',
+    'node --test hooks/outro.test.mjs',
+    'node --test hooks/regras.test.mjs --watch',
+    'node --test hooks/regras.test.mjs && rm -rf back',
+    'node --test hooks/regras.test.mjs > saida.txt',
+    'node --test --import=./x.mjs hooks/regras.test.mjs',
+    'node -e "1" --test hooks/regras.test.mjs',
+    'node hooks/registrar-rodada.mjs saida.txt',
+    'npm run seed:iniciais -- --alvo local',
+  ]) {
+    it(`test_ca_05_nega_ao_verificador: ${comando}`, () => {
+      assert.ok(negarVerificador(comando));
+    });
   }
 });
 

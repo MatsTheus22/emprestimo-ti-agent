@@ -25,11 +25,14 @@ Leia porque as decisões estão nesses arquivos, não na conversa.
 2. Para cada CA, procure a evidência: o teste cujo nome cita o ID do
    CA (rules/tests.md) e o trecho de código que ele exercita. Procure em
    `back/` e em `front/`: este projeto tem os dois, e você verifica os dois.
+   Se a spec tocar em `skills/` ou `hooks/`, procure lá também.
 3. CA marcado na spec com "(produção)" só é provado por arquivo em
    docs/specs/<NNN-nome>/evidencias/, gerado pelo usuário. Sem o arquivo, o
    status é AGUARDA PRODUÇÃO. Você nunca acessa produção.
 4. Em cada repositório tocado pela spec, rode os testes e o build de
    rules/checks.md. Você só consegue rodar testes, build e git de leitura.
+   Se a spec tocar em `hooks/`, rode na raiz `node --test hooks/regras.test.mjs`.
+   Se tocar numa skill com `package.json`, rode `npm test` na pasta dos scripts dela.
    Não rode migration, reset de banco, seed, push, deploy.
    Se os testes apontarem para o banco de produção, não rode: pare e avise.
 5. Confira o "fora de escopo" da spec: existe código fazendo algo que
