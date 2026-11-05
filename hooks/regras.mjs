@@ -119,11 +119,12 @@ export function proximaRodada(pasta) {
   return (numeros.at(-1) ?? 0) + 1;
 }
 
-export function montarRodada({ numero, spec, data, estado, conteudoSpec, resposta }) {
+export function montarRodada({ numero, spec, data, agente, estado, conteudoSpec, resposta }) {
   return [
     `# Rodada ${numero} — ${spec}`,
     '',
     `data: ${data}`,
+    ...(agente ? [`agente: ${agente}`] : []),
     `back: ${estado.back.commit} arvore=${estado.back.arvore} limpo=${estado.back.limpo ? 'sim' : 'nao'}`,
     `front: ${estado.front.commit} arvore=${estado.front.arvore} limpo=${estado.front.limpo ? 'sim' : 'nao'}`,
     `spec-sha: ${hashSpec(conteudoSpec)}`,
@@ -139,6 +140,41 @@ export function lerResposta(mensagem) {
   const spec = /^Spec:\s*docs\/specs\/(\d{3}-[\w-]+)\/spec\.md\s*$/m.exec(mensagem ?? '')?.[1];
   const veredito = VEREDITO.exec(mensagem ?? '')?.[1];
   return spec && veredito ? { spec, veredito } : null;
+}
+
+// Primeira fonte com resposta no formato. Uma função só é chamada se as anteriores falharem.
+export function escolherResposta(fontes) {
+  for (const fonte of fontes) {
+    const texto = typeof fonte === 'function' ? fonte() : fonte;
+    if (lerResposta(texto)) return texto;
+  }
+  return null;
+}
+
+// Última resposta no formato, em texto ou na ferramenta de entrega do subagente.
+export function respostaDoTranscript(conteudo) {
+  const linhas = conteudo.split('\n').filter((linha) => linha.trim());
+  for (const linha of linhas.reverse()) {
+    let registro;
+    try {
+      registro = JSON.parse(linha);
+    } catch {
+      continue;
+    }
+    if (registro.type !== 'assistant' || !Array.isArray(registro.message?.content)) continue;
+    for (const bloco of [...registro.message.content].reverse()) {
+      const texto = bloco.text ?? bloco.input?.message;
+      if (lerResposta(texto)) return texto;
+    }
+  }
+  return null;
+}
+
+export function agenteJaRegistrado(pasta, agente) {
+  if (!agente) return false;
+  return numerosRodadas(pasta).some((numero) =>
+    readFileSync(join(pasta, `rodada-${numero}.md`), 'utf8').split('\n').includes(`agente: ${agente}`),
+  );
 }
 
 // Por que a spec não pode ser declarada pronta (null = pode). Com `aceitar`,

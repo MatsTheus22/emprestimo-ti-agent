@@ -1,12 +1,14 @@
 // Rodar: node --test hooks/regras.test.mjs
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { after, before, describe, it } from 'node:test';
 import {
+  agenteJaRegistrado,
   decidir,
+  escolherResposta,
   estadoRepos,
   hashSpec,
   lerResposta,
@@ -16,6 +18,7 @@ import {
   negarProducao,
   negarVerificador,
   proximaRodada,
+  respostaDoTranscript,
   specsPendentes,
 } from './regras.mjs';
 
@@ -242,6 +245,66 @@ describe('gate da spec', () => {
     writeFileSync(join(antiga, 'spec.md'), '# x\n');
     writeFileSync(join(antiga, 'tasks.md'), '- [x] a\n');
     assert.deepEqual(specsPendentes(raiz), []);
+  });
+});
+
+describe('gravação da rodada', () => {
+  const RELATORIO = 'Spec: docs/specs/002-login/spec.md\nVeredito: NÃO PRONTA — x';
+  const SCRIPT = join(import.meta.dirname, 'registrar-rodada.mjs');
+  let raiz;
+  const pasta = () => join(raiz, 'docs', 'specs', '002-login', 'verificacoes');
+  const rodar = (entrada) =>
+    spawnSync(process.execPath, [SCRIPT], { input: JSON.stringify(entrada), env: { ...process.env, CLAUDE_PROJECT_DIR: raiz }, encoding: 'utf8' });
+  const rodadas = () => (existsSync(pasta()) ? readdirSync(pasta()) : []);
+
+  before(() => {
+    raiz = mkdtempSync(join(tmpdir(), 'rodada-'));
+    mkdirSync(join(raiz, 'docs', 'specs', '002-login'), { recursive: true });
+    writeFileSync(join(raiz, 'docs', 'specs', '002-login', 'spec.md'), '# Spec\n');
+  });
+  after(() => rmSync(raiz, { recursive: true, force: true }));
+
+  it('acha o relatório entregue só pela ferramenta, sem texto final', () => {
+    const transcript = [
+      { type: 'assistant', message: { content: [{ type: 'text', text: 'Vou rodar os testes.' }] } },
+      { type: 'assistant', message: { content: [{ type: 'tool_use', name: 'SubagentHandback', input: { message: RELATORIO } }] } },
+      { type: 'user', message: { content: [{ type: 'tool_result', content: 'ok' }] } },
+    ].map((linha) => JSON.stringify(linha)).join('\n');
+    assert.equal(respostaDoTranscript(transcript), RELATORIO);
+    assert.equal(respostaDoTranscript('linha quebrada\n'), null);
+  });
+
+  it('só consulta o transcript se as outras fontes falharem', () => {
+    assert.equal(escolherResposta(['sem formato', RELATORIO, () => assert.fail('não devia ler')]), RELATORIO);
+    assert.equal(escolherResposta([undefined, () => RELATORIO]), RELATORIO);
+    assert.equal(escolherResposta(['sem formato', () => null]), null);
+  });
+
+  it('entrega sem texto final grava pelo transcript, e o outro evento não duplica', () => {
+    const transcript = join(raiz, 'agente.jsonl');
+    writeFileSync(transcript, JSON.stringify({ type: 'assistant', message: { content: [{ type: 'tool_use', input: { message: RELATORIO } }] } }));
+    const parada = { hook_event_name: 'SubagentStop', agent_type: 'verificador-spec', agent_id: 'a1', agent_transcript_path: transcript };
+    assert.equal(rodar(parada).status, 0);
+    assert.deepEqual(rodadas(), ['rodada-1.md']);
+    const entrega = { hook_event_name: 'PostToolUse', agent_type: 'verificador-spec', agent_id: 'a1', tool_input: { message: RELATORIO } };
+    assert.equal(rodar(entrega).status, 0);
+    assert.deepEqual(rodadas(), ['rodada-1.md']);
+    assert.equal(agenteJaRegistrado(pasta(), 'a1'), true);
+    assert.equal(agenteJaRegistrado(pasta(), 'a2'), false);
+  });
+
+  it('nova execução grava nova rodada; entrega de outro agente é ignorada', () => {
+    assert.equal(rodar({ hook_event_name: 'PostToolUse', agent_type: 'Explore', agent_id: 'x', tool_input: { message: RELATORIO } }).status, 0);
+    assert.deepEqual(rodadas(), ['rodada-1.md']);
+    assert.equal(rodar({ hook_event_name: 'PostToolUse', agent_type: 'verificador-spec', agent_id: 'a2', tool_input: { message: RELATORIO } }).status, 0);
+    assert.deepEqual(rodadas(), ['rodada-1.md', 'rodada-2.md']);
+  });
+
+  it('fora do formato: cobra na parada e não bloqueia na entrega nem em laço', () => {
+    assert.equal(rodar({ hook_event_name: 'SubagentStop', last_assistant_message: 'x' }).status, 2);
+    assert.equal(rodar({ hook_event_name: 'SubagentStop', last_assistant_message: 'x', stop_hook_active: true }).status, 0);
+    assert.equal(rodar({ hook_event_name: 'PostToolUse', agent_type: 'verificador-spec', tool_input: { message: 'x' } }).status, 0);
+    assert.deepEqual(rodadas(), ['rodada-1.md', 'rodada-2.md']);
   });
 });
 

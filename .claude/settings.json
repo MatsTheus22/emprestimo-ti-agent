@@ -26,6 +26,18 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "SubagentHandback",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/hooks/registrar-rodada.mjs"]
+          }
+        ]
+      }
+    ],
     "SubagentStop": [
       {
         "matcher": "verificador-spec",
