@@ -52,10 +52,11 @@ vizinha existe, para acusar divergência. Sem a pasta, como num clone só do bac
 teste é pulado, e os testes do próprio arquivo continuam valendo.
 
 ### Script: `back/prisma/seed-iniciais.ts` (`npm run seed:iniciais`)
-- `seedEquipamentos(prisma)`: chama `seedTenant` e depois
-  `equipment.createMany({ skipDuplicates: true })`, que vira `ON CONFLICT DO NOTHING`.
+- O script chama `seedTenant` e depois `seedEquipamentos(prisma, tenantId)`, que usa
+  `equipment.createMany({ skipDuplicates: true })`, ou seja, `ON CONFLICT DO NOTHING`.
   Nunca há update, então um `emprestado` futuro não volta para `disponivel`. Devolve
-  criadas e total.
+  criadas, já existentes e total. O tenant é parâmetro para os testes de banco, que rodam
+  em paralelo, usarem um tenant próprio.
 - Fica fora do `prisma.seed`: `migrate reset` continua criando só o tenant.
 - `--alvo local`: carrega `.env` e recusa host que não seja `localhost`/`127.0.0.1`.
 - `--alvo producao`: não carrega arquivo, exige terminal interativo, recusa host local e

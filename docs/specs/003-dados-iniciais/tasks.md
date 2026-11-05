@@ -8,7 +8,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   único e CHECK de `category`; testes de constraint em container. Pede antes o
   consentimento do `migrate reset` local. **CA-01**
 - [x] **T2** — `prisma/dados/equipamentos-iniciais.json` e teste contra as listas da skill. **CA-02**
-- [ ] **T3** — `seedEquipamentos` e `npm run seed:iniciais`; testes de criação,
+- [x] **T3** — `seedEquipamentos` e `npm run seed:iniciais`; testes de criação,
   repetição, linha alterada e ausência de empréstimo, membership e senha. **CA-02**, **CA-03**, **CA-04**
 - [ ] **T4** — Controle de `--alvo` (local e produção) com testes; `PIXABAY_API_KEY`
   sem valor em `back/.env.example`. **CA-05**
