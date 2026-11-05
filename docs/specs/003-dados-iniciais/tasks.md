@@ -4,7 +4,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 `003-dados-iniciais` em back e na raiz; `front/` não muda.
 
 ## Agente: back
-- [ ] **T1** — Migration das colunas de imagem e créditos, `asset_tag` NOT NULL, índice
+- [x] **T1** — Migration das colunas de imagem e créditos, `asset_tag` NOT NULL, índice
   único e CHECK de `category`; testes de constraint em container. Pede antes o
   consentimento do `migrate reset` local. **CA-01**
 - [ ] **T2** — `prisma/dados/equipamentos-iniciais.json` e teste contra as listas da skill. **CA-02**
