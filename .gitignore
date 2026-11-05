@@ -15,3 +15,6 @@ pratica-sdd-subagentes.html
 
 # Configuração pessoal do harness.
 .claude/settings.local.json
+
+# Worktrees de agentes em paralelo.
+.claude/worktrees/

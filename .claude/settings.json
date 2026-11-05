@@ -1,0 +1,65 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./back/.env)",
+      "Read(./back/.env.local)",
+      "Read(./front/.env)",
+      "Read(./front/.env.local)",
+      "Bash(gh pr merge *)",
+      "Bash(gh workflow run *)",
+      "Bash(npx prisma migrate deploy *)",
+      "Bash(npx prisma migrate deploy)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell|Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/hooks/guarda.mjs"]
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "SubagentHandback",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/hooks/registrar-rodada.mjs"]
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "verificador-spec",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/hooks/registrar-rodada.mjs"]
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PROJECT_DIR}/hooks/exigir-verificacao.mjs"]
+          }
+        ]
+      }
+    ]
+  }
+}
