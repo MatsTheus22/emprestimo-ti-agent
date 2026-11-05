@@ -12,7 +12,7 @@ Negócio em docs/PRD.md. Stack decidida em docs/adr/001-stack.md.
 
 ## Comandos
 
-- subir o banco local: Docker Desktop aberto; confirmar o comando na próxima subida
+- subir o banco local: Docker Desktop aberto; `npx supabase start` em back/ (conferir com `npx supabase status`)
 - rodar o projeto: `npm run start:dev` em back/ (porta 3000) · `npm run dev` em front/ (porta 5173)
 - rodar os testes: `npm test` em back/ (precisa do Docker) e em front/
 - buildar: `npm run build` em back/ e em front/

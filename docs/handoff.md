@@ -1,15 +1,15 @@
 # Handoff — 2026-11-05
 
 ## Onde parei
-Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 concluída, sem push. Próxima: etapa 1, subagente verificador.
-Decisões do usuário: docs/entrega/diario.md. MUDANÇA: fonte de imagens é Pixabay, não Pexels, com biblioteca de dimensionação (professor, 2026-11-05).
+Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 concluída e verificada (`npm test` e `npm run build` em back e front), sem push. Próxima: etapa 1, subagente verificador.
+Decisões do usuário: docs/entrega/diario.md. MUDANÇA: fonte de imagens é Pixabay, não Pexels, com `sharp` (professor e usuário, 2026-11-05). Chave em back/.env.local; testada, HTTP 200.
 
 ## Commitado (branch `pratica-sdd`, sem push)
 Agente: .gitignore com .env e enunciado; regras alinhadas (agente nunca escreve em produção); spec 001 CA-03; AGENTS.md, diário e este handoff.
 Back: seed-demo com senha de `DEMO_SEED_PASSWORD` e usuários em @dev.local.
 
 ## Banco local
-2 migrations. Usuários antigos de demo ainda não apagados: Docker estava parado.
+2 migrations. Usuários antigos apagados; 6 novos em @dev.local (senha em `DEMO_SEED_PASSWORD`).
 
 ## Publicado em produção
 Só login: https://emprestimo-ti-front.vercel.app e https://emprestimo-ti-back.vercel.app/v1/health. Nada novo da prática.
