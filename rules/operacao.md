@@ -13,6 +13,9 @@ alwaysApply: true
 - Push: o agente pode fazer push da branch de trabalho, sempre pedindo
   antes (rules/restrictions.md § Produção). Nunca na `main`, nunca force.
 - A mensagem de commit cita a tarefa e o critério de aceitação.
+- Uma branch por etapa ou spec, com o mesmo nome em todo repositório tocado
+  (ex.: `003-dados-iniciais`). PR com merge commit, sem squash: o ENTREGA.md
+  cita os hashes.
 - Um commit por tarefa. Nunca junte código e mudança de regra
   no mesmo commit.
 
