@@ -29,7 +29,19 @@ cita os ADRs que a restringem.
 
 ## Antes de declarar uma spec pronta
 - Delegue ao subagente verificador-spec (agents/verificador-spec.md),
-  passando o caminho da spec e o intervalo de commits.
-- A spec só é pronta com "Veredito: PRONTA". Qualquer outro resultado
-  volta para as tarefas — quem corrige é o agente principal, nunca o
-  verificador.
+  passando o caminho da spec e o intervalo de commits de back e front. Commite
+  antes: rodada com repositório sujo não vale.
+- A rodada é gravada pelo hook em docs/specs/<NNN-nome>/verificacoes/rodada-N.md.
+  Ninguém edita esses arquivos. Compare rodadas com
+  `node hooks/comparar-rodadas.mjs docs/specs/<NNN-nome> <A> <B>`.
+- Qualquer resultado diferente de PRONTA volta para as tarefas: quem corrige é
+  o agente principal, nunca o verificador, nem quando a única falha for um teste
+  quebrado.
+- CA que só se prova em produção leva "(produção)" na spec. Com os demais
+  atendidos, o veredito é PRONTA PARA PRODUÇÃO, e o PR de código de back e front
+  pode ser aberto. Depois do deploy, o usuário grava a evidência em
+  docs/specs/<NNN-nome>/evidencias/ e o verificador roda de novo.
+- A spec só é pronta com a linha "Status: PRONTA" em spec.md, escrita com Edit
+  depois do veredito PRONTA. Os hooks bloqueiam essa linha sem rodada aprovada
+  para o código e a spec atuais, e não deixam encerrar o turno com todas as tarefas
+  concluídas sem ela. Vale da spec 003 em diante.

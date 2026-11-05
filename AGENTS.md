@@ -51,9 +51,16 @@ Sempre siga as seguintes regras:
 - rules/tests.md -> Ao escrever, alterar ou remover qualquer teste.
 
 ## Subagentes
-- Ficam em agents/<nome>.md. O frontmatter diz quando delegar; o
-  corpo é a instrução completa do subagente.
+- Ficam em agents/<nome>.md: é a instrução completa, em qualquer ferramenta.
 - Subagente não herda esta conversa: ao delegar, passe tudo que o
   arquivo dele pede como entrada.
-- Se o harness não tiver subagentes, abra uma sessão nova e comece
-  com: "Aja conforme agents/<nome>.md." e as entradas pedidas.
+- A lógica de guarda e de rodadas fica em hooks/ (Node puro). Testes:
+  `node --test hooks/regras.test.mjs`.
+- .claude/ só liga isso ao Claude Code: agents/ declara ferramentas e modelo e
+  aponta para agents/<nome>.md; settings.json liga os hooks. Nele, as proibições e
+  a obrigatoriedade são automáticas.
+- Em outro harness, abra uma sessão nova e comece com: "Aja conforme
+  agents/<nome>.md." e as entradas pedidas. Grave a resposta com
+  `node hooks/registrar-rodada.mjs <arquivo>` e confira com
+  `node hooks/checar-spec.mjs <NNN-nome>`. Sem bloqueio automático, tudo isso
+  depende de disciplina: avise o usuário.
