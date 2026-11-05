@@ -25,6 +25,19 @@ dimensionação. Vale sobre o texto do enunciado. Motivo observado: a emissão d
 novas chaves do Pexels estava pausada (tela da página da API).
 O professor não indicou qual biblioteca; escolhi `sharp`, a que o briefing já citava.
 
+## Verificador (etapa 1)
+
+- Pedido do tech lead recusado: o verificador não tem Edit nem Write, e o hook só libera testes, build e git de leitura.
+- Gatilho: hook, não instrução. O Stop não deixa encerrar com tarefas concluídas e sem spec pronta; o Edit de "Status: PRONTA" é bloqueado sem rodada aprovada para o código atual.
+- Comparável: a rodada é gravada por hook a partir da resposta do verificador, com modelo fixo (`sonnet`), CAs em ordem e hashes; `comparar-rodadas.mjs` mostra duas lado a lado.
+- Limite declarado: os hooks casam o texto do comando (a documentação avisa que isso não é fronteira de segurança). O `gh` logado nesta máquina poderia, por outro caminho, fazer merge; o que impede escrita de dados é a chave de produção fora do alcance do agente.
+- CA de produção: status AGUARDA PRODUÇÃO e veredito PRONTA PARA PRODUÇÃO, porque a evidência só existe depois do deploy, que depende do PR.
+- Os testes dos hooks pegaram um furo: `git -C back push origin HEAD:main` passava pelo bloqueio. Corrigido antes de ligar os hooks.
+
+## Portabilidade do verificador
+
+O agente pôs tudo em .claude/, e eu questionei: só funcionaria no Claude Code. Ficou em agents/ e hooks/, em Node puro; .claude/ só liga isso ao harness. Limite: bloqueio automático só existe onde há hooks. Em outro harness, a rodada e a checagem são comandos manuais.
+
 ## Lacunas
 
 - Fotos geradas por IA: ficam de fora (campo `isAiGenerated` da API), porque o contrato pede registrar quem fotografou.

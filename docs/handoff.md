@@ -1,15 +1,16 @@
 # Handoff — 2026-11-05
 
 ## Onde parei
-Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 concluída e verificada (`npm test` e `npm run build` em back e front). Próxima: etapa 1, subagente verificador.
-Decisões do usuário: docs/entrega/diario.md. MUDANÇA: fonte de imagens é Pixabay, não Pexels, com `sharp` (professor e usuário, 2026-11-05). Chave em back/.env.local; testada, HTTP 200.
+Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 mergeada. Etapas 1 e 2 commitadas, aguardando aprovação do usuário.
+Decisões do usuário: docs/entrega/diario.md. Fonte de imagens é Pixabay, com `sharp` (ADR-003).
 
-## Commitado (branch `etapa-0-preparacao`)
-Agente: .gitignore com .env e enunciado; regras alinhadas (agente nunca escreve em produção); spec 001 CA-03; AGENTS.md, diário e este handoff.
-Back: seed-demo com senha de `DEMO_SEED_PASSWORD` e usuários em @dev.local.
+## Commitado
+Agente, branch `etapa-1-verificador`: agents/, hooks/, .claude/, regras. Raiz fica nesta branch: os hooks só existem nela até o merge.
+Agente, branch `etapa-2-imagens` (worktree em .claude/worktrees/): skill, ADR-003, creditos.json.
+As imagens finais ficam em `saida/final` da worktree, ignoradas pelo git. Não remova a worktree antes do envio.
 
 ## Banco local
-2 migrations. Usuários antigos apagados; 6 novos em @dev.local (senha em `DEMO_SEED_PASSWORD`).
+2 migrations. 6 usuários em @dev.local (senha em `DEMO_SEED_PASSWORD`).
 
 ## Publicado em produção
 Só login: https://emprestimo-ti-front.vercel.app e https://emprestimo-ti-back.vercel.app/v1/health. Nada novo da prática.
@@ -22,4 +23,4 @@ Só login: https://emprestimo-ti-front.vercel.app e https://emprestimo-ti-back.v
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Crie `.claude/agents/verificador-spec.md` com ferramentas restritas e hooks, conforme a seção 02 do enunciado.
+Reinicie a sessão e rode a prova do verificador com erro plantado na spec 002-login, em commits próprios.
