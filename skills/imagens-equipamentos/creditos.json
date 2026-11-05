@@ -1,0 +1,343 @@
+{
+  "fonte": "API do Pixabay",
+  "revisao_humana": {
+    "aprovadas": 12,
+    "reservas": 11,
+    "reprovadas": 31,
+    "detalhe_reprovadas": [
+      {
+        "patrimonio": "TI-0001",
+        "id": 2325627,
+        "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0001",
+        "id": 4484282,
+        "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0001",
+        "id": 7188564,
+        "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0002",
+        "id": 1250412,
+        "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0002",
+        "id": 2511065,
+        "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0002",
+        "id": 2588514,
+        "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0003",
+        "id": 70506,
+        "motivo": "Só tem o teclado"
+      },
+      {
+        "patrimonio": "TI-0004",
+        "id": 789631,
+        "motivo": "O computador está longe"
+      },
+      {
+        "patrimonio": "TI-0004",
+        "id": 865091,
+        "motivo": "Está cortado"
+      },
+      {
+        "patrimonio": "TI-0005",
+        "id": 1207834,
+        "motivo": "É um teclado"
+      },
+      {
+        "patrimonio": "TI-0005",
+        "id": 4795762,
+        "motivo": "Não é monitor"
+      },
+      {
+        "patrimonio": "TI-0005",
+        "id": 8922413,
+        "motivo": "Está muito longe"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 338561,
+        "motivo": "É uma pessoa"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 2181919,
+        "motivo": "É uma sala"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1155173,
+        "motivo": "É um computador, não um monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 2212967,
+        "motivo": "É um computador, não um monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 2559798,
+        "motivo": "Foca muito no notebook"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 2593896,
+        "motivo": "Não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 2853839,
+        "motivo": "É um computador, não um monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 2926961,
+        "motivo": "Não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 4919804,
+        "motivo": "É uma sala de aula"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 4962269,
+        "motivo": "É um computador, não um monitor"
+      },
+      {
+        "patrimonio": "TI-0008",
+        "id": 3645129,
+        "motivo": "Não é cabo HDMI"
+      },
+      {
+        "patrimonio": "TI-0008",
+        "id": 5407447,
+        "motivo": "Não é cabo HDMI"
+      },
+      {
+        "patrimonio": "TI-0009",
+        "id": 2467267,
+        "motivo": "É um tablet"
+      },
+      {
+        "patrimonio": "TI-0009",
+        "id": 4875319,
+        "motivo": "Não é USB-C"
+      },
+      {
+        "patrimonio": "TI-0010",
+        "id": 2784907,
+        "motivo": "Não mostra totalmente o cabo"
+      },
+      {
+        "patrimonio": "TI-0011",
+        "id": 2937216,
+        "motivo": "Mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0011",
+        "id": 4480363,
+        "motivo": "Mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0011",
+        "id": 5817031,
+        "motivo": "Mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 4516107,
+        "motivo": "É um notebook"
+      }
+    ],
+    "motivos": {
+      "Não mostra um notebook": 6,
+      "Só tem o teclado": 1,
+      "O computador está longe": 1,
+      "Está cortado": 1,
+      "É um teclado": 1,
+      "Não é monitor": 3,
+      "Está muito longe": 1,
+      "É uma pessoa": 1,
+      "É uma sala": 1,
+      "É um computador, não um monitor": 4,
+      "Foca muito no notebook": 1,
+      "É uma sala de aula": 1,
+      "Não é cabo HDMI": 2,
+      "É um tablet": 1,
+      "Não é USB-C": 1,
+      "Não mostra totalmente o cabo": 1,
+      "Mostra um notebook": 3,
+      "É um notebook": 1
+    }
+  },
+  "itens": [
+    {
+      "patrimonio": "TI-0001",
+      "arquivo": "TI-0001.jpg",
+      "pixabay_id": 1483974,
+      "origem": "https://pixabay.com/photos/laptop-workstation-browsing-tablet-1483974/",
+      "autor": "Monoar_CGI_Artist",
+      "autor_id": 2240009,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "320452ada74aefbd34747486e3b03a45030af5bfc1d367e16ce68d5f760560ab"
+    },
+    {
+      "patrimonio": "TI-0002",
+      "arquivo": "TI-0002.jpg",
+      "pixabay_id": 791032,
+      "origem": "https://pixabay.com/photos/technology-laptop-computer-netbook-791032/",
+      "autor": "kaboompics",
+      "autor_id": 1013994,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "47e5dbd4b62e93cc9eb7a62d804e2033c9700770cde71c0b90ea3220319e7624"
+    },
+    {
+      "patrimonio": "TI-0003",
+      "arquivo": "TI-0003.jpg",
+      "pixabay_id": 6801339,
+      "origem": "https://pixabay.com/photos/electronics-technology-devices-6801339/",
+      "autor": "Mariakray",
+      "autor_id": 23567841,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "e8476c6fba4cfdb3aaaf83aafe5e32d9ea360254e2c77461b860c9b9ae8a7a7e"
+    },
+    {
+      "patrimonio": "TI-0004",
+      "arquivo": "TI-0004.jpg",
+      "pixabay_id": 4906312,
+      "origem": "https://pixabay.com/photos/laptop-workstaion-office-work-4906312/",
+      "autor": "Deeezy",
+      "autor_id": 15467098,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "214aeb506d68b1e327c6b9ef1da5826a7f3e2779e2769c9d9fe697a73862b552"
+    },
+    {
+      "patrimonio": "TI-0005",
+      "arquivo": "TI-0005.jpg",
+      "pixabay_id": 1140699,
+      "origem": "https://pixabay.com/photos/desk-computer-modern-keyboard-1140699/",
+      "autor": "theglassdesk",
+      "autor_id": 149631,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "419c971937763becd7ccc5bf675354d6af5629a8bd9fee7c2bee7746b5eee4ab"
+    },
+    {
+      "patrimonio": "TI-0006",
+      "arquivo": "TI-0006.jpg",
+      "pixabay_id": 3114274,
+      "origem": "https://pixabay.com/photos/computer-laptop-technology-desk-3114274/",
+      "autor": "malawiheiko",
+      "autor_id": 1950928,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "a9e354f12cdf95ed359187b0efafb3833f2ff29029e8c6ee58ca111a410dfa06"
+    },
+    {
+      "patrimonio": "TI-0007",
+      "arquivo": "TI-0007.jpg",
+      "pixabay_id": 2853836,
+      "origem": "https://pixabay.com/photos/poster-mockup-mockup-poster-frame-2853836/",
+      "autor": "RaniRamli",
+      "autor_id": 731298,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "76ad9f23fca2524983f1c86816985a840e2488bf94e00b3f6af799f0f49ef6e4"
+    },
+    {
+      "patrimonio": "TI-0008",
+      "arquivo": "TI-0008.jpg",
+      "pixabay_id": 2202226,
+      "origem": "https://pixabay.com/photos/hdmi-connector-cable-plug-2202226/",
+      "autor": "WikimediaImages",
+      "autor_id": 1185597,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "e8c8a87b9df90f342dccdcf63c6e6c85d380c47f29e6bd6911897319aadab530"
+    },
+    {
+      "patrimonio": "TI-0009",
+      "arquivo": "TI-0009.jpg",
+      "pixabay_id": 7066127,
+      "origem": "https://pixabay.com/photos/cable-charging-cable-usb-7066127/",
+      "autor": "Alexandra_Koch",
+      "autor_id": 621802,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "c8612fbd76139f387290d5a1434b2e22199b781a9d33be1fd92e77df56edda9d"
+    },
+    {
+      "patrimonio": "TI-0010",
+      "arquivo": "TI-0010.jpg",
+      "pixabay_id": 494649,
+      "origem": "https://pixabay.com/photos/network-cable-cable-patch-494649/",
+      "autor": "blickpixel",
+      "autor_id": 52945,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "a80e261a3a0d148ba5df89af1ce5c40727c60be25a5a3b49eda1c7ef9995298c"
+    },
+    {
+      "patrimonio": "TI-0011",
+      "arquivo": "TI-0011.jpg",
+      "pixabay_id": 8670926,
+      "origem": "https://pixabay.com/photos/camera-photography-photographer-8670926/",
+      "autor": "MrTozzo",
+      "autor_id": 4504333,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "b7f8347cc212c11a6e62a7f232824ba7b1b545440711198cf8b7cdffba19ae15"
+    },
+    {
+      "patrimonio": "TI-0012",
+      "arquivo": "TI-0012.jpg",
+      "pixabay_id": 1362419,
+      "origem": "https://pixabay.com/photos/camera-digital-photography-1362419/",
+      "autor": "maddyjaya",
+      "autor_id": 2487048,
+      "licenca": "Pixabay Content License",
+      "licenca_url": "https://pixabay.com/service/license-summary/",
+      "largura": 800,
+      "altura": 600,
+      "sha256": "3fd3eeb021bcf705bdbdc8ca2e41da11ef149ccd443fdc517df853c0b310a7f2"
+    }
+  ]
+}

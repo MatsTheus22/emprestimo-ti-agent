@@ -52,3 +52,13 @@ produção. Os 6 usuários locais foram apagados em 2026-11-05, e a senha antiga
 - A primeira leitura do agente não viu o conflito do TI-0010 entre a lista e o briefing; ele mesmo admitiu depois.
 - O agente recomendou manter a senha antiga no histórico como se fosse opção livre, e tratou todas as 23 decisões como minhas. Perguntei se o HTML permitia, e ele reclassificou.
 - O agente afirmou que bastava pedir 800×600 ao CDN do Pexels; a documentação não confirma, e ele corrigiu.
+
+## Imagens (etapa 2)
+
+- Revisão visual (minha): 54 candidatas, 31 reprovadas, 12 finais, 11 de reserva. O número e os motivos estão em `skills/imagens-equipamentos/creditos.json`, gerado a partir de `revisao/decisoes.json`.
+- Das 48 primeiras candidatas, nenhuma para o TI-0007 serviu: todas eram computadores. Uma busca nova com termo próprio trouxe 6 fotos; aprovei 2.
+- Reprovei foto com pessoa que passou pelo filtro de tags (TI-0006). O filtro por código é só inicial: a garantia de direito de imagem é a revisão humana.
+- Quase todas as reprovações foram por não mostrar o equipamento certo. Esse critério é meu e entrou na revisão.
+- Quando aprovei mais de uma foto para o mesmo equipamento, o agente usou a primeira como final; as demais ficaram como `reserva`.
+- `sharp` só em script local; `isAiGenerated` e `isLowQuality` rejeitados por código. O envio para produção é meu: o script exige terminal interativo e chave só no processo.
+- ADR-003 (`sharp`): rascunho do agente, a meu pedido; aprovei em 2026-11-05. Primeiro decidimos não usar `sharp`, com recorte pelo CDN do Pexels; depois da troca para o Pixabay, que não oferece tamanho exato, decidimos usar.

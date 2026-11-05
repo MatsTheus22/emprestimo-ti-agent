@@ -14,7 +14,7 @@ alwaysApply: true
 - Não contrarie o que está em docs/adr/. Se precisar contrariar, pare.
 - Não responda por conta própria o que o PRD deixou ambíguo. Liste as
   perguntas e espere.
-- Não escolha biblioteca que não esteja no ADR-001. Proponha e espere.
+- Não escolha biblioteca que não esteja em docs/adr/. Proponha e espere.
 
 ## Escopo
 
