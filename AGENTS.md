@@ -34,11 +34,14 @@ Se algo não estiver escrito em lugar nenhum, pergunte — não decida.
 
 Existe: docs/PRD.md, docs/adr/001-stack.md, rules/ (checks.md, migration.md,
 restrictions.md, secrets.md, spec-flow.md), layout.md (spec de layout) e
-ARQUITETURA.md. Este repositório guarda só a configuração do agente (regras,
-skills, subagentes e docs). O código vive em dois repositórios git separados,
-`front/` e `back/` (remotes em ARQUITETURA.md), que NÃO estão neste repo. Este repo é `emprestimo-ti-agent` (ver ARQUITETURA.md).
+ARQUITETURA.md. O projeto está dividido em dois repositórios git separados,
+`front/` e `back/` (remotes em ARQUITETURA.md), cada um só com `.env`,
+`.env.example`, `.gitignore` e `LICENSE`. Esta pasta raiz é o repositório `emprestimo-ti-agent`
+(configuração do agente); `front/` e `back/` estão no .gitignore dela.
 
-Nenhum comando deste projeto foi rodado nesta máquina.
+Ainda NÃO existe: código de aplicação (front ou back), testes, migrations,
+estrutura de pastas de código, `docs/specs/`, e nenhum comando deste projeto
+foi rodado nesta máquina.
 
 ## Procedimentos
 Sempre siga as seguintes regras:
