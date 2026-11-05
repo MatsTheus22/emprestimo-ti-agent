@@ -1,0 +1,242 @@
+{
+  "TI-0001": {
+    "1483974": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "2325627": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra um notebook"
+    },
+    "4484282": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra um notebook"
+    },
+    "7188564": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra um notebook"
+    }
+  },
+  "TI-0002": {
+    "791032": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "1250412": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra um notebook"
+    },
+    "2511065": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra um notebook"
+    },
+    "2588514": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra um notebook"
+    }
+  },
+  "TI-0003": {
+    "70506": {
+      "decisao": "reprovada",
+      "motivo": "Só tem o teclado"
+    },
+    "338505": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "2567809": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "6801339": {
+      "decisao": "aprovada",
+      "motivo": ""
+    }
+  },
+  "TI-0004": {
+    "789631": {
+      "decisao": "reprovada",
+      "motivo": "O computador está longe"
+    },
+    "865091": {
+      "decisao": "reprovada",
+      "motivo": "Está cortado"
+    },
+    "2425303": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "4906312": {
+      "decisao": "aprovada",
+      "motivo": ""
+    }
+  },
+  "TI-0005": {
+    "1140699": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "1207834": {
+      "decisao": "reprovada",
+      "motivo": "É um teclado"
+    },
+    "4795762": {
+      "decisao": "reprovada",
+      "motivo": "Não é monitor"
+    },
+    "8922413": {
+      "decisao": "reprovada",
+      "motivo": "Está muito longe"
+    }
+  },
+  "TI-0006": {
+    "338561": {
+      "decisao": "reprovada",
+      "motivo": "É uma pessoa"
+    },
+    "2181919": {
+      "decisao": "reprovada",
+      "motivo": "É uma sala"
+    },
+    "2853860": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "3114274": {
+      "decisao": "aprovada",
+      "motivo": ""
+    }
+  },
+  "TI-0007": {
+    "1155173": {
+      "decisao": "reprovada",
+      "motivo": "É um computador, não um monitor"
+    },
+    "2212967": {
+      "decisao": "reprovada",
+      "motivo": "É um computador, não um monitor"
+    },
+    "2559798": {
+      "decisao": "reprovada",
+      "motivo": "Foca muito no notebook"
+    },
+    "2593896": {
+      "decisao": "reprovada",
+      "motivo": "Não é monitor"
+    },
+    "2853836": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "2853839": {
+      "decisao": "reprovada",
+      "motivo": "É um computador, não um monitor"
+    },
+    "2926961": {
+      "decisao": "reprovada",
+      "motivo": "Não é monitor"
+    },
+    "3539656": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "4919804": {
+      "decisao": "reprovada",
+      "motivo": "É uma sala de aula"
+    },
+    "4962269": {
+      "decisao": "reprovada",
+      "motivo": "É um computador, não um monitor"
+    }
+  },
+  "TI-0008": {
+    "1827": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "2202226": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "3645129": {
+      "decisao": "reprovada",
+      "motivo": "Não é cabo HDMI"
+    },
+    "5407447": {
+      "decisao": "reprovada",
+      "motivo": "Não é cabo HDMI"
+    }
+  },
+  "TI-0009": {
+    "2467267": {
+      "decisao": "reprovada",
+      "motivo": "É um tablet"
+    },
+    "4875319": {
+      "decisao": "reprovada",
+      "motivo": "Não é USB-C"
+    },
+    "7066127": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "7066188": {
+      "decisao": "reserva",
+      "motivo": ""
+    }
+  },
+  "TI-0010": {
+    "494647": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "494648": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "494649": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "2784907": {
+      "decisao": "reprovada",
+      "motivo": "Não mostra totalmente o cabo"
+    }
+  },
+  "TI-0011": {
+    "2937216": {
+      "decisao": "reprovada",
+      "motivo": "Mostra um notebook"
+    },
+    "4480363": {
+      "decisao": "reprovada",
+      "motivo": "Mostra um notebook"
+    },
+    "5817031": {
+      "decisao": "reprovada",
+      "motivo": "Mostra um notebook"
+    },
+    "8670926": {
+      "decisao": "aprovada",
+      "motivo": ""
+    }
+  },
+  "TI-0012": {
+    "1362419": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "3545828": {
+      "decisao": "reserva",
+      "motivo": ""
+    },
+    "4516107": {
+      "decisao": "reprovada",
+      "motivo": "É um notebook"
+    },
+    "7693094": {
+      "decisao": "reserva",
+      "motivo": ""
+    }
+  }
+}

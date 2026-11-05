@@ -6,6 +6,10 @@ back/
 .env.*
 !.env.example
 
+# Dependências e saída da skill de imagens (fotos candidatas e cache da API).
+node_modules/
+skills/imagens-equipamentos/saida/
+
 # O enunciado traz a senha padrão da turma em texto: nunca versionar.
 pratica-sdd-subagentes.html
 

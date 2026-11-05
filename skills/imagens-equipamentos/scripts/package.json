@@ -1,0 +1,15 @@
+{
+  "name": "imagens-equipamentos",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node --test",
+    "buscar": "node buscar.mjs",
+    "fechar": "node fechar.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.35.5"
+  }
+}
