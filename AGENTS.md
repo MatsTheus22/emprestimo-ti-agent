@@ -36,7 +36,7 @@ Existe: docs/PRD.md, docs/adr/001-stack.md, rules/ (checks.md, migration.md,
 restrictions.md, secrets.md, spec-flow.md), layout.md (spec de layout) e
 ARQUITETURA.md. Este repositório guarda só a configuração do agente (regras,
 skills, subagentes e docs). O código vive em dois repositórios git separados,
-`front/` e `back/` (remotes em ARQUITETURA.md), que NÃO estão neste repo.
+`front/` e `back/` (remotes em ARQUITETURA.md), que NÃO estão neste repo. Este repo é `emprestimo-ti-agent` (ver ARQUITETURA.md).
 
 Nenhum comando deste projeto foi rodado nesta máquina.
 
