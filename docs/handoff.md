@@ -1,10 +1,10 @@
 # Handoff — 2026-11-05
 
 ## Onde parei
-Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 concluída e verificada (`npm test` e `npm run build` em back e front), sem push. Próxima: etapa 1, subagente verificador.
+Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapa 0 concluída e verificada (`npm test` e `npm run build` em back e front). Próxima: etapa 1, subagente verificador.
 Decisões do usuário: docs/entrega/diario.md. MUDANÇA: fonte de imagens é Pixabay, não Pexels, com `sharp` (professor e usuário, 2026-11-05). Chave em back/.env.local; testada, HTTP 200.
 
-## Commitado (branch `pratica-sdd`, sem push)
+## Commitado (branch `etapa-0-preparacao`)
 Agente: .gitignore com .env e enunciado; regras alinhadas (agente nunca escreve em produção); spec 001 CA-03; AGENTS.md, diário e este handoff.
 Back: seed-demo com senha de `DEMO_SEED_PASSWORD` e usuários em @dev.local.
 

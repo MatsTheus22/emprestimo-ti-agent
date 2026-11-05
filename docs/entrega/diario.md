@@ -13,7 +13,7 @@ para a spec correspondente. A senha padrão da turma nunca entra aqui.
 | 14 dias úteis (briefing de empréstimo, item 3) | PRD: 14 dias; layout.md: hoje + 14 dias | 14 dias corridos | Regra de negócio é do PRD |
 | Limite de 5 (briefing de empréstimo, item 4) | PRD: 3 itens | 3 | Regra de negócio é do PRD |
 | Catálogo sem crédito (briefing de empréstimo, item 9) | Contrato da skill: crédito na tela com link | "Fotos: Pixabay" com link fica | Exigência do contrato, agora aplicada à nova fonte |
-| TI-0010 em manutenção (lista) × só TI-0004 e TI-0007 (briefing) | Dois trechos do enunciado | TI-0004 e TI-0007 em manutenção; os outros 10 disponíveis | Confirmado em 2026-11-05. Motivo: PENDENTE |
+| TI-0004 e TI-0007 em manutenção (briefing) × TI-0004, TI-0007 e TI-0010 (lista) | Dois trechos do enunciado | Segue a lista: 3 em manutenção, 9 disponíveis. Primeiro escolhi o briefing; revi antes de implementar | "Entendi pelo documento que a lista é mais definitiva que o briefing, que pode estar errado" |
 | "Com {pessoa}" no card (layout.md §5.2 e §7.7) | Briefing, item 9; layout.md §7.11 | Card mostra só a situação; layout.md será alterado | Decidido em 2026-11-05 |
 | Conta com senha padrão | ADR-001 §7, cadastro por convite | Criada por fora, por mim | Cadastro segue fechado |
 
@@ -27,6 +27,7 @@ O professor não indicou qual biblioteca; escolhi `sharp`, a que o briefing já 
 
 ## Lacunas
 
+- Fotos geradas por IA: ficam de fora (campo `isAiGenerated` da API), porque o contrato pede registrar quem fotografou.
 - Papel do professor: `colaborador`, nome "Marcelo Grilo". Primeiro escolhi acesso máximo; mudei ao saber que `operacoes` entra em "Em construção" (spec 002 CA-07).
 - Situação "emprestado": gravada em `status`, com índice único parcial em `loans`.
 - Concorrência: tratamento atômico e transacionado.
