@@ -17,7 +17,8 @@
 
 - O nome exibido da pessoa vive em `memberships.display_name`.
 - Usuários de desenvolvimento são criados por um seed de demonstração que
-  só roda contra o Supabase local, com senha fixa de dev. No ambiente real,
+  só roda contra o Supabase local, com senha vinda de `DEMO_SEED_PASSWORD`
+  (nunca no código; alterado em 2026-11-05 pela regra da prática). No ambiente real,
   usuários são convidados pelo painel do Supabase (fora do código).
 - Estilo: Nocturne recriado numa folha única + inline (ADR-001 §2, ADR-002).
 - Reset de schema: `npx prisma migrate reset` (rules/checks.md).
@@ -40,7 +41,7 @@ dados de exemplo de equipamentos e empréstimos (003/005).
   Auth local (Ana Ribeiro, Marcos Lemos, Júlia Prado, Rafael Souza, Camila
   Nunes como `colaborador`; um usuário `operacoes`), cada um com membership
   no `suporte_ti`. O script recusa rodar se `SUPABASE_URL` não for
-  `127.0.0.1`/`localhost`.
+  `127.0.0.1`/`localhost` e recusa rodar sem `DEMO_SEED_PASSWORD`.
 - **CA-04** — Para cada tabela de domínio, contra Postgres real
   (Testcontainers): com o papel `authenticated` e claim `tenant_id` do
   tenant B, nenhuma linha do tenant A retorna; sem claim, nenhuma linha
