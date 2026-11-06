@@ -26,6 +26,8 @@ Rode dentro de `scripts/`. Instale uma vez com `npm ci`.
    - Produção: **só o usuário**, no próprio terminal. O agente passa o comando e para.
      O script exige terminal interativo, a digitação do ref do projeto e
      `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` definidas no processo.
+   - Repetir o envio não altera o que já existe: o script informa "já existia" e avisa se
+     o conteúdo local for diferente. Para trocar uma foto já publicada, use `--substituir`.
 
 Se uma busca da lista trouxer poucas opções, acrescente termos em
 `references/buscas-alternativas.json` (`{ "TI-0001": ["outro termo"] }`) e rode
@@ -43,7 +45,7 @@ Não altere
 | Sem pessoa, marca, texto ou tela com conteúdo | **Humano.** O código só faz um filtro inicial por tags, que não provam o que aparece na foto | `motivoRejeicao`, revisão |
 | Sem imagem gerada por IA | Código, pelo campo `isAiGenerated` da API, que é declarado na origem | `motivoRejeicao` |
 | Créditos | Código: manifesto só com aprovadas | `creditos.json` |
-| Armazenamento sem duplicar | Código: caminho fixo `TI-000N.jpg` com upsert em bucket público | `enviar.mjs` |
+| Armazenamento sem duplicar | Código: caminho fixo `TI-000N.jpg` em bucket público; só grava por cima com `--substituir` | `enviar.mjs`, `classificarEnvio` |
 | Produção fora do alcance do agente | Código: terminal interativo e chave só do processo. Regra e hook do harness completam | `enviar.mjs`, `rules/restrictions.md` |
 | Sem segredo no git | Código e regra: chave lida do ambiente, `saida/` ignorada | `.gitignore`, `rules/secrets.md` |
 

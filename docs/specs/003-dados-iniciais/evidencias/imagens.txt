@@ -1,0 +1,19 @@
+Evidência: primeiro envio das imagens a produção (CA-09)
+
+Origem: saída de `node enviar.mjs --alvo producao`.
+
+bucket equipamentos: criado
+TI-0001.jpg: enviado; URL pública 800x600
+TI-0002.jpg: enviado; URL pública 800x600
+TI-0003.jpg: enviado; URL pública 800x600
+TI-0004.jpg: enviado; URL pública 800x600
+TI-0005.jpg: enviado; URL pública 800x600
+TI-0006.jpg: enviado; URL pública 800x600
+TI-0007.jpg: enviado; URL pública 800x600
+TI-0008.jpg: enviado; URL pública 800x600
+TI-0009.jpg: enviado; URL pública 800x600
+TI-0010.jpg: enviado; URL pública 800x600
+TI-0011.jpg: enviado; URL pública 800x600
+TI-0012.jpg: enviado; URL pública 800x600
+enviados: 12 · já existiam: 0 · com conteúdo diferente: 0
+objetos no bucket: 12

@@ -30,6 +30,7 @@ const PRODUCAO = [
   [/\bvercel\s+env\s+pull\b/, 'trazer segredos de produção para a máquina'],
   [/\bsupabase\s+(db\s+push|link|migration\s+up|storage\s+cp|functions\s+deploy)\b/, 'escrita no Supabase remoto'],
   [/\benviar\.mjs\b[^;&|\n]*\bproducao\b/, 'envio de imagens para produção'],
+  [/\bseed[:-]iniciais\b[^;&|\n]*\bproducao\b/, 'seed em produção'],
 ];
 
 const SUPABASE_REMOTO = /\.supabase\.(co|com)\b/;
@@ -60,6 +61,7 @@ const REPO = String.raw`(\s+-C\s+("[^"]+"|\S+))?`;
 const PERMITIDOS_VERIFICADOR = [
   /^cd\s+("[^"]+"|\S+)$/,
   /^(timeout\s+\d+\s+)?npm\s+(test|run\s+(test:unit|test:db|build|lint))$/,
+  /^(timeout\s+\d+\s+)?node\s+--test\s+hooks\/regras\.test\.mjs$/,
   new RegExp(String.raw`^git${REPO}\s+(log|diff|show|status|rev-parse|ls-files|blame)\b(?!.*--output)`),
   new RegExp(String.raw`^git${REPO}\s+branch\s+--show-current$`),
 ];

@@ -132,6 +132,19 @@ export function refDoProjeto(url) {
   return achado[1];
 }
 
+// O Storage pode responder conflito como HTTP 409 ou como HTTP 400 com
+// statusCode "409" no corpo. Qualquer outra falha é erro de verdade.
+export function classificarEnvio(ok, status, corpo) {
+  if (ok) return 'enviado';
+  if (status === 409) return 'já existia';
+  if (status !== 400) return 'erro';
+  try {
+    return String(JSON.parse(corpo).statusCode) === '409' ? 'já existia' : 'erro';
+  } catch {
+    return 'erro';
+  }
+}
+
 // Pré-condições do envio para produção. O agente não tem terminal interativo.
 export function exigirCondicoesDeProducao({ isTTY, url, chave }) {
   if (!isTTY) throw new Error('--alvo producao exige terminal interativo: só o usuário executa.');

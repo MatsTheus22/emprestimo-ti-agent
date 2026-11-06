@@ -1,0 +1,162 @@
+Evidência: banco de produção (CA-07 e CA-08)
+
+Origem: resultados das consultas de leitura executadas pelo usuário no SQL Editor de
+produção.
+
+--- Consulta 1
+select asset_tag, name, category, status, image_path, photo_source, photo_author, photo_license
+from equipment order by asset_tag;
+
+[
+  {
+    "asset_tag": "TI-0001",
+    "name": "Notebook 14 polegadas",
+    "category": "notebook",
+    "status": "disponivel",
+    "image_path": "TI-0001.jpg",
+    "photo_source": "https://pixabay.com/photos/laptop-workstation-browsing-tablet-1483974/",
+    "photo_author": "Monoar_CGI_Artist",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0002",
+    "name": "Notebook 15 polegadas",
+    "category": "notebook",
+    "status": "disponivel",
+    "image_path": "TI-0002.jpg",
+    "photo_source": "https://pixabay.com/photos/technology-laptop-computer-netbook-791032/",
+    "photo_author": "kaboompics",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0003",
+    "name": "Notebook 13 polegadas",
+    "category": "notebook",
+    "status": "disponivel",
+    "image_path": "TI-0003.jpg",
+    "photo_source": "https://pixabay.com/photos/electronics-technology-devices-6801339/",
+    "photo_author": "Mariakray",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0004",
+    "name": "Notebook 15 polegadas",
+    "category": "notebook",
+    "status": "manutencao",
+    "image_path": "TI-0004.jpg",
+    "photo_source": "https://pixabay.com/photos/laptop-workstaion-office-work-4906312/",
+    "photo_author": "Deeezy",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0005",
+    "name": "Monitor 24 polegadas",
+    "category": "monitor",
+    "status": "disponivel",
+    "image_path": "TI-0005.jpg",
+    "photo_source": "https://pixabay.com/photos/desk-computer-modern-keyboard-1140699/",
+    "photo_author": "theglassdesk",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0006",
+    "name": "Monitor 27 polegadas",
+    "category": "monitor",
+    "status": "disponivel",
+    "image_path": "TI-0006.jpg",
+    "photo_source": "https://pixabay.com/photos/computer-laptop-technology-desk-3114274/",
+    "photo_author": "malawiheiko",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0007",
+    "name": "Monitor 22 polegadas",
+    "category": "monitor",
+    "status": "manutencao",
+    "image_path": "TI-0007.jpg",
+    "photo_source": "https://pixabay.com/photos/poster-mockup-mockup-poster-frame-2853836/",
+    "photo_author": "RaniRamli",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0008",
+    "name": "Cabo HDMI 2 m",
+    "category": "cabo",
+    "status": "disponivel",
+    "image_path": "TI-0008.jpg",
+    "photo_source": "https://pixabay.com/photos/hdmi-connector-cable-plug-2202226/",
+    "photo_author": "WikimediaImages",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0009",
+    "name": "Cabo USB-C 1 m",
+    "category": "cabo",
+    "status": "disponivel",
+    "image_path": "TI-0009.jpg",
+    "photo_source": "https://pixabay.com/photos/cable-charging-cable-usb-7066127/",
+    "photo_author": "Alexandra_Koch",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0010",
+    "name": "Cabo de rede 3 m",
+    "category": "cabo",
+    "status": "manutencao",
+    "image_path": "TI-0010.jpg",
+    "photo_source": "https://pixabay.com/photos/network-cable-cable-patch-494649/",
+    "photo_author": "blickpixel",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0011",
+    "name": "Webcam Full HD",
+    "category": "camera",
+    "status": "disponivel",
+    "image_path": "TI-0011.jpg",
+    "photo_source": "https://pixabay.com/photos/camera-photography-photographer-8670926/",
+    "photo_author": "MrTozzo",
+    "photo_license": "Pixabay Content License"
+  },
+  {
+    "asset_tag": "TI-0012",
+    "name": "Câmera compacta",
+    "category": "camera",
+    "status": "disponivel",
+    "image_path": "TI-0012.jpg",
+    "photo_source": "https://pixabay.com/photos/camera-digital-photography-1362419/",
+    "photo_author": "maddyjaya",
+    "photo_license": "Pixabay Content License"
+  }
+]
+
+--- Consulta 2
+select status, count(*) from equipment group by status;
+
+[
+  {
+    "status": "disponivel",
+    "count": 9
+  },
+  {
+    "status": "manutencao",
+    "count": 3
+  }
+]
+
+--- Consulta 3
+select u.email, m.role, m.display_name,
+       (select count(*) from loans l where l.user_id = u.id) as emprestimos_dele,
+       (select count(*) from loans) as emprestimos_total
+from auth.users u join memberships m on m.user_id = u.id
+where u.email = 'marcelo.grilo@institutojef.org.br';
+
+[
+  {
+    "email": "marcelo.grilo@institutojef.org.br",
+    "role": "colaborador",
+    "display_name": "Marcelo Grilo",
+    "emprestimos_dele": 0,
+    "emprestimos_total": 0
+  }
+]
