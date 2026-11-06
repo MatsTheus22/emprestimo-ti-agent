@@ -18,7 +18,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   **CA-17**, **CA-18**
 
 ## Agente: raiz
-- [ ] **T6** — Hook bloqueia o script de limpeza com `--alvo producao`, com testes. **CA-18**
+- [x] **T6** — Hook bloqueia o script de limpeza com `--alvo producao`, com testes. **CA-18**
 - [ ] **T7** — `layout.md` alterado, com a seção "Alterações". **CA-19**
 
 ## Agente: front
