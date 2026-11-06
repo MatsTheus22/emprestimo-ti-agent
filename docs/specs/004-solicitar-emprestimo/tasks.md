@@ -14,7 +14,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   prazo, recusas, concorrência, rollback, auditoria e isolamento; `openapi.json`. **CA-08**,
   **CA-09**, **CA-10**, **CA-11**, **CA-12**, **CA-14**
 - [x] **T4** — `GET /v1/loans/me` com cursor, totais e isolamento; `openapi.json`. **CA-15**
-- [ ] **T5** — Script `limpar:emprestimos-teste`, com controle de alvo e conta protegida.
+- [x] **T5** — Script `limpar:emprestimos-teste`, com controle de alvo e conta protegida.
   **CA-17**, **CA-18**
 
 ## Agente: raiz
