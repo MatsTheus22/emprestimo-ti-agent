@@ -86,6 +86,43 @@ describe('negarProducao', () => {
     });
   }
 
+  // Spec 004 CA-18.
+  for (const comando of [
+    'npm run limpar:emprestimos-teste -- --alvo producao --email teste@exemplo.test',
+    'npm run limpar:emprestimos-teste -- --email teste@exemplo.test --alvo producao',
+    'cd back && npm run limpar:emprestimos-teste -- --alvo=producao --email teste@exemplo.test',
+    'npm --prefix back run limpar:emprestimos-teste -- --alvo producao',
+    'npm run -s limpar:emprestimos-teste -- --alvo producao 2>&1 | tail -3',
+    'npx ts-node --transpile-only prisma/limpar-emprestimos-teste.ts --alvo producao',
+    'node -r ts-node/register/transpile-only prisma/limpar-emprestimos-teste.ts --alvo producao',
+  ]) {
+    it(`test_ca_18_nega_limpeza_em_producao: ${comando}`, () => {
+      assert.match(negarProducao(comando), /limpeza em produção/);
+    });
+  }
+
+  for (const comando of [
+    'npm run limpar:emprestimos-teste -- --alvo local --email teste@exemplo.test',
+    'npm run limpar:emprestimos-teste -- --alvo local --email teste@exemplo.test && echo producao',
+    'npx jest test/limpar-emprestimos-alvo.spec.ts',
+    'git commit -m "T6: hook nega limpar:emprestimos-teste com --alvo producao"',
+  ]) {
+    it(`test_ca_18_permite_sem_producao: ${comando}`, () => {
+      assert.equal(negarProducao(comando), null);
+    });
+  }
+
+  it('test_ca_18_decidir_bloqueia_o_agente_principal_e_o_verificador', () => {
+    const comando = 'npm run limpar:emprestimos-teste -- --alvo producao --email teste@exemplo.test';
+    assert.match(decidir({ tool_name: 'Bash', tool_input: { command: comando } }, '.'), /limpeza em produção/);
+    assert.match(decidir({ tool_name: 'PowerShell', tool_input: { command: comando } }, '.'), /limpeza em produção/);
+    assert.ok(decidir({ agent_type: 'verificador-spec', tool_name: 'Bash', tool_input: { command: comando } }, '.'));
+  });
+
+  it('test_ca_18_verificador_nao_roda_a_limpeza_nem_no_alvo_local', () => {
+    assert.ok(negarVerificador('npm run limpar:emprestimos-teste -- --alvo local --email teste@exemplo.test'));
+  });
+
   it('test_ca_05_decidir_bloqueia_o_agente_principal_e_o_verificador', () => {
     const comando = 'npm run seed:iniciais -- --alvo producao';
     assert.match(decidir({ tool_name: 'Bash', tool_input: { command: comando } }, '.'), /seed em produção/);
