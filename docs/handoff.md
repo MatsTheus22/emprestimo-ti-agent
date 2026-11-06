@@ -1,10 +1,10 @@
 # Handoff — 2026-11-06
 
 ## Onde parei
-Spec 004-solicitar-emprestimo: T1 a T9 concluídas (CA-01 a CA-15, CA-17 a CA-19). Spec, plano e DDL aprovados pelo usuário. T10 ainda não autorizada.
+Spec 004-solicitar-emprestimo: T1 a T10 concluídas (CA-01 a CA-19). Spec, plano e DDL aprovados pelo usuário. T11 ainda não autorizada.
 
 ## Commitado
-Back: `3b9296b` e front: `96fa8f9`, na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano, tarefas, hook e layout na mesma branch, sem push.
+Back: `3b9296b` e front: `41318bf`, na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano, tarefas, hook e layout na mesma branch, sem push.
 
 ## Banco local
 Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Dados: tenant, 12 equipamentos (9 disponíveis, 3 em manutenção), 6 memberships, 0 empréstimos. Nada aplicado sem commit.
@@ -21,4 +21,4 @@ Nada da 004. Produção continua como no fim da 003.
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Com o "pode" do usuário, implemente só a T10 (tela Meus empréstimos) na branch `004-solicitar-emprestimo` do front.
+Com o "pode" do usuário, rode a T11: verificador (esperado PRONTA PARA PRODUÇÃO) e, pedindo antes para o push, PRs de back e front.
