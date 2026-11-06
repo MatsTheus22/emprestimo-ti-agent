@@ -10,7 +10,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   local. **CA-01**, **CA-02**, **CA-03**, **CA-04**
 - [x] **T2** — `GET /v1/equipment` com cursor, totais e isolamento; `openapi.json`.
   **CA-05**, **CA-06**
-- [ ] **T3** — `type` no Problem Details e `POST /v1/loans` transacionado, com testes de
+- [x] **T3** — `type` no Problem Details e `POST /v1/loans` transacionado, com testes de
   prazo, recusas, concorrência, rollback, auditoria e isolamento; `openapi.json`. **CA-08**,
   **CA-09**, **CA-10**, **CA-11**, **CA-12**, **CA-14**
 - [ ] **T4** — `GET /v1/loans/me` com cursor, totais e isolamento; `openapi.json`. **CA-15**
