@@ -4,7 +4,7 @@
 Spec 004-solicitar-emprestimo: T1 a T5 concluídas (CA-01 a CA-06, CA-08 a CA-12, CA-14, CA-15, CA-17; CA-18 sem o hook). Spec, plano e DDL aprovados pelo usuário. T6 ainda não autorizada.
 
 ## Commitado
-Back: `a40ca32` na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano e tarefas na mesma branch, sem push. Front: sem mudança, ainda em `main`.
+Back: `d4422f3` na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano e tarefas na mesma branch, sem push. Front: sem mudança, ainda em `main`.
 
 ## Banco local
 Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Dados: tenant, 12 equipamentos (9 disponíveis, 3 em manutenção), 6 memberships, 0 empréstimos. Nada aplicado sem commit.
