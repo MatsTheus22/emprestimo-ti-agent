@@ -1,22 +1,23 @@
 # Handoff — 2026-11-06
 
 ## Onde parei
-Spec 003-dados-iniciais concluída: T1 a T8 e P1 a P4 marcadas, `Status: PRONTA`, rodada 2 com veredito PRONTA (CA-01 a CA-10). Validada e mergeada pelo usuário.
+Spec 004-solicitar-emprestimo: T1 concluída (CA-01 a CA-04). Spec, plano e DDL aprovados pelo usuário, com correções já aplicadas. T2 ainda não autorizada. Em aberto: papel da conta de teste em produção (ela ainda será criada); afeta só o passo P3.
 
 ## Commitado
-Back: PR #3 mergeado em `main` (`5668b04`). Agente: PR #4 mergeado em `master`; branch em `fb5e20e`. Front: não mudou. Local: raiz e `back/` ainda em `003-dados-iniciais`, sem `pull` das principais.
+Back: `0306792` na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano e tarefas na mesma branch, sem push. Front: sem mudança, ainda em `main`.
 
 ## Banco local
-3 migrations, tenant, 6 usuários de demonstração e 12 equipamentos. Bucket local com as 12 fotos. Nada aplicado sem commit.
+Migration `20261106112807_loans_open_index_read_only_grants` aplicada com `migrate reset`. Dados recriados: tenant, 12 equipamentos (9 disponíveis, 3 em manutenção), 6 memberships, 0 empréstimos. Nada aplicado sem commit.
 
-## Publicado em produção
-Migration, 12 imagens, 12 equipamentos e a conta do professor (criada pelo usuário). Evidências: `docs/specs/003-dados-iniciais/evidencias/`.
+## Publicado
+Nada da 004. Produção continua como no fim da 003.
 
 ## Não fazer
-- Agente nunca escreve em produção nem faz merge (rules/restrictions.md).
-- Não editar spec nem rodadas da 003: mudança nova vai em spec nova.
-- No pooler, a `DATABASE_URL` precisa de `?pgbouncer=true&connection_limit=1`: sem isso, o script falhou em produção (causa provável).
+- Não aplicar nada em produção nem fazer merge: é do usuário (rules/restrictions.md).
+- Não editar o `spec.md` da 002: a 004 registra o trecho do CA-07 que substitui.
+- Não implementar rate limit: desvio consciente registrado na spec.
+- A fórmula de `due_at` da T3 precisa de `at time zone 'UTC'` e de teste com a sessão em outro fuso (plan.md).
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Atualize `master` e `main` e comece a `004-solicitar-emprestimo` pelas perguntas (rules/spec-flow.md), quando o usuário pedir.
+Com o "pode" do usuário, implemente só a T2 (`GET /v1/equipment`) na branch `004-solicitar-emprestimo` do back.

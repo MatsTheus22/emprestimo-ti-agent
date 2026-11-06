@@ -4,7 +4,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 `004-solicitar-emprestimo` em back, front e na raiz.
 
 ## Agente: back
-- [ ] **T1** — Migration do índice parcial, das permissões e das policies; ajuste de
+- [x] **T1** — Migration do índice parcial, das permissões e das policies; ajuste de
   `rls.db-spec.ts` para o claim `sub`; testes de escrita negada, papel inalterável, leitura
   só das próprias linhas e hook do token. Pede antes o consentimento do `migrate reset`
   local. **CA-01**, **CA-02**, **CA-03**, **CA-04**
