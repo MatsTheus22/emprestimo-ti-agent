@@ -1,4 +1,5 @@
 # 003 — Dados iniciais
+Status: PRONTA
 
 PRD item 2 ("Catálogo de equipamentos com a situação de cada um") depende destes
 dados. Objetivo: o sistema em produção tem equipamentos reais para mostrar e a
