@@ -1,13 +1,13 @@
 # Handoff — 2026-11-06
 
 ## Onde parei
-Spec 004-solicitar-emprestimo: T1 concluída (CA-01 a CA-04). Spec, plano e DDL aprovados pelo usuário, com correções já aplicadas. T2 ainda não autorizada. Em aberto: papel da conta de teste em produção (ela ainda será criada); afeta só o passo P3.
+Spec 004-solicitar-emprestimo: T1 e T2 concluídas (CA-01 a CA-06). Spec, plano e DDL aprovados pelo usuário. T3 ainda não autorizada.
 
 ## Commitado
-Back: `0306792` na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano e tarefas na mesma branch, sem push. Front: sem mudança, ainda em `main`.
+Back: `daaf1f3` na branch `004-solicitar-emprestimo`, sem push. Raiz: spec, plano e tarefas na mesma branch, sem push. Front: sem mudança, ainda em `main`.
 
 ## Banco local
-Migration `20261106112807_loans_open_index_read_only_grants` aplicada com `migrate reset`. Dados recriados: tenant, 12 equipamentos (9 disponíveis, 3 em manutenção), 6 memberships, 0 empréstimos. Nada aplicado sem commit.
+Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Dados: tenant, 12 equipamentos (9 disponíveis, 3 em manutenção), 6 memberships, 0 empréstimos. Nada aplicado sem commit.
 
 ## Publicado
 Nada da 004. Produção continua como no fim da 003.
@@ -20,4 +20,4 @@ Nada da 004. Produção continua como no fim da 003.
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Com o "pode" do usuário, implemente só a T2 (`GET /v1/equipment`) na branch `004-solicitar-emprestimo` do back.
+Com o "pode" do usuário, implemente só a T3 (`POST /v1/loans`) na branch `004-solicitar-emprestimo` do back.

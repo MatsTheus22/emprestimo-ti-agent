@@ -8,7 +8,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   `rls.db-spec.ts` para o claim `sub`; testes de escrita negada, papel inalterável, leitura
   só das próprias linhas e hook do token. Pede antes o consentimento do `migrate reset`
   local. **CA-01**, **CA-02**, **CA-03**, **CA-04**
-- [ ] **T2** — `GET /v1/equipment` com cursor, totais e isolamento; `openapi.json`.
+- [x] **T2** — `GET /v1/equipment` com cursor, totais e isolamento; `openapi.json`.
   **CA-05**, **CA-06**
 - [ ] **T3** — `type` no Problem Details e `POST /v1/loans` transacionado, com testes de
   prazo, recusas, concorrência, rollback, auditoria e isolamento; `openapi.json`. **CA-08**,

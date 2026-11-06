@@ -207,8 +207,9 @@ linha por vez. `DATABASE_URL` só no processo e, no pooler, com
    end $$;
    rollback;
    ```
-5. **Conta de teste:** criar pelo painel do Auth e a membership por SQL, como na 003, antes
-   do primeiro login.
+5. **Conta de teste:** criar pelo painel do Auth e a membership por SQL, com o papel
+   `operacoes`, como na 003, antes do primeiro login. Ela entra em `/operacoes` e chega ao
+   Catálogo pela aba.
 6. **Testes na tela** com a conta de teste, guardando as evidências: catálogo (CA-20),
    manutenção (CA-21), solicitar e "Meus empréstimos" (CA-22), quarto pedido recusado
    (CA-23).

@@ -46,7 +46,9 @@ logado vê o catálogo, solicita um equipamento e acompanha o que está com ele.
   (ADR-001 §10). A limpeza não toca nessa tabela, que é append-only: os registros dos
   testes continuam lá, apontando para empréstimos apagados.
 - **Limpeza:** o e-mail da conta é informado só na hora de rodar, com `--email`, e nunca
-  vai para o repositório. A conta de teste ainda precisa ser criada em produção.
+  vai para o repositório. A conta de teste ainda precisa ser criada em produção, com o
+  papel `operacoes`: ela entra em `/operacoes`, que continua "Em construção", e chega ao
+  Catálogo pela aba.
 - **Item com a própria pessoa:** pill "Emprestado", detalhe "Com você · devolver até
   {data}" e botão "Está com você".
 - **Manutenção:** o `layout.md` §7.6 pede uma observação, mas `equipment` não tem essa
