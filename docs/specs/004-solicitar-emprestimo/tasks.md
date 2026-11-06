@@ -22,7 +22,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 - [x] **T7** — `layout.md` alterado, com a seção "Alterações". **CA-19**
 
 ## Agente: front
-- [ ] **T8** — Cliente regenerado, classes `.dialog` e tela Catálogo com fotos, situações e
+- [x] **T8** — Cliente regenerado, classes `.dialog` e tela Catálogo com fotos, situações e
   crédito; ajuste do `login-flow.test.tsx`; teste do `layout.md`. **CA-07**, **CA-19**
 - [ ] **T9** — Solicitar: modal, toast, motivos nos botões, banner e recusa da API. **CA-13**
 - [ ] **T10** — Tela "Meus empréstimos". **CA-16**
