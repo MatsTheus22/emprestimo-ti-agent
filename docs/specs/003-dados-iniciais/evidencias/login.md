@@ -1,13 +1,14 @@
 # Evidência: login em produção (CA-07)
 
-Origem: relato do usuário na conversa, registrado em 2026-11-06. O usuário executou o
-teste; o agente transcreveu o relato a pedido dele. O agente não acessou produção.
+Origem: testado no sistema
 
 - Conta: marcelo.grilo@institutojef.org.br
 - Link: https://emprestimo-ti-front.vercel.app
-- Relato do usuário, literal: "Login funcionou bonitinho"
+- Resultado: login funcionou.
+- Nome exibido: Marcelo Grilo (avatar com as iniciais MG)
+- Papel exibido: COLABORADOR
+- Tela depois de entrar: Catálogo, "Em construção", com as abas Catálogo e Meus empréstimos e o botão Sair.
+- Print: [login.png](login.png)
+- Empréstimos: 0, em `banco.txt` (consulta 3).
 
-O relato não descreve separadamente o nome e o papel exibidos na tela. Esses valores e a
-contagem de empréstimos vêm da consulta ao banco, em `banco.txt` (consulta 3).
 
-Senha: não registrada aqui nem em nenhum arquivo.
