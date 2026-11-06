@@ -1,25 +1,22 @@
-# Handoff — 2026-11-05
+# Handoff — 2026-11-06
 
 ## Onde parei
-Prática SDD (enunciado HTML, fora do git; é verdade absoluta). Etapas 0 e 2 mergeadas. Etapa 1 pronta, com a prova do verificador feita; aguardando merge do usuário.
-Decisões do usuário: docs/entrega/diario.md. Fonte de imagens é Pixabay, com `sharp` (ADR-003).
+Spec 003-dados-iniciais concluída: T1 a T8 e P1 a P4 marcadas, `Status: PRONTA`, rodada 2 com veredito PRONTA (CA-01 a CA-10). Validada e mergeada pelo usuário.
 
 ## Commitado
-Agente, branch `etapa-1-verificador`: verificador, hooks, regras, rodadas da 002-login. Raiz fica nesta branch até o merge: os hooks só existem nela.
-Back, branch `prova-verificador`: erro plantado `af46491` e reversão `43a325a`. Nunca mergear: só precisa estar no GitHub, para os hashes do ENTREGA.md.
-As 12 imagens finais ficam em `saida/final` da worktree `.claude/worktrees/agent-a6fb...`, ignoradas pelo git. Não remova a worktree antes do envio.
+Back: PR #3 mergeado em `main` (`5668b04`). Agente: PR #4 mergeado em `master`; branch em `fb5e20e`. Front: não mudou. Local: raiz e `back/` ainda em `003-dados-iniciais`, sem `pull` das principais.
 
 ## Banco local
-2 migrations. 6 usuários em @dev.local (senha em `DEMO_SEED_PASSWORD`).
+3 migrations, tenant, 6 usuários de demonstração e 12 equipamentos. Bucket local com as 12 fotos. Nada aplicado sem commit.
 
 ## Publicado em produção
-Só login: https://emprestimo-ti-front.vercel.app e https://emprestimo-ti-back.vercel.app/v1/health. Nada novo da prática.
+Migration, 12 imagens, 12 equipamentos e a conta do professor (criada pelo usuário). Evidências: `docs/specs/003-dados-iniciais/evidencias/`.
 
 ## Não fazer
 - Agente nunca escreve em produção nem faz merge (rules/restrictions.md).
-- Nunca gravar a senha padrão da turma em arquivo versionado. Não usar `prisma migrate dev`.
-- Testes nunca no Supabase local. Não escrever rodada à mão. Não documentar a reorganização do `.git` no ENTREGA.md.
+- Não editar spec nem rodadas da 003: mudança nova vai em spec nova.
+- No pooler, a `DATABASE_URL` precisa de `?pgbouncer=true&connection_limit=1`: sem isso, o script falhou em produção (causa provável).
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Depois do merge da etapa 1, atualize o master e crie a branch `003-dados-iniciais`, começando pelas perguntas da spec (rules/spec-flow.md).
+Atualize `master` e `main` e comece a `004-solicitar-emprestimo` pelas perguntas (rules/spec-flow.md), quando o usuário pedir.
