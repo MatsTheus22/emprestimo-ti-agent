@@ -1,0 +1,39 @@
+Evidência: primeira carga do script e repetição em produção (CA-10)
+
+Origem: saídas dos comandos executados pelo usuário e coladas na conversa, registradas em
+2026-11-06. O agente transcreveu a pedido do usuário e não acessou produção.
+
+--- Script, primeira execução: npm run seed:iniciais -- --alvo producao
+criadas: 12 · já existiam: 0 · total: 12
+
+--- Envio, segunda execução: node enviar.mjs --alvo producao
+bucket equipamentos: já existia
+TI-0001.jpg: já existia; URL pública 800x600
+TI-0002.jpg: já existia; URL pública 800x600
+TI-0003.jpg: já existia; URL pública 800x600
+TI-0004.jpg: já existia; URL pública 800x600
+TI-0005.jpg: já existia; URL pública 800x600
+TI-0006.jpg: já existia; URL pública 800x600
+TI-0007.jpg: já existia; URL pública 800x600
+TI-0008.jpg: já existia; URL pública 800x600
+TI-0009.jpg: já existia; URL pública 800x600
+TI-0010.jpg: já existia; URL pública 800x600
+TI-0011.jpg: já existia; URL pública 800x600
+TI-0012.jpg: já existia; URL pública 800x600
+enviados: 0 · já existiam: 12 · com conteúdo diferente: 0
+objetos no bucket: 12
+
+--- Script, segunda execução: falhou antes de chegar aos equipamentos
+6 export const DEFAULT_TENANT = { slug: 'suporte_ti', name: 'Suporte de TI' } as const;
+  7
+  8 export async function seedTenant(prisma: PrismaClient): Promise<{ id: string }> {
+→ 9   return prisma.tenant.upsert(
+Error occurred during query execution:
+ConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: "42P05", message: "prepared statement \"s0\" already exists", severity: "ERROR", detail: None, column: None, hint: None }), transient: false })
+
+Nota do agente: causa provável, DATABASE_URL do pooler sem `pgbouncer=true`. A URL não foi
+vista pelo agente. O usuário foi orientado a incluir `?pgbouncer=true&connection_limit=1`
+e rodou de novo.
+
+--- Script, nova execução: npm run seed:iniciais -- --alvo producao
+criadas: 0 · já existiam: 12 · total: 12

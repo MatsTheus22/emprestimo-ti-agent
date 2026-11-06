@@ -106,7 +106,10 @@ back, e `rules/secrets.md` pede que ela esteja no `.env.example`.
 3. **Imagens:** `npm ci` e `node enviar.mjs --alvo producao` em `scripts/`, com
    `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` só no processo.
 4. **Dados:** `npm run seed:iniciais -- --alvo producao` em `back/`, com `DATABASE_URL`
-   só no processo.
+   só no processo. No pooler (porta 6543), a URL precisa de
+   `?pgbouncer=true&connection_limit=1`. A primeira repetição em produção falhou com
+   `prepared statement "s0" already exists`, com causa provável na falta desse parâmetro,
+   e passou na nova execução com a orientação de incluí-lo.
 5. **Repetir os passos 3 e 4** e guardar as saídas (CA-10).
 6. **Evidências** em `evidencias/`: login (CA-07), resultado do SELECT dos 12 e contagem
    de empréstimos (CA-08), saída do envio (CA-09), saída da repetição (CA-10). O agente

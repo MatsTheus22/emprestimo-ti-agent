@@ -24,10 +24,10 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   para o push. **CA-01**, **CA-02**, **CA-03**, **CA-04**, **CA-05**, **CA-06**
 
 ## Usuário: produção (ordem em plan.md)
-- [ ] **P1** — Merge do PR do back (CI aplica a migration). **CA-08**
-- [ ] **P2** — Conta pelo painel do Auth e membership por SQL; login no link da Vercel. **CA-07**
-- [ ] **P3** — Envio das imagens e script de dados. **CA-08**, **CA-09**
-- [ ] **P4** — Repetir envio e script; gravar as evidências em `evidencias/`. **CA-07**, **CA-08**, **CA-09**, **CA-10**
+- [x] **P1** — Merge do PR do back (CI aplica a migration). **CA-08**
+- [x] **P2** — Conta pelo painel do Auth e membership por SQL; login no link da Vercel. **CA-07**
+- [x] **P3** — Envio das imagens e script de dados. **CA-08**, **CA-09**
+- [x] **P4** — Repetir envio e script; gravar as evidências em `evidencias/`. **CA-07**, **CA-08**, **CA-09**, **CA-10**
 
 ## Fechamento
 - [ ] **T8** — Verificador com veredito PRONTA; `Status: PRONTA` em spec.md; PR do
