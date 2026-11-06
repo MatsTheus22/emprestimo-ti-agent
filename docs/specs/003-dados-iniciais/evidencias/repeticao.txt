@@ -1,7 +1,6 @@
 Evidência: primeira carga do script e repetição em produção (CA-10)
 
-Origem: saídas dos comandos executados pelo usuário e coladas na conversa, registradas em
-2026-11-06. O agente transcreveu a pedido do usuário e não acessou produção.
+Origem: saídas dos comandos executados.
 
 --- Script, primeira execução: npm run seed:iniciais -- --alvo producao
 criadas: 12 · já existiam: 0 · total: 12

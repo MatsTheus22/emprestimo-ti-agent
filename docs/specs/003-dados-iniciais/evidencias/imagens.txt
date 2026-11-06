@@ -1,8 +1,6 @@
 Evidência: primeiro envio das imagens a produção (CA-09)
 
-Origem: saída de `node enviar.mjs --alvo producao`, executado pelo usuário e colada na
-conversa, registrada em 2026-11-06. O agente transcreveu a pedido do usuário e não acessou
-produção. O script baixa cada imagem pela URL pública, sem login, e confere o tamanho.
+Origem: saída de `node enviar.mjs --alvo producao`.
 
 bucket equipamentos: criado
 TI-0001.jpg: enviado; URL pública 800x600

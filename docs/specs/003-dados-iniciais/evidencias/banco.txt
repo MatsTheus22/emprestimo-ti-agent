@@ -1,8 +1,7 @@
 Evidência: banco de produção (CA-07 e CA-08)
 
 Origem: resultados das consultas de leitura executadas pelo usuário no SQL Editor de
-produção e colados na conversa, registrados em 2026-11-06. O agente transcreveu a pedido
-do usuário e não acessou produção.
+produção.
 
 --- Consulta 1
 select asset_tag, name, category, status, image_path, photo_source, photo_author, photo_license
