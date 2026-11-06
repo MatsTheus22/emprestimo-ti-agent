@@ -92,3 +92,37 @@ produção. Os 6 usuários locais foram apagados em 2026-11-05, e a senha antiga
 - Quando aprovei mais de uma foto para o mesmo equipamento, o agente usou a primeira como final; as demais ficaram como `reserva`.
 - `sharp` só em script local; `isAiGenerated` e `isLowQuality` rejeitados por código. O envio para produção é meu: o script exige terminal interativo e chave só no processo.
 - ADR-003 (`sharp`): rascunho do agente, a meu pedido; aprovei em 2026-11-05. Primeiro decidimos não usar `sharp`, com recorte pelo CDN do Pexels; depois da troca para o Pixabay, que não oferece tamanho exato, decidimos usar.
+
+## Spec 003: como foi feita (2026-11-05 e 06)
+
+Fiz a spec em um chat novo, para testar se o repositório basta sozinho. Durante o teste, tirei do alcance dele o diário, o handoff e duas memórias; o prompt trouxe só as minhas decisões. O agente seguiu o ciclo: parou para eu aprovar a spec, o plano e o DDL, uma tarefa por vez, e deixou produção comigo. Resultado: rodada 1 PRONTA PARA PRODUÇÃO, rodada 2 PRONTA, CA-01 a CA-10.
+
+### Decisões
+
+| o que faltava | alternativas | decidi | motivo |
+|---|---|---|---|
+| Quem cria a conta do professor | Script achar o usuário e criar a membership; eu criar tudo | Usuário pelo painel do Auth, membership por SQL. O script não toca em nenhum dos dois | Inserir direto em auth.users pode quebrar o login e deixaria a senha no editor SQL |
+| O envio pode sobrescrever a foto | Manter o upsert; não sobrescrever | Não sobrescreve; trocar exige `--substituir` | O que já existe fica como está, e foto revisada não muda sem decisão explícita |
+| Patrimônio vazio | Coluna opcional, como o agente propôs; obrigatória | NOT NULL | Nulo escapa do índice único, e o pedido é patrimônio único. Produção tinha 0 linhas |
+| Categoria no banco | Texto livre; CHECK | CHECK com as 4 categorias | Barra erro de digitação, igual ao `status` |
+| Imagem no banco | URL completa; só o caminho | Só o caminho | A URL pública depende do ambiente |
+| Prova do que só existe em produção | Print; arquivo de evidência | Evidências em `evidencias/`, gravadas por mim | O verificador nunca acessa produção |
+
+Os motivos das quatro primeiras linhas foram propostos pelo agente que validou o plano, e eu aceitei.
+
+### Onde o agente assumiu ou errou
+
+- O agente do chat novo deixou `asset_tag` opcional e escreveu isso só no plano, não na spec. A revisão pegou, e decidi NOT NULL.
+- A spec dele não dizia nada sobre categoria, um dos pontos em aberto. Decidi na revisão.
+- O verificador que este chat escreveu não conseguiria rodar os testes do hook, porque só liberava `npm` e git de leitura. O CA-05 dependia disso. Corrigido na T6.
+- O agente passou os comandos do envio em bloco, e o `Read-Host` consumiria a linha seguinte se colados juntos. Este chat disse só "PowerShell", sem avisar do ISE.
+
+### O que deu errado em produção
+
+- O envio ficou parado por cerca de 10 minutos no PowerShell ISE, sem pergunta na tela e sem nenhuma conexão de rede: o ISE não tem console para programa interativo. Rodei no Windows PowerShell, e funcionou. Nada foi escrito enquanto estava parado.
+- O seed falhou na repetição com erro do Postgres `42P05`: `DATABASE_URL` do pooler sem `pgbouncer=true` (causa provável). Corrigi a URL e rodei de novo. Está em `evidencias/repeticao.txt`.
+- O Supabase de produção estava pausado quando revisamos a etapa 0, e o CI da migration falhou. O `/v1/health` respondia 200 porque não consulta o banco, então não acusou nada. Despausei e rodei o CI de novo.
+
+### Conferido por fora
+
+As 12 fotos públicas abrem sem login, em 800×600 e com o hash das fotos aprovadas, medidas pelo chat de validação em 2026-11-06. Conferi o `login.png`: não mostra senha.
