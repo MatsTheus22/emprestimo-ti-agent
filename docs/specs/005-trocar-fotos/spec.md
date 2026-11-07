@@ -32,6 +32,9 @@ fotos cumprem as duas coisas, e os créditos no banco correspondem às fotos pub
 - **Objeto ausente:** na T2, o Storage local respondeu objeto inexistente com HTTP 400 e
   `statusCode` 404 no corpo, não com HTTP 404. O usuário decidiu tratar as duas formas como foto
   ausente, no envio e na conferência.
+- **Falha de leitura na conferência:** aparece como diferente, com o motivo, e a conferência segue.
+  Motivo proposto pelo agente e aceito pelo usuário: o script só lê e sai com erro de qualquer
+  forma, e parar esconderia o estado dos outros itens.
 - **Prova da troca:** a troca só vale com o hash da URL pública igual ao de `creditos.json` nos
   12 itens, por um comando só de leitura que o usuário roda. Evidência só depois de 12/12.
 - **Cache:** a URL não muda. Medido na TI-0001 em produção antes da troca, em duas leituras,
@@ -95,7 +98,9 @@ delas; alterar telas, API ou schema; caminho novo para a foto (`image_path` cont
   registrado e confere 800x600. Só faz GET, não lê chave de serviço e não imprime a URL nem o
   ref do projeto. Lista cada patrimônio como igual ou diferente e informa "iguais: N de 12". Foto
   ausente (HTTP 404, ou HTTP 400 com `statusCode` 404 no corpo) aparece como diferente, e a
-  conferência segue para os próximos itens, sem quebrar. Sai com erro se não forem 12 de 12. `--alvo local` só aceita host local. `--alvo producao` lê
+  conferência segue para os próximos itens, sem quebrar. Falha de leitura (HTTP de erro ou rede)
+  aparece como "diferente (motivo)", e a conferência também segue. Sai com erro se não forem 12
+  de 12. `--alvo local` só aceita host local. `--alvo producao` lê
   `SUPABASE_URL` só do processo e recusa host local. `SKILL.md` descreve o comando e o novo
   comportamento de `--substituir`.
 - **CA-07** — O hook do harness bloqueia o agente de rodar `conferir.mjs` com `--alvo producao`.
