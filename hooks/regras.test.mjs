@@ -119,6 +119,38 @@ describe('negarProducao', () => {
     assert.ok(decidir({ agent_type: 'verificador-spec', tool_name: 'Bash', tool_input: { command: comando } }, '.'));
   });
 
+  // Spec 005 CA-07: a conferência de produção só lê, mas produção é do usuário.
+  for (const comando of [
+    'node conferir.mjs --alvo producao',
+    'node conferir.mjs --alvo=producao',
+    'timeout 60 node conferir.mjs --alvo producao',
+    'cd skills/imagens-equipamentos/scripts && node conferir.mjs --alvo producao',
+    'node skills/imagens-equipamentos/scripts/conferir.mjs --alvo producao 2>&1 | tail -3',
+    '$env:SUPABASE_URL="https://exemplo.supabase.co"; node .\\conferir.mjs --alvo producao',
+  ]) {
+    it(`test_ca_07_nega_conferencia_em_producao: ${comando}`, () => {
+      assert.match(negarProducao(comando), /conferência em produção/);
+    });
+  }
+
+  for (const comando of [
+    'node conferir.mjs --alvo local --env ../../../back/.env',
+    'node conferir.mjs --alvo local --env ../../../back/.env && echo producao',
+    'node --test conferir.test.mjs',
+    'git commit -m "T4: hook nega conferir.mjs com --alvo producao"',
+  ]) {
+    it(`test_ca_07_permite_sem_producao: ${comando}`, () => {
+      assert.equal(negarProducao(comando), null);
+    });
+  }
+
+  it('test_ca_07_decidir_bloqueia_o_agente_principal_e_o_verificador', () => {
+    const comando = 'node conferir.mjs --alvo producao';
+    assert.match(decidir({ tool_name: 'Bash', tool_input: { command: comando } }, '.'), /conferência em produção/);
+    assert.match(decidir({ tool_name: 'PowerShell', tool_input: { command: comando } }, '.'), /conferência em produção/);
+    assert.ok(decidir({ agent_type: 'verificador-spec', tool_name: 'Bash', tool_input: { command: comando } }, '.'));
+  });
+
   it('test_ca_18_verificador_nao_roda_a_limpeza_nem_no_alvo_local', () => {
     assert.ok(negarVerificador('npm run limpar:emprestimos-teste -- --alvo local --email teste@exemplo.test'));
   });

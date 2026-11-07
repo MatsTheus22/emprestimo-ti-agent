@@ -11,7 +11,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 - [x] **T2** — `enviar.mjs --substituir` compara o hash antes de gravar, com testes. **CA-05**
 - [x] **T3** — `conferir.mjs` com testes; `SKILL.md` descreve o comando e o novo `--substituir`.
   **CA-06**
-- [ ] **T4** — Hook bloqueia `conferir.mjs` com `--alvo producao`, com testes. Commit próprio,
+- [x] **T4** — Hook bloqueia `conferir.mjs` com `--alvo producao`, com testes. Commit próprio,
   separado do código. **CA-07**
 
 ## Agente e usuário: fotos
