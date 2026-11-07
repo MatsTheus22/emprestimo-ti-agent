@@ -28,7 +28,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 - [x] **T10** — Tela "Meus empréstimos". **CA-16**
 
 ## Verificação antes de produção
-- [ ] **T11** — Verificador com veredito PRONTA PARA PRODUÇÃO; PRs de back e front, pedindo
+- [x] **T11** — Verificador com veredito PRONTA PARA PRODUÇÃO; PRs de back e front, pedindo
   antes para o push. **CA-01**, **CA-02**, **CA-03**, **CA-04**, **CA-05**, **CA-06**,
   **CA-07**, **CA-08**, **CA-09**, **CA-10**, **CA-11**, **CA-12**, **CA-13**, **CA-14**,
   **CA-15**, **CA-16**, **CA-17**, **CA-18**, **CA-19**
