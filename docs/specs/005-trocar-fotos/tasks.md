@@ -8,7 +8,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   `loans.repository.ts` pelo comentário do CA-10, com o teste do texto. **CA-10**
 
 ## Agente: skill e hook
-- [ ] **T2** — `enviar.mjs --substituir` compara o hash antes de gravar, com testes. **CA-05**
+- [x] **T2** — `enviar.mjs --substituir` compara o hash antes de gravar, com testes. **CA-05**
 - [ ] **T3** — `conferir.mjs` com testes; `SKILL.md` descreve o comando e o novo `--substituir`.
   **CA-06**
 - [ ] **T4** — Hook bloqueia `conferir.mjs` com `--alvo producao`, com testes. Commit próprio,

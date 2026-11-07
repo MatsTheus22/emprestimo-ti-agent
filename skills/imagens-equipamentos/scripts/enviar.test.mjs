@@ -1,4 +1,5 @@
 // Spec 003 CA-06: enviar.mjs não altera o que já existe, salvo com --substituir.
+// Spec 005 CA-05: com --substituir, só grava o que difere da URL pública.
 // Roda contra um Storage falso em HTTP, porque o caminho real só existe com o
 // Supabase local no ar. As fotos vêm de saida/final, que o git ignora.
 import assert from 'node:assert/strict';
@@ -51,6 +52,9 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
   const objetos = new Map();
   let conflito;
   let publicaForaDoTamanho;
+  let publicaStatus;
+  const publicaCongelada = new Map();
+  const gravacoes = [];
   let servidor;
   let arquivoEnv;
 
@@ -72,6 +76,7 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
       res.writeHead(200).end(JSON.stringify([...objetos.keys()].map((name) => ({ name }))));
     } else if (req.method === 'POST' && req.url.startsWith(PREFIXO_OBJETO)) {
       const nome = req.url.slice(PREFIXO_OBJETO.length);
+      gravacoes.push({ nome, upsert: req.headers['x-upsert'] });
       if (objetos.has(nome) && req.headers['x-upsert'] !== 'true') {
         responderConflito(res);
       } else {
@@ -79,7 +84,12 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
         res.writeHead(200).end('{}');
       }
     } else if (req.method === 'GET' && req.url.startsWith(PREFIXO_PUBLICO)) {
-      const corpo = publicaForaDoTamanho ?? objetos.get(req.url.slice(PREFIXO_PUBLICO.length));
+      if (publicaStatus) {
+        res.writeHead(publicaStatus).end('{}');
+        return;
+      }
+      const nome = req.url.slice(PREFIXO_PUBLICO.length);
+      const corpo = publicaForaDoTamanho ?? publicaCongelada.get(nome) ?? objetos.get(nome);
       res.writeHead(corpo ? 200 : 404).end(corpo);
     } else {
       res.writeHead(404).end();
@@ -119,6 +129,109 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
     objetos.clear();
     conflito = 'http-400';
     publicaForaDoTamanho = undefined;
+    publicaStatus = undefined;
+    publicaCongelada.clear();
+    gravacoes.length = 0;
+  });
+
+  function preencherComOsArquivosLocais() {
+    for (const nome of readdirSync(FINAL)) objetos.set(nome, readFileSync(path.join(FINAL, nome)));
+  }
+
+  it('test_ca_05_tudo_igual_nao_grava_nada', async () => {
+    preencherComOsArquivosLocais();
+    const total = objetos.size;
+
+    const r = await rodar('--substituir');
+
+    assert.equal(r.status, 0, r.stderr);
+    assert.deepEqual(gravacoes, []);
+    assert.match(r.stdout, /TI-0001\.jpg: igual ao arquivo local; não regravado/);
+    assert.match(r.stdout, new RegExp(`enviados: 0 .*iguais, não regravados: ${total}`));
+    assert.match(r.stdout, new RegExp(`objetos no bucket: ${total}`));
+  });
+
+  it('test_ca_05_so_grava_o_que_difere', async () => {
+    preencherComOsArquivosLocais();
+    const total = objetos.size;
+    objetos.set('TI-0001.jpg', await jpeg(800, 600, 200));
+    objetos.set('TI-0004.jpg', await jpeg(800, 600, 100));
+
+    const r = await rodar('--substituir');
+
+    assert.equal(r.status, 0, r.stderr);
+    assert.deepEqual(gravacoes, [
+      { nome: 'TI-0001.jpg', upsert: 'true' },
+      { nome: 'TI-0004.jpg', upsert: 'true' },
+    ]);
+    assert.ok(objetos.get('TI-0001.jpg').equals(readFileSync(path.join(FINAL, 'TI-0001.jpg'))));
+    assert.match(r.stdout, new RegExp(`enviados: 2 .*iguais, não regravados: ${total - 2}`));
+    assert.doesNotMatch(r.stdout, /AVISO/);
+  });
+
+  it('test_ca_05_http_404_grava', async () => {
+    const total = readdirSync(FINAL).length;
+
+    const r = await rodar('--substituir');
+
+    assert.equal(r.status, 0, r.stderr);
+    assert.equal(gravacoes.length, total);
+    assert.equal(objetos.size, total);
+  });
+
+  for (const status of [500, 403, 400]) {
+    it(`test_ca_05_url_publica_com_http_${status}_interrompe_sem_gravar`, async () => {
+      preencherComOsArquivosLocais();
+      publicaStatus = status;
+
+      const r = await rodar('--substituir');
+
+      assert.notEqual(r.status, 0);
+      assert.deepEqual(gravacoes, []);
+      assert.match(r.stderr, new RegExp(`URL pública respondeu HTTP ${status}`));
+      assert.doesNotMatch(r.stderr, /chave-falsa/);
+    });
+  }
+
+  it('test_ca_05_url_publica_com_foto_antiga_avisa_e_nao_conta_como_trocada', async () => {
+    preencherComOsArquivosLocais();
+    const antiga = await jpeg(800, 600, 200);
+    objetos.set('TI-0001.jpg', antiga);
+    publicaCongelada.set('TI-0001.jpg', antiga);
+
+    const r = await rodar('--substituir');
+
+    assert.equal(r.status, 0, r.stderr);
+    assert.deepEqual(gravacoes, [{ nome: 'TI-0001.jpg', upsert: 'true' }]);
+    assert.match(r.stdout, /TI-0001\.jpg: gravado; .*AVISO: troca não confirmada/);
+    assert.match(r.stdout, /enviados: 0 .*troca não confirmada: 1/);
+  });
+
+  it('test_ca_05_repetir_grava_zero', async () => {
+    objetos.set('TI-0001.jpg', await jpeg(800, 600, 200));
+    await rodar('--substituir');
+    gravacoes.length = 0;
+
+    const r = await rodar('--substituir');
+
+    assert.equal(r.status, 0, r.stderr);
+    assert.deepEqual(gravacoes, []);
+    assert.match(r.stdout, /enviados: 0 /);
+  });
+
+  it('test_ca_05_sem_substituir_nao_grava_por_cima', async () => {
+    preencherComOsArquivosLocais();
+    const outra = await jpeg(800, 600, 200);
+    objetos.set('TI-0001.jpg', outra);
+    const total = objetos.size;
+
+    const r = await rodar();
+
+    assert.equal(r.status, 0, r.stderr);
+    assert.equal(gravacoes.length, total);
+    assert.ok(gravacoes.every(({ upsert }) => upsert === 'false'));
+    assert.ok(objetos.get('TI-0001.jpg').equals(outra));
+    assert.doesNotMatch(r.stdout, /iguais, não regravados/);
   });
 
   it('test_ca_06_bucket_vazio_envia_todos', async () => {
