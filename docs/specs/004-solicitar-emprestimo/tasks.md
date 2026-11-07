@@ -36,11 +36,11 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 ## Usuário: produção (ordem em plan.md)
 - [x] **P1** — Conferir `loans`, merge do PR do back (CI aplica a migration) e merge do PR
   do front. **CA-20**
-- [ ] **P2** — Consulta de grants e policies e tentativa real com `UPDATE ... WHERE false`;
+- [x] **P2** — Consulta de grants e policies e tentativa real com `UPDATE ... WHERE false`;
   gravar em `evidencias/`. **CA-24**
-- [ ] **P3** — Criar a conta de teste com membership; testes na tela; gravar as evidências.
+- [x] **P3** — Criar a conta de teste com membership; testes na tela; gravar as evidências.
   **CA-20**, **CA-21**, **CA-22**, **CA-23**
-- [ ] **P4** — Rodar a limpeza e a consulta final; gravar a evidência. **CA-25**
+- [x] **P4** — Rodar a limpeza e a consulta final; gravar a evidência. **CA-25**
 
 ## Fechamento
 - [ ] **T12** — Verificador com veredito PRONTA; `Status: PRONTA` em spec.md; `AGENTS.md`,

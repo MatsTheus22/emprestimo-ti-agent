@@ -1,0 +1,41 @@
+Evidência: limpeza dos empréstimos de teste em produção (CA-25)
+
+Origem: saída do script executado pelo usuário e resultado da consulta no SQL Editor de
+produção, em 2026-11-07.
+
+Nota do agente: o e-mail da conta de teste foi trocado por <conta de teste> e o ref do projeto
+por <ref do projeto>, porque este repositório é público (CA-17). Nada mais foi alterado.
+
+--- Script: npm run limpar:emprestimos-teste -- --alvo producao --email <conta de teste>
+> emprestimo-ti-api@0.0.1 limpar:emprestimos-teste
+> ts-node --transpile-only prisma/limpar-emprestimos-teste.ts --alvo producao --email <conta de teste>
+
+Destino: aws-0-us-west-2.pooler.supabase.com
+Digite o ref do projeto (<ref do projeto>) para confirmar: <ref do projeto>
+Empréstimos que serão apagados (3):
+  TI-0001 · Notebook 14 polegadas · retirada 07/11/2026 · devolver até 21/11/2026
+  TI-0002 · Notebook 15 polegadas · retirada 07/11/2026 · devolver até 21/11/2026
+  TI-0003 · Notebook 13 polegadas · retirada 07/11/2026 · devolver até 21/11/2026
+Digite o e-mail (<conta de teste>) para confirmar: <conta de teste>
+apagados: 3 · devolvidos: 3
+Conta protegida: 0 empréstimos
+Equipamentos por situação: {"disponivel":9,"manutencao":3}
+
+--- Consulta: estado final
+select
+  (select count(*) from loans) as emprestimos_total,
+  (select count(*) from loans l join auth.users u on u.id = l.user_id
+    where u.email = 'marcelo.grilo@institutojef.org.br') as emprestimos_marcelo,
+  (select count(*) from equipment where status = 'disponivel') as disponiveis,
+  (select count(*) from equipment where status = 'manutencao') as em_manutencao;
+
+[
+  {
+    "emprestimos_total": 0,
+    "emprestimos_marcelo": 0,
+    "disponiveis": 9,
+    "em_manutencao": 3
+  }
+]
+
+Nota do agente: com emprestimos_total em 0, a conta de teste também ficou com zero empréstimos.

@@ -1,0 +1,138 @@
+Evidência: permissões do banco de produção (CA-24)
+
+Origem: resultados das consultas executadas pelo usuário no SQL Editor de produção, em
+2026-11-07. A consulta 3 tenta escrever com WHERE false e termina em erro de propósito:
+nenhuma linha foi alterada.
+
+--- Consulta 1
+select grantee, table_name, string_agg(privilege_type, ',' order by privilege_type) as privilegios
+from information_schema.role_table_grants
+where table_schema = 'public' and grantee in ('anon', 'authenticated')
+  and table_name in ('loans','equipment','memberships','tenants','audit_log','_prisma_migrations')
+group by 1, 2 order by 1, 2;
+
+[
+  {
+    "grantee": "anon",
+    "table_name": "_prisma_migrations",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "anon",
+    "table_name": "audit_log",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "anon",
+    "table_name": "equipment",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "anon",
+    "table_name": "loans",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "anon",
+    "table_name": "memberships",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "anon",
+    "table_name": "tenants",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "authenticated",
+    "table_name": "_prisma_migrations",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "authenticated",
+    "table_name": "audit_log",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "authenticated",
+    "table_name": "equipment",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "authenticated",
+    "table_name": "loans",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "authenticated",
+    "table_name": "memberships",
+    "privilegios": "SELECT"
+  },
+  {
+    "grantee": "authenticated",
+    "table_name": "tenants",
+    "privilegios": "SELECT"
+  }
+]
+
+--- Consulta 2
+select tablename, policyname, cmd, roles from pg_policies where schemaname = 'public' order by 1, 2;
+
+[
+  {
+    "tablename": "audit_log",
+    "policyname": "audit_log_own_read",
+    "cmd": "SELECT",
+    "roles": "{authenticated}"
+  },
+  {
+    "tablename": "equipment",
+    "policyname": "equipment_read",
+    "cmd": "SELECT",
+    "roles": "{authenticated}"
+  },
+  {
+    "tablename": "loans",
+    "policyname": "loans_own_read",
+    "cmd": "SELECT",
+    "roles": "{authenticated}"
+  },
+  {
+    "tablename": "memberships",
+    "policyname": "memberships_auth_hook_read",
+    "cmd": "SELECT",
+    "roles": "{supabase_auth_admin}"
+  },
+  {
+    "tablename": "memberships",
+    "policyname": "memberships_own_read",
+    "cmd": "SELECT",
+    "roles": "{authenticated}"
+  },
+  {
+    "tablename": "tenants",
+    "policyname": "tenants_read",
+    "cmd": "SELECT",
+    "roles": "{authenticated}"
+  }
+]
+
+--- Consulta 3: tentativa real de UPDATE como authenticated, nas 5 tabelas
+begin;
+set local role authenticated;
+do $$
+declare t text; resultado text := '';
+begin
+  foreach t in array array['loans','equipment','memberships','tenants','audit_log'] loop
+    begin
+      execute format('update public.%I set id = id where false', t);
+      resultado := resultado || t || ': UPDATE ACEITO (falha) | ';
+    exception when insufficient_privilege then
+      resultado := resultado || t || ': permission denied | ';
+    end;
+  end loop;
+  raise exception 'RESULTADO: %', resultado;
+end $$;
+rollback;
+
+Failed to run sql query: ERROR:  P0001: RESULTADO: loans: permission denied | equipment: permission denied | memberships: permission denied | tenants: permission denied | audit_log: permission denied |
+CONTEXT:  PL/pgSQL function inline_code_block line 12 at RAISE
