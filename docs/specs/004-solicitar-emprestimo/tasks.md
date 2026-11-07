@@ -34,7 +34,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   **CA-15**, **CA-16**, **CA-17**, **CA-18**, **CA-19**
 
 ## Usuário: produção (ordem em plan.md)
-- [ ] **P1** — Conferir `loans`, merge do PR do back (CI aplica a migration) e merge do PR
+- [x] **P1** — Conferir `loans`, merge do PR do back (CI aplica a migration) e merge do PR
   do front. **CA-20**
 - [ ] **P2** — Consulta de grants e policies e tentativa real com `UPDATE ... WHERE false`;
   gravar em `evidencias/`. **CA-24**
