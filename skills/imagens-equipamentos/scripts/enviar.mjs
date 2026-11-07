@@ -14,6 +14,7 @@ import {
   exigirCondicoesDeProducao,
   exigirHostLocal,
   lerVariavel,
+  publicaAusente,
   semSegredo,
   sha256,
   validarArquivo,
@@ -54,12 +55,12 @@ async function garantirBucketPublico(url, chave) {
   return 'criado';
 }
 
-// O conteúdo atual da URL pública, ou null se ela responder HTTP 404. Qualquer outra
+// O conteúdo atual da URL pública, ou null se a foto estiver ausente. Qualquer outra
 // falha interrompe: sem saber o que está publicado, não se grava por cima.
 async function lerPublica(url, nome) {
   const resposta = await fetch(`${url}/storage/v1/object/public/${BUCKET}/${nome}`);
-  if (resposta.status === 404) return null;
   if (!resposta.ok) {
+    if (publicaAusente(resposta.status, await resposta.text())) return null;
     throw new Error(`${nome}: URL pública respondeu HTTP ${resposta.status}; esta foto não foi gravada`);
   }
   return Buffer.from(await resposta.arrayBuffer());

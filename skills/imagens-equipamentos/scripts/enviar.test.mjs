@@ -11,7 +11,7 @@ import path from 'node:path';
 import { after, before, beforeEach, describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { classificarEnvio } from './lib.mjs';
+import { classificarEnvio, publicaAusente } from './lib.mjs';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const FINAL = path.join(AQUI, '..', 'saida', 'final');
@@ -48,11 +48,30 @@ describe('classificarEnvio', () => {
   });
 });
 
+describe('publicaAusente', () => {
+  it('test_ca_05_http_404_e_ausente', () => {
+    assert.equal(publicaAusente(404, ''), true);
+  });
+
+  it('test_ca_05_http_400_com_status_404_no_corpo_e_ausente', () => {
+    const corpo = JSON.stringify({ statusCode: '404', error: 'not_found', code: 'NoSuchKey' });
+    assert.equal(publicaAusente(400, corpo), true);
+  });
+
+  it('test_ca_05_outras_respostas_nao_sao_ausencia', () => {
+    assert.equal(publicaAusente(400, '{"statusCode":"403"}'), false);
+    assert.equal(publicaAusente(400, 'não é json'), false);
+    assert.equal(publicaAusente(500, '{"statusCode":"404"}'), false);
+    assert.equal(publicaAusente(403, ''), false);
+  });
+});
+
 describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
   const objetos = new Map();
   let conflito;
   let publicaForaDoTamanho;
   let publicaStatus;
+  let ausenteComo;
   const publicaCongelada = new Map();
   const gravacoes = [];
   let servidor;
@@ -90,7 +109,15 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
       }
       const nome = req.url.slice(PREFIXO_PUBLICO.length);
       const corpo = publicaForaDoTamanho ?? publicaCongelada.get(nome) ?? objetos.get(nome);
-      res.writeHead(corpo ? 200 : 404).end(corpo);
+      if (corpo) {
+        res.writeHead(200).end(corpo);
+      } else if (ausenteComo === 'http-400') {
+        // Forma do Storage do Supabase, medida no local.
+        const erro = { statusCode: '404', error: 'not_found', message: 'Object not found', code: 'NoSuchKey' };
+        res.writeHead(400).end(JSON.stringify(erro));
+      } else {
+        res.writeHead(404).end();
+      }
     } else {
       res.writeHead(404).end();
     }
@@ -130,6 +157,7 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
     conflito = 'http-400';
     publicaForaDoTamanho = undefined;
     publicaStatus = undefined;
+    ausenteComo = 'http-404';
     publicaCongelada.clear();
     gravacoes.length = 0;
   });
@@ -169,15 +197,19 @@ describe('enviar.mjs de ponta a ponta', { skip: !existsSync(FINAL) }, () => {
     assert.doesNotMatch(r.stdout, /AVISO/);
   });
 
-  it('test_ca_05_http_404_grava', async () => {
-    const total = readdirSync(FINAL).length;
+  for (const forma of ['http-404', 'http-400']) {
+    it(`test_ca_05_foto_ausente_grava_${forma}`, async () => {
+      ausenteComo = forma;
+      const total = readdirSync(FINAL).length;
 
-    const r = await rodar('--substituir');
+      const r = await rodar('--substituir');
 
-    assert.equal(r.status, 0, r.stderr);
-    assert.equal(gravacoes.length, total);
-    assert.equal(objetos.size, total);
-  });
+      assert.equal(r.status, 0, r.stderr);
+      assert.equal(gravacoes.length, total);
+      assert.equal(objetos.size, total);
+      assert.match(r.stdout, new RegExp(`enviados: ${total} `));
+    });
+  }
 
   for (const status of [500, 403, 400]) {
     it(`test_ca_05_url_publica_com_http_${status}_interrompe_sem_gravar`, async () => {

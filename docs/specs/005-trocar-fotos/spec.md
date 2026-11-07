@@ -29,6 +29,9 @@ fotos cumprem as duas coisas, e os créditos no banco correspondem às fotos pub
   Motivo proposto pelo chat de validação e aceito pelo usuário: não exige lista digitada,
   repetir é seguro e as outras fotos não são regravadas. Isso substitui, na prática, o trecho "Com `--substituir`, grava por cima" do
   CA-06 da spec 003, que não é editada.
+- **Objeto ausente:** na T2, o Storage local respondeu objeto inexistente com HTTP 400 e
+  `statusCode` 404 no corpo, não com HTTP 404. O usuário decidiu tratar as duas formas como foto
+  ausente, no envio e na conferência.
 - **Prova da troca:** a troca só vale com o hash da URL pública igual ao de `creditos.json` nos
   12 itens, por um comando só de leitura que o usuário roda. Evidência só depois de 12/12.
 - **Cache:** a URL não muda. Medido na TI-0001 em produção antes da troca, em duas leituras,
@@ -84,8 +87,8 @@ delas; alterar telas, API ou schema; caminho novo para a foto (`image_path` cont
 
 ### Envio e conferência
 - **CA-05** — Com `--substituir`, `enviar.mjs` lê primeiro a URL pública de cada foto. Hash igual
-  ao do arquivo local: não grava e informa. Hash diferente ou HTTP 404: grava por cima. Qualquer
-  outra resposta: erro, sem gravar. Depois de gravar, se a URL pública ainda entregar outro hash,
+  ao do arquivo local: não grava e informa. Hash diferente: grava por cima. HTTP 404, ou HTTP 400
+  com `statusCode` 404 no corpo: grava. Qualquer outra resposta: erro, sem gravar. Depois de gravar, se a URL pública ainda entregar outro hash,
   avisa que a troca não foi confirmada, sem contar como trocada. Rodar de novo, com tudo igual,
   grava 0. Sem `--substituir`, o comportamento não muda.
 - **CA-06** — `conferir.mjs` compara a URL pública de cada item de `creditos.json` com o hash

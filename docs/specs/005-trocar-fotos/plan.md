@@ -39,7 +39,7 @@ O front não muda: não há branch nele.
 GET URL pública
   200 e mesmo hash   -> não grava; conta como igual
   200 e outro hash   -> grava (x-upsert: true)
-  404                -> grava
+  404, ou 400 com statusCode 404 no corpo -> grava
   outra resposta     -> erro; interrompe sem gravar
 Depois de gravar: GET URL pública
   mesmo hash         -> trocada
@@ -93,7 +93,7 @@ No banco local, o agente roda com `docker exec -i supabase_db_back psql -U postg
 | CA | Onde | O que prova |
 |---|---|---|
 | CA-01 a CA-04 | `skills/.../scripts/decisoes-005.test.mjs` | Decisões, motivos, ids novos, itens mantidos e hashes |
-| CA-05 | `skills/.../scripts/enviar.test.mjs` | Igual não grava; diferente e 404 gravam; erro de leitura não grava; troca não confirmada avisa; repetir grava 0 |
+| CA-05 | `skills/.../scripts/enviar.test.mjs` | Igual não grava; diferente, 404 e 400 com `statusCode` 404 gravam; erro de leitura não grava; troca não confirmada avisa; repetir grava 0 |
 | CA-06 | `skills/.../scripts/conferir.test.mjs` | Contra Storage falso: 12 de 12, diferença, só GET, sem URL na saída, alvos recusados |
 | CA-07 | `hooks/regras.test.mjs` | Variações do comando com `--alvo producao` bloqueadas; `--alvo local` permitido |
 | CA-08 | `back/test/dados-iniciais.spec.ts` | Créditos dos 6 itens iguais a `creditos.json` |
