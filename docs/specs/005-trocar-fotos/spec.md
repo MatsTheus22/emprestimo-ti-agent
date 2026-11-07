@@ -93,8 +93,9 @@ delas; alterar telas, API ou schema; caminho novo para a foto (`image_path` cont
   grava 0. Sem `--substituir`, o comportamento não muda.
 - **CA-06** — `conferir.mjs` compara a URL pública de cada item de `creditos.json` com o hash
   registrado e confere 800x600. Só faz GET, não lê chave de serviço e não imprime a URL nem o
-  ref do projeto. Lista cada patrimônio como igual ou diferente e informa "iguais: N de 12". Sai
-  com erro se não forem 12 de 12. `--alvo local` só aceita host local. `--alvo producao` lê
+  ref do projeto. Lista cada patrimônio como igual ou diferente e informa "iguais: N de 12". Foto
+  ausente (HTTP 404, ou HTTP 400 com `statusCode` 404 no corpo) aparece como diferente, e a
+  conferência segue para os próximos itens, sem quebrar. Sai com erro se não forem 12 de 12. `--alvo local` só aceita host local. `--alvo producao` lê
   `SUPABASE_URL` só do processo e recusa host local. `SKILL.md` descreve o comando e o novo
   comportamento de `--substituir`.
 - **CA-07** — O hook do harness bloqueia o agente de rodar `conferir.mjs` com `--alvo producao`.

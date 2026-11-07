@@ -27,7 +27,16 @@ Rode dentro de `scripts/`. Instale uma vez com `npm ci`.
      O script exige terminal interativo, a digitação do ref do projeto e
      `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` definidas no processo.
    - Repetir o envio não altera o que já existe: o script informa "já existia" e avisa se
-     o conteúdo local for diferente. Para trocar uma foto já publicada, use `--substituir`.
+     o conteúdo local for diferente. Para trocar uma foto já publicada, use `--substituir`:
+     ele lê a URL pública e só grava a foto que difere do arquivo local ou que falta no bucket.
+     Se a URL pública continuar com a foto antiga depois de gravar, avisa "troca não confirmada".
+5. **Conferir:** a troca só vale com a URL pública igual ao registrado em `creditos.json`.
+   - Ambiente local (agente pode): `node conferir.mjs --alvo local --env ../../../back/.env`
+   - Produção: **só o usuário**, com `SUPABASE_URL` definida no processo:
+     `node conferir.mjs --alvo producao`.
+   - Só faz GET, sem chave de serviço, e não imprime a URL nem o ref do projeto. Lista cada
+     patrimônio como igual ou diferente, com o motivo, e sai com erro enquanto não forem todos
+     iguais.
 
 Se uma busca da lista trouxer poucas opções, acrescente termos em
 `references/buscas-alternativas.json` (`{ "TI-0001": ["outro termo"] }`) e rode
@@ -45,7 +54,8 @@ Não altere
 | Sem pessoa, marca, texto ou tela com conteúdo | **Humano.** O código só faz um filtro inicial por tags, que não provam o que aparece na foto | `motivoRejeicao`, revisão |
 | Sem imagem gerada por IA | Código, pelo campo `isAiGenerated` da API, que é declarado na origem | `motivoRejeicao` |
 | Créditos | Código: manifesto só com aprovadas | `creditos.json` |
-| Armazenamento sem duplicar | Código: caminho fixo `TI-000N.jpg` em bucket público; só grava por cima com `--substituir` | `enviar.mjs`, `classificarEnvio` |
+| Armazenamento sem duplicar | Código: caminho fixo `TI-000N.jpg` em bucket público; só grava por cima com `--substituir`, e só o que difere da URL pública | `enviar.mjs`, `classificarEnvio` |
+| Foto publicada é a aprovada | Código: hash da URL pública contra `creditos.json`, só com GET | `conferir.mjs` |
 | Produção fora do alcance do agente | Código: terminal interativo e chave só do processo. Regra e hook do harness completam | `enviar.mjs`, `rules/restrictions.md` |
 | Sem segredo no git | Código e regra: chave lida do ambiente, `saida/` ignorada | `.gitignore`, `rules/secrets.md` |
 
