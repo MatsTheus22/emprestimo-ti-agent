@@ -100,7 +100,7 @@ Elevação: `--shadow-sm/md/lg` do sistema; nunca sombras empilhadas.
 - Larguras máximas de conteúdo: Catálogo 1240px · Meus empréstimos 1000px · Operações 1320px · Equipamentos 1160px.
 - Login: `64px 56px` em ambas as colunas.
 - Barra de navegação: altura **60px**, padding lateral 40px, `gap: 32px` entre marca e abas.
-- Card do catálogo: padding 18px, `gap: 12px` interno.
+- Card do catálogo: padding 18px, `gap: 12px` interno. Foto em largura total do card, `aspect-ratio: 4 / 3` (as fotos têm 800x600), raio `--radius-md`.
 - Grade do catálogo: `repeat(auto-fill, minmax(292px, 1fr))`, `gap: 16px`.
 - Linha de "Meus empréstimos": padding `18px 20px`, `gap: 20px` entre colunas.
 - Grade de KPIs: 4 colunas, `gap: 14px`, padding `16px 18px`.
@@ -142,7 +142,8 @@ Grade `1.05fr 0.95fr`, altura mínima 820px.
 ### 5.2 Catálogo
 Cabeçalho: H1 "Catálogo" + contagem "X de Y equipamentos disponíveis agora"; busca de 260px alinhada à direita.
 Banner de bloqueio (condicional). Linha de chips de filtro: Todos · Disponíveis · Emprestados · Em manutenção.
-Grade de cards. Card = kicker de categoria (uppercase 11px) · nome 16.5px · patrimônio 12px · pill de situação à direita · linha de detalhe (min-height 18px: "Pronto para retirada no balcão" / "Com {pessoa} · devolver até {data}" / observação de manutenção) · botão de largura total.
+Grade de cards. Card = foto do equipamento (sem imagem: bloco vazio do mesmo tamanho) · kicker de categoria (uppercase 11px) · nome 16.5px · patrimônio 12px · pill de situação à direita · linha de detalhe (min-height 18px: disponível "Pronto para retirada no balcão" / com a própria pessoa "Com você · devolver até {data}" / em manutenção "Indisponível durante a manutenção" / com outra pessoa, vazia: o card mostra só a situação "Emprestado", sem o nome dela nem a data) · botão de largura total.
+Abaixo da grade: "Fotos: Pixabay", com link para https://pixabay.com/, em 12px e 40% de opacidade (contrato da skill imagens-equipamentos).
 
 ### 5.3 Meus empréstimos
 H1 + "N de 3 itens em seu nome · prazo padrão de 14 dias".
@@ -181,13 +182,13 @@ Grade `1fr 300px`, `gap: 34px`, alinhada ao topo.
 
 ## 7. Interações e regras de negócio
 
-1. **Solicitar empréstimo** (card disponível): abre modal com "Devolver até = hoje + 14 dias". Confirmar → item passa a `emprestado` com o nome da pessoa, sai do disponível, entra em Meus empréstimos e na tabela de Operações; toast de confirmação.
+1. **Solicitar empréstimo** (card disponível): abre modal com "Devolver até = hoje + 14 dias". Confirmar → item passa a `emprestado`, sai do disponível, entra em Meus empréstimos e na tabela de Operações; toast de confirmação.
 2. **Devolver** (Meus empréstimos): modal "Devolução em {hoje}". Confirmar → item volta a `disponivel`, libera um slot, sai da tabela de Operações; toast.
 3. **Registrar devolução** (Operações, balcão): mesmo efeito, com "Pessoa" no lugar da data no resumo do modal.
 4. **Limite de 3 itens**: com 3 empréstimos ativos, todo botão de solicitar fica desabilitado com o rótulo "Limite de 3 itens" e vira `btn-secondary`.
 5. **Atraso bloqueia**: com qualquer item em atraso, os botões viram "Bloqueado por atraso" (desabilitados) e o banner vermelho aparece no topo do catálogo com atalho para o item pendente.
-6. **Manutenção**: nunca conta como disponível; card com pill cinza, detalhe com a observação e botão "Indisponível" desabilitado.
-7. **Item já com o usuário**: botão "Está com você" (desabilitado); com outra pessoa: "Emprestado" (desabilitado) e o detalhe mostra quem e o prazo.
+6. **Manutenção**: nunca conta como disponível; card com pill cinza, detalhe com o texto fixo "Indisponível durante a manutenção" e botão "Indisponível" desabilitado.
+7. **Item já com o usuário**: detalhe "Com você · devolver até {data}" e botão "Está com você" (desabilitado); com outra pessoa: botão "Emprestado" (desabilitado) e detalhe vazio, sem o nome da pessoa nem a data. Quem está com cada item só aparece na visão completa de Operações (item 11).
 8. **Busca**: catálogo filtra por nome + patrimônio; Operações filtra por pessoa + item; ambas case-insensitive, filtragem imediata a cada tecla, com estado vazio próprio.
 9. **Filtros de situação**: exclusivos (Todos / Disponíveis / Emprestados / Em manutenção); ativo ganha borda e texto no acento e fundo `rgba(47,184,172,0.10)`.
 10. **Cadastro**: nome obrigatório (sem nome → toast "Informe o nome do equipamento"); patrimônio vazio cai para `TI-—`; item entra no topo da lista.
@@ -234,3 +235,16 @@ Assim, por padrão: 2 de 3 slots da Ana ocupados e em dia, 4 itens disponíveis,
 - Controles de protótipo úteis: `startView` (login, catalogo, meus, operações, cadastro) e `demoState` (none, modal-solicitar, modal-devolver, sem-emprestimos, atraso-bloqueado, toast).
 - Altura mínima das telas: 820px; larguras de referência do desenho: 1360–1440px.
 - Idioma da interface: português do Brasil; datas em `DD/MM/AAAA`; tom de copy direto e operacional, sem exclamações e sem emoji.
+
+---
+
+## 11. Alterações
+
+| Data | Mudança | Onde | Origem |
+|---|---|---|---|
+| 2026-11-06 | O card do catálogo passa a mostrar a foto e os dados do equipamento. Item com outra pessoa mostra só a situação "Emprestado", sem o nome dela nem a data; antes, o detalhe era "Com {pessoa} · devolver até {data}". | §3, §5.2, §7.1, §7.7 | Spec 004-solicitar-emprestimo, pedido do usuário |
+| 2026-11-06 | Item com a própria pessoa ganha o detalhe "Com você · devolver até {data}". | §5.2, §7.7 | Spec 004-solicitar-emprestimo, pedido do usuário |
+| 2026-11-06 | A observação de manutenção vira um texto fixo: `equipment` não tem essa coluna. | §5.2, §7.6 | Spec 004-solicitar-emprestimo, pedido do usuário |
+| 2026-11-06 | A tela do catálogo mostra "Fotos: Pixabay" com link. | §5.2 | Contrato da skill imagens-equipamentos |
+
+Não mudam: os dados de exemplo do §9, que continuam dizendo com quem cada item está, porque a visão de Operações usa esse dado; e o botão "Devolver" do §5.3, a busca e os filtros do §5.2, que a spec 004 deixou fora de escopo sem alterar o desenho.

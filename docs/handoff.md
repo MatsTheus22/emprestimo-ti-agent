@@ -1,22 +1,23 @@
-# Handoff — 2026-11-06
+# Handoff — 2026-11-07
 
 ## Onde parei
-Spec 003-dados-iniciais concluída: T1 a T8 e P1 a P4 marcadas, `Status: PRONTA`, rodada 2 com veredito PRONTA (CA-01 a CA-10). Validada e mergeada pelo usuário.
+Spec 004-solicitar-emprestimo concluída: T1 a T12 e P1 a P4, `Status: PRONTA`, rodada 2 com veredito PRONTA (CA-01 a CA-25).
 
 ## Commitado
-Back: PR #3 mergeado em `main` (`5668b04`). Agente: PR #4 mergeado em `master`; branch em `fb5e20e`. Front: não mudou. Local: raiz e `back/` ainda em `003-dados-iniciais`, sem `pull` das principais.
+Back: PR #4 mergeado em `main` (`ec3645a`). Front: PR #2 mergeado em `main` (`3055f55`). Raiz: branch `004-solicitar-emprestimo` com PR aberto para `master`; o merge é do usuário.
 
 ## Banco local
-3 migrations, tenant, 6 usuários de demonstração e 12 equipamentos. Bucket local com as 12 fotos. Nada aplicado sem commit.
+Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Tenant, 12 equipamentos e 6 memberships. Pode ter empréstimos do teste local do usuário. Nada aplicado sem commit.
 
-## Publicado em produção
-Migration, 12 imagens, 12 equipamentos e a conta do professor (criada pelo usuário). Evidências: `docs/specs/003-dados-iniciais/evidencias/`.
+## Publicado
+Migration, API e telas da 004 em produção (2026-11-07). Conta de teste com papel `operacoes` e zero empréstimos depois da limpeza. Conta do Marcelo com zero.
 
 ## Não fazer
-- Agente nunca escreve em produção nem faz merge (rules/restrictions.md).
-- Não editar spec nem rodadas da 003: mudança nova vai em spec nova.
-- No pooler, a `DATABASE_URL` precisa de `?pgbouncer=true&connection_limit=1`: sem isso, o script falhou em produção (causa provável).
+- Não aplicar nada em produção nem fazer merge: é do usuário (rules/restrictions.md).
+- Não editar spec nem rodadas da 003 e da 004: mudança nova vai em spec nova.
+- Não remover o `at time zone 'UTC'` de `devolucaoSql` nem o `.min(1)` dos campos anuláveis: há testes que protegem os dois.
+- Adicionar arquivos pelo nome, nunca `git add docs`: levou por engano uma mudança da evidência da 003, já restaurada.
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Atualize `master` e `main` e comece a `004-solicitar-emprestimo` pelas perguntas (rules/spec-flow.md), quando o usuário pedir.
+Spec 005, quando o usuário pedir: trocar as fotos TI-0001, TI-0004, TI-0006, TI-0007 e TI-0012, que descumprem o "Direito de imagem". O motivo está em docs/entrega/diario.md, no fim da spec 004.

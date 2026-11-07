@@ -31,6 +31,7 @@ const PRODUCAO = [
   [/\bsupabase\s+(db\s+push|link|migration\s+up|storage\s+cp|functions\s+deploy)\b/, 'escrita no Supabase remoto'],
   [/\benviar\.mjs\b[^;&|\n]*\bproducao\b/, 'envio de imagens para produção'],
   [/\bseed[:-]iniciais\b[^;&|\n]*\bproducao\b/, 'seed em produção'],
+  [/\blimpar[:-]emprestimos-teste\b[^;&|\n]*\bproducao\b/, 'limpeza em produção'],
 ];
 
 const SUPABASE_REMOTO = /\.supabase\.(co|com)\b/;
