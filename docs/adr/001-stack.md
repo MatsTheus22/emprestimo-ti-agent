@@ -171,7 +171,7 @@
 | Hospedagem | Vercel (front e API, projetos separados) |
 | Plano | Hobby |
 | Região das functions | Padrão do Hobby (Estados Unidos) |
-| Região do Supabase | `sa-east-1` (São Paulo) |
+| Região do Supabase | `aws-0-us-west-2` (EUA) |
 | Limite de execução | 60s por request (teto do Hobby) |
 | Fila e trabalho assíncrono | Fora de escopo; tudo roda dentro do request |
 | Agendamento | Fora de escopo; sem cron |
@@ -183,8 +183,6 @@
 
 - **Hospedagem** — já era a decisão; mantida, e a conta já existe com outros projetos.
 - **Plano** — o Hobby cobre uso pessoal não-comercial, que é o caso: projeto de disciplina, sem cobrança, sem receita e sem ninguém sendo pago para escrever o código. Se o sistema um dia sair do contexto acadêmico e for usado de fato pela empresa, o plano precisa mudar antes.
-- **Região das functions** — São Paulo é oferecida apenas no Pro; no Hobby as functions rodam nos EUA e cada query paga ida e volta transatlântica. Em contexto de demonstração isso é aceitável, mas é o primeiro item a mudar se o projeto for usado de verdade.
-- **Região do Supabase** — é o outro lado da mesma travessia: functions nos EUA (teto do Hobby) e banco em São Paulo, o que faz cada query pagar ida e volta transatlântica.
 - **Limite de execução** — vira o teto de qualquer operação: importação de planilha de ativos, sincronização e relatório grande precisam ser desenhados em lotes que caibam nesse tempo.
 - **Fila e trabalho assíncrono** — não há volume assíncrono conhecido agora; adicionar infraestrutura de fila sem caso de uso é custo sem retorno. A consequência é que envio de e-mail e integração externa rodam dentro do request e seguram a resposta.
 - **Agendamento** — não há volume assíncrono conhecido agora; adicionar infraestrutura sem caso de uso é custo sem retorno.
@@ -266,7 +264,6 @@
 **Fica mais difícil**
 - Mudança de contrato não quebra o build do front sozinha; depende de regenerar o cliente e da checagem no CI.
 - Alterar uma feature que toca os dois lados exige dois PRs coordenados em repositórios diferentes.
-- Latência: com as functions nos EUA e o banco em São Paulo, cada query paga a travessia.
 - Cold start: a primeira invocação depois de ociosidade paga o bootstrap do Nest.
 - Qualquer operação precisa caber em 60s, o que obriga a desenhar importação e relatório em lotes.
 - Envio de e-mail e integração externa seguram a resposta do request.
