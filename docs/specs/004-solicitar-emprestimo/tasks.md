@@ -43,6 +43,6 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 - [x] **P4** — Rodar a limpeza e a consulta final; gravar a evidência. **CA-25**
 
 ## Fechamento
-- [ ] **T12** — Verificador com veredito PRONTA; `Status: PRONTA` em spec.md; `AGENTS.md`,
+- [x] **T12** — Verificador com veredito PRONTA; `Status: PRONTA` em spec.md; `AGENTS.md`,
   diário e handoff; PR do repositório do agente. **CA-20**, **CA-21**, **CA-22**, **CA-23**,
   **CA-24**, **CA-25**
