@@ -1,4 +1,5 @@
 # 004 — Solicitar empréstimo
+Status: PRONTA
 
 PRD itens 1, 2 e 3: cada pessoa vê os próprios empréstimos, o catálogo com a situação
 de cada equipamento, e solicita um item disponível. Objetivo: em produção, um usuário

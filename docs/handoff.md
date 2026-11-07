@@ -1,25 +1,25 @@
-# Handoff — 2026-11-06
+# Handoff — 2026-11-07
 
 ## Onde parei
-Spec 004-solicitar-emprestimo: T1 a T11 concluídas. Rodada 1 com veredito PRONTA PARA PRODUÇÃO (CA-01 a CA-19 atendidos; CA-20 a CA-25 aguardam evidência). P1 a P4 feitos pelo usuário: evidências em `evidencias/`. Falta a rodada 2 e a T12.
+Spec 004-solicitar-emprestimo: T1 a T11 e P1 a P4 concluídas. Rodada 2 com veredito PRONTA (CA-01 a CA-25), spec declarada pronta. Falta só o push da raiz e o PR do agente (T12), pedindo antes.
 
 ## Commitado
-Back: PR #4 mergeado em `main` (`ec3645a`); front: PR #2 mergeado em `main` (`3055f55`). Raiz: branch `004-solicitar-emprestimo`, só local; `verificacoes/rodada-1.md` sem commit, entra na T12.
+Back: PR #4 mergeado em `main` (`ec3645a`); front: PR #2 mergeado em `main` (`3055f55`). Raiz: branch `004-solicitar-emprestimo`, só local. `docs/adr/001-stack.md` tem mudança do usuário, sem commit: não incluir nos commits do agente.
 
 ## Banco local
-Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Dados: tenant, 12 equipamentos (9 disponíveis, 3 em manutenção), 6 memberships, 0 empréstimos. Nada aplicado sem commit.
+Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Tenant, 12 equipamentos e 6 memberships. Pode ter empréstimos do teste local do usuário. Nada aplicado sem commit.
 
 ## Publicado
-Migration, API e telas da 004 em produção (2026-11-07). Conta de teste criada, com zero empréstimos depois da limpeza.
+Migration, API e telas da 004 em produção (2026-11-07). Conta de teste criada, com zero empréstimos depois da limpeza. Conta do Marcelo com zero.
 
 ## Não fazer
 - Não aplicar nada em produção nem fazer merge: é do usuário (rules/restrictions.md).
-- Não editar o `spec.md` da 002: a 004 registra o trecho do CA-07 que substitui.
-- Não implementar rate limit: desvio consciente registrado na spec.
-- Não remover o `at time zone 'UTC'` de `devolucaoSql`: o teste que grava a fórmula na coluna é o que protege isso.
-- Campo anulável no contrato precisa de `.min(1)` antes do `.nullable()` (`common/pagination.ts`): um teste barra `type` em array.
+- Não remover o `at time zone 'UTC'` de `devolucaoSql` nem o `.min(1)` dos campos anuláveis: há testes que protegem os dois.
 - Adicionar arquivos pelo nome, nunca `git add docs`: levou por engano uma mudança da evidência da 003, já restaurada.
 - Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
+## Em aberto, decisão do usuário
+Fotos que parecem violar os critérios da skill (TI-0001, TI-0004, TI-0006, TI-0007, TI-0012). Região do Supabase no ADR-001 §9.
+
 ## Próximo passo
-Rode o verificador de novo e, com PRONTA, faça a T12, pedindo antes para o push da raiz.
+Com o "pode" do usuário, faça o push da raiz e abra o PR para `master`; o merge é dele.

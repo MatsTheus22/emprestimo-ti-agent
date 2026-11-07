@@ -126,3 +126,43 @@ Os motivos das quatro primeiras linhas foram propostos pelo agente que validou o
 ### Conferido por fora
 
 As 12 fotos públicas abrem sem login, em 800×600 e com o hash das fotos aprovadas, medidas pelo chat de validação em 2026-11-06. Conferi o `login.png`: não mostra senha.
+
+## Spec 004: como foi feita (2026-11-06 e 07)
+
+O agente listou as perguntas antes da spec e parou para eu aprovar a spec, o plano e o DDL. Depois fez uma tarefa por "pode", de T1 a T10, e deixou produção comigo. Resultado: rodada 1 PRONTA PARA PRODUÇÃO, rodada 2 PRONTA, CA-01 a CA-25. Merge: back `ec3645a`, front `3055f55`. A conta de teste e a do Marcelo terminaram com zero empréstimos.
+
+### Decisões
+
+| o que faltava | alternativas | decidi | motivo |
+|---|---|---|---|
+| Quem pode escrever direto no banco | Só `loans` e `equipment`, como o agente propôs; todas as tabelas de domínio | `anon` e `authenticated` sem escrita em `loans`, `equipment`, `memberships`, `tenants` e `audit_log` | Testei no banco local, com rollback: um colaborador alterava papéis, apagava memberships, renomeava o tenant e forjava auditoria. O ADR-001 §7 pede deny by default, e o papel na membership vai para o token |
+| Conversão de `due_at` | Fórmula do plano; conversão explícita para UTC | `at time zone 'UTC'` antes de gravar, com teste em outro fuso | Testei: com a sessão em outro fuso, a fórmula do plano grava 5 horas a menos |
+| Prova das permissões em produção | Só consulta de grants; tentativa real | As duas: `UPDATE ... WHERE false` como `authenticated`, com rollback | Tentativa real sem risco |
+| `_prisma_migrations` | Fora do REVOKE; dentro | Dentro, com teste | Rodei o DDL local com rollback: `anon` e `authenticated` ainda conseguiam TRUNCATE nela |
+| Quando começa o atraso | 14×24h; fim do 14º dia em São Paulo | Fim do dia | A tela diz "devolver até" aquela data |
+| Auditoria ao solicitar | Gravar; não gravar | `loan.create` na mesma transação; a limpeza não apaga | ADR-001 §10; a tabela é append-only |
+| Leitura de `audit_log` | Por tenant; só do próprio ator | Só do próprio ator | Senão, um colega leria quem pegou o quê |
+| E-mail da conta de teste | No script; só na hora de rodar | `--email`, fora do repositório | O repositório é público |
+| Papel da conta de teste | `colaborador`; `operacoes` | `operacoes` | |
+| Spec 002 | Editar; registrar na 004 | A 004 registra que substitui o trecho do CA-07 | |
+| Rate limit (ADR-001 §10) | Implementar; desvio consciente | Desvio consciente, registrado na spec | O enunciado não pede e exigiria tabela nova |
+
+Os motivos das linhas de atraso, auditoria, leitura de `audit_log` e e-mail foram propostos pelo agente, e eu aceitei.
+
+### Onde o agente assumiu ou errou
+
+- O plano veio com `_prisma_migrations` fora do REVOKE e sem a conversão para UTC em `due_at`. Peguei os dois rodando o DDL e a fórmula no banco local.
+- A correção de `due_at` estava no código, mas o teste não a protegia: tirar a conversão não reprovava nada, porque o valor passa pelo JS como `Date`. O agente achou isso quebrando o próprio código de propósito e acrescentou um teste que grava a fórmula direto na coluna.
+- O `openapi.json` das T2 a T4 saiu errado: `nextCursor` como lista de strings e `imagePath` com `type` em array. A resposta da API estava certa, então os testes de endpoint não pegaram. O orval recusou o contrato na T8, e entrou um teste para isso.
+- Na T5, um comando encadeado marcou a tarefa como concluída com um `npm test` vermelho. O teste estourava o limite de 5 s com a máquina ocupada. O agente reproduziu, corrigiu o limite e passou a condicionar o commit ao resultado.
+- Na T8, um `git add docs` levou por engano um espaço para `evidencias/banco.txt` da spec 003. Eu achei e pedi a restauração, em commit próprio (`2f9e970`).
+- `TaskStop` não desligou a API e o front no Windows: os processos filhos continuaram no ar. O agente percebeu pelas portas e encerrou pelo PID.
+
+### Em produção
+
+Nada falhou. O workflow da migration passou, conferido pelo agente no GitHub. Rodei as consultas do CA-24, testei na tela com a conta de teste e rodei a limpeza: `apagados: 3 · devolvidos: 3`. Nas evidências, o e-mail da conta de teste e o ref do projeto foram trocados por marcadores.
+
+### Ficou em aberto
+
+- Fotos: nos prints, TI-0004 parece mostrar mãos e pernas, TI-0006 e TI-0007 a maçã, TI-0012 "FUJIFILM" e TI-0001 tela com conteúdo. Os critérios da skill mandam reprovar. A spec 003 está fechada, e isso não é critério da 004.
+- Região: o pooler de produção é `aws-0-us-west-2`, e o ADR-001 §9 dizia `sa-east-1`.
