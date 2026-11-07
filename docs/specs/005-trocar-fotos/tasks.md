@@ -4,7 +4,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 `005-trocar-fotos` no back e na raiz. O front não muda.
 
 ## Agente: back
-- [ ] **T1** — Criar a branch no back e substituir a alteração sem commit de
+- [x] **T1** — Criar a branch no back e substituir a alteração sem commit de
   `loans.repository.ts` pelo comentário do CA-10, com o teste do texto. **CA-10**
 
 ## Agente: skill e hook
