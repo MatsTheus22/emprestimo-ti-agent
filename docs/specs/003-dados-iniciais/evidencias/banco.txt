@@ -1,4 +1,4 @@
- Evidência: banco de produção (CA-07 e CA-08)
+Evidência: banco de produção (CA-07 e CA-08)
 
 Origem: resultados das consultas de leitura executadas pelo usuário no SQL Editor de
 produção.
