@@ -1,0 +1,123 @@
+Evidência: créditos no banco de produção (CA-13)
+
+Origem: o usuário colou docs/specs/005-trocar-fotos/atualizar-creditos.sql inteiro no SQL Editor
+de produção, depois do "iguais: 12 de 12" de imagens.txt, e rodou a consulta abaixo, na noite de
+2026-11-08 (horário de Brasília). O retorno do próprio UPDATE não foi registrado; o resultado
+dele aparece na consulta.
+
+--- Consulta
+select asset_tag, status, image_path, photo_source, photo_author, photo_license, updated_at
+from equipment
+where tenant_id = (select id from tenants where slug = 'suporte_ti')
+order by asset_tag;
+
+[
+  {
+    "asset_tag": "TI-0001",
+    "status": "disponivel",
+    "image_path": "TI-0001.jpg",
+    "photo_source": "https://pixabay.com/photos/laptop-computer-notebook-2665794/",
+    "photo_author": "chapay",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-09 02:16:34.552"
+  },
+  {
+    "asset_tag": "TI-0002",
+    "status": "disponivel",
+    "image_path": "TI-0002.jpg",
+    "photo_source": "https://pixabay.com/photos/technology-laptop-computer-netbook-791032/",
+    "photo_author": "kaboompics",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-07 19:39:54.093"
+  },
+  {
+    "asset_tag": "TI-0003",
+    "status": "disponivel",
+    "image_path": "TI-0003.jpg",
+    "photo_source": "https://pixabay.com/photos/electronics-technology-devices-6801339/",
+    "photo_author": "Mariakray",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-07 19:39:54.093"
+  },
+  {
+    "asset_tag": "TI-0004",
+    "status": "manutencao",
+    "image_path": "TI-0004.jpg",
+    "photo_source": "https://pixabay.com/photos/coffee-caffeine-beverage-table-2425303/",
+    "photo_author": "Engin_Akyurt",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-09 02:16:34.552"
+  },
+  {
+    "asset_tag": "TI-0005",
+    "status": "disponivel",
+    "image_path": "TI-0005.jpg",
+    "photo_source": "https://pixabay.com/photos/desk-computer-modern-keyboard-1140699/",
+    "photo_author": "theglassdesk",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-06 10:38:42.046"
+  },
+  {
+    "asset_tag": "TI-0006",
+    "status": "disponivel",
+    "image_path": "TI-0006.jpg",
+    "photo_source": "https://pixabay.com/photos/blank-business-computer-desktop-17894/",
+    "photo_author": "PublicDomainPictures",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-09 02:16:34.552"
+  },
+  {
+    "asset_tag": "TI-0007",
+    "status": "manutencao",
+    "image_path": "TI-0007.jpg",
+    "photo_source": "https://pixabay.com/photos/blank-business-computer-desktop-17768/",
+    "photo_author": "PublicDomainPictures",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-09 02:16:34.552"
+  },
+  {
+    "asset_tag": "TI-0008",
+    "status": "disponivel",
+    "image_path": "TI-0008.jpg",
+    "photo_source": "https://pixabay.com/photos/high-definition-multimedia-1827/",
+    "photo_author": "PublicDomainPictures",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-09 02:16:34.552"
+  },
+  {
+    "asset_tag": "TI-0009",
+    "status": "disponivel",
+    "image_path": "TI-0009.jpg",
+    "photo_source": "https://pixabay.com/photos/cable-charging-cable-usb-7066127/",
+    "photo_author": "Alexandra_Koch",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-06 10:38:42.046"
+  },
+  {
+    "asset_tag": "TI-0010",
+    "status": "manutencao",
+    "image_path": "TI-0010.jpg",
+    "photo_source": "https://pixabay.com/photos/network-cable-cable-patch-494649/",
+    "photo_author": "blickpixel",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-06 10:38:42.046"
+  },
+  {
+    "asset_tag": "TI-0011",
+    "status": "disponivel",
+    "image_path": "TI-0011.jpg",
+    "photo_source": "https://pixabay.com/photos/camera-photography-photographer-8670926/",
+    "photo_author": "MrTozzo",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-06 10:38:42.046"
+  },
+  {
+    "asset_tag": "TI-0012",
+    "status": "disponivel",
+    "image_path": "TI-0012.jpg",
+    "photo_source": "https://pixabay.com/photos/still-life-camera-notebook-pen-cup-601528/",
+    "photo_author": "stokpic",
+    "photo_license": "Pixabay Content License",
+    "updated_at": "2026-11-09 02:16:34.552"
+  }
+]
