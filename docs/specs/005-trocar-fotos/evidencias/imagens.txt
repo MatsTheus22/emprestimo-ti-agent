@@ -1,0 +1,61 @@
+Evidência: troca das fotos em produção (CA-11 e CA-12)
+
+Origem: saída dos comandos executados pelo usuário no próprio terminal, em
+skills/imagens-equipamentos/scripts, na noite de 2026-11-08 (horário de Brasília), depois do
+merge do PR #5 do back (d34e664, workflow "Migrate database" com sucesso).
+
+Nota do agente: o ref do projeto foi trocado por <ref do projeto>, porque este repositório é
+público. Nada mais foi alterado.
+
+--- Passo 2: node conferir.mjs --alvo producao (antes do envio)
+TI-0001: diferente (hash diferente)
+TI-0002: igual
+TI-0003: igual
+TI-0004: diferente (hash diferente)
+TI-0005: igual
+TI-0006: diferente (hash diferente)
+TI-0007: diferente (hash diferente)
+TI-0008: diferente (hash diferente)
+TI-0009: igual
+TI-0010: igual
+TI-0011: igual
+TI-0012: diferente (hash diferente)
+iguais: 6 de 12
+
+--- Passo 4: node enviar.mjs --alvo producao --substituir
+Digite o ref do projeto (<ref do projeto>) para confirmar: <ref do projeto>
+bucket equipamentos: já existia
+TI-0001.jpg: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs
+TI-0002.jpg: igual ao arquivo local; não regravado
+TI-0003.jpg: igual ao arquivo local; não regravado
+TI-0004.jpg: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs
+TI-0005.jpg: igual ao arquivo local; não regravado
+TI-0006.jpg: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs
+TI-0007.jpg: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs
+TI-0008.jpg: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs
+TI-0009.jpg: igual ao arquivo local; não regravado
+TI-0010.jpg: igual ao arquivo local; não regravado
+TI-0011.jpg: igual ao arquivo local; não regravado
+TI-0012.jpg: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs
+enviados: 0 · já existiam: 0 · com conteúdo diferente: 0 · iguais, não regravados: 6 · troca não confirmada: 6
+objetos no bucket: 12
+
+Nota do agente: as 6 linhas "gravado" são as 6 fotos trocadas, gravadas por cima. Logo depois de
+gravar, a URL pública ainda entregava a foto antiga, então o script não as contou como trocadas
+("enviados: 0", "troca não confirmada: 6"), como manda o CA-05. As outras 6 não foram regravadas,
+e o bucket continuou com 12 objetos. A confirmação veio no passo 6.
+
+--- Passo 6: node conferir.mjs --alvo producao (depois do envio)
+TI-0001: igual
+TI-0002: igual
+TI-0003: igual
+TI-0004: igual
+TI-0005: igual
+TI-0006: igual
+TI-0007: igual
+TI-0008: igual
+TI-0009: igual
+TI-0010: igual
+TI-0011: igual
+TI-0012: igual
+iguais: 12 de 12

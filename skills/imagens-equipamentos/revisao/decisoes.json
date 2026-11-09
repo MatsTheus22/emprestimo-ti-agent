@@ -1,20 +1,68 @@
 {
   "TI-0001": {
-    "1483974": {
-      "decisao": "aprovada",
+    "1881": {
+      "decisao": "reserva",
       "motivo": ""
+    },
+    "428337": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "820281": {
+      "decisao": "reprovada",
+      "motivo": "só o teclado, o notebook não aparece inteiro"
+    },
+    "1478822": {
+      "decisao": "reprovada",
+      "motivo": "notebook cortado; o foco é bolsa, caderno e café"
+    },
+    "1483974": {
+      "decisao": "reprovada",
+      "motivo": "tela com site aberto, tablet com apps e fone com marca"
     },
     "2325627": {
       "decisao": "reprovada",
       "motivo": "Não mostra um notebook"
     },
+    "2586682": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "2665794": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "2667165": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "2980690": {
+      "decisao": "reprovada",
+      "motivo": "o foco é o relógio"
+    },
     "4484282": {
       "decisao": "reprovada",
       "motivo": "Não mostra um notebook"
     },
+    "5517762": {
+      "decisao": "reprovada",
+      "motivo": "porta-retrato com foto de pessoa"
+    },
+    "6528257": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "6719670": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
     "7188564": {
       "decisao": "reprovada",
       "motivo": "Não mostra um notebook"
+    },
+    "7351265": {
+      "decisao": "reserva",
+      "motivo": ""
     }
   },
   "TI-0002": {
@@ -63,12 +111,12 @@
       "motivo": "Está cortado"
     },
     "2425303": {
-      "decisao": "reserva",
+      "decisao": "aprovada",
       "motivo": ""
     },
     "4906312": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "mãos e pernas de uma pessoa"
     }
   },
   "TI-0005": {
@@ -90,27 +138,139 @@
     }
   },
   "TI-0006": {
+    "17894": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
     "338561": {
       "decisao": "reprovada",
       "motivo": "É uma pessoa"
+    },
+    "551287": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "2115787": {
+      "decisao": "pendente",
+      "motivo": ""
     },
     "2181919": {
       "decisao": "reprovada",
       "motivo": "É uma sala"
     },
-    "2853860": {
-      "decisao": "reserva",
+    "2561214": {
+      "decisao": "pendente",
       "motivo": ""
     },
+    "2561518": {
+      "decisao": "reprovada",
+      "motivo": "pessoa e tela com conteúdo"
+    },
+    "2825247": {
+      "decisao": "reprovada",
+      "motivo": "maçã e tela com conteúdo"
+    },
+    "2853860": {
+      "decisao": "reprovada",
+      "motivo": "maçã"
+    },
+    "2857423": {
+      "decisao": "reprovada",
+      "motivo": "maçã"
+    },
     "3114274": {
-      "decisao": "aprovada",
+      "decisao": "reprovada",
+      "motivo": "maçã da Apple e foto na tela"
+    },
+    "4616982": {
+      "decisao": "pendente",
       "motivo": ""
+    },
+    "4907226": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "5573672": {
+      "decisao": "pendente",
+      "motivo": ""
+    },
+    "6531146": {
+      "decisao": "reprovada",
+      "motivo": "telas com gráficos"
     }
   },
   "TI-0007": {
+    "17768": {
+      "decisao": "aprovada",
+      "motivo": ""
+    },
+    "224857": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "226738": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador; texto na tela"
+    },
+    "438622": {
+      "decisao": "reprovada",
+      "motivo": "pessoas, \"Canon\" e marca de refrigerante; é câmera"
+    },
+    "498244": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
+    },
+    "604019": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
+    },
+    "757690": {
+      "decisao": "reprovada",
+      "motivo": "pessoas e texto na tela, \"SAMSUNG\""
+    },
+    "849797": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "867855": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "1136093": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
+    },
     "1155173": {
       "decisao": "reprovada",
       "motivo": "É um computador, não um monitor"
+    },
+    "1284507": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador; pessoa"
+    },
+    "1328422": {
+      "decisao": "reprovada",
+      "motivo": "tela com conteúdo, \"wacom\" e logo no livro"
+    },
+    "1584223": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "1710980": {
+      "decisao": "reprovada",
+      "motivo": "\"CASIO\" e texto; é calculadora"
+    },
+    "1749577": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "1844964": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "1851483": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
     },
     "2212967": {
       "decisao": "reprovada",
@@ -120,13 +280,17 @@
       "decisao": "reprovada",
       "motivo": "Foca muito no notebook"
     },
+    "2593634": {
+      "decisao": "reprovada",
+      "motivo": "tela com conteúdo; é mesa digitalizadora"
+    },
     "2593896": {
       "decisao": "reprovada",
       "motivo": "Não é monitor"
     },
     "2853836": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "maçã da Apple"
     },
     "2853839": {
       "decisao": "reprovada",
@@ -136,9 +300,25 @@
       "decisao": "reprovada",
       "motivo": "Não é monitor"
     },
+    "2926964": {
+      "decisao": "reprovada",
+      "motivo": "\"wacom\" na borda; é mesa digitalizadora, não monitor"
+    },
+    "3089883": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "3114729": {
+      "decisao": "reprovada",
+      "motivo": "\"Зоркий\" legível; são câmeras, não monitor"
+    },
     "3539656": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"SAMSUNG\" e fone Beats"
+    },
+    "4679876": {
+      "decisao": "reprovada",
+      "motivo": "pessoa; é câmera"
     },
     "4919804": {
       "decisao": "reprovada",
@@ -147,16 +327,60 @@
     "4962269": {
       "decisao": "reprovada",
       "motivo": "É um computador, não um monitor"
+    },
+    "6856557": {
+      "decisao": "reprovada",
+      "motivo": "é notebook"
+    },
+    "6939592": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
+    },
+    "7000594": {
+      "decisao": "reprovada",
+      "motivo": "mão e tela com conteúdo; é câmera"
+    },
+    "7171649": {
+      "decisao": "reprovada",
+      "motivo": "\"SONY\" e tela com conteúdo; é câmera"
+    },
+    "7439375": {
+      "decisao": "reprovada",
+      "motivo": "\"Nikon\"; é tela de câmera"
+    },
+    "7472862": {
+      "decisao": "reprovada",
+      "motivo": "braço e tela com conteúdo; é câmera"
+    },
+    "7968027": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
+    },
+    "7982617": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "8497705": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor"
+    },
+    "9645835": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
+    },
+    "10532581": {
+      "decisao": "reprovada",
+      "motivo": "não é monitor de computador"
     }
   },
   "TI-0008": {
     "1827": {
-      "decisao": "reserva",
+      "decisao": "aprovada",
       "motivo": ""
     },
     "2202226": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"HDMI\" em relevo"
     },
     "3645129": {
       "decisao": "reprovada",
@@ -222,21 +446,149 @@
     }
   },
   "TI-0012": {
-    "1362419": {
+    "466256": {
+      "decisao": "reprovada",
+      "motivo": "\"Kenko\" e textos; não é câmera"
+    },
+    "601528": {
       "decisao": "aprovada",
       "motivo": ""
     },
+    "926671": {
+      "decisao": "reprovada",
+      "motivo": "\"AGFAMATIC\" e \"AGFA\""
+    },
+    "1283953": {
+      "decisao": "reprovada",
+      "motivo": "\"СМЕНА 8М\" e \"ЛОМО\""
+    },
+    "1362419": {
+      "decisao": "reprovada",
+      "motivo": "\"FUJIFILM\" legível na câmera"
+    },
+    "1431734": {
+      "decisao": "reprovada",
+      "motivo": "\"POLAROID LAND CAMERA\" e \"POLATRONIC\""
+    },
+    "1500975": {
+      "decisao": "reprovada",
+      "motivo": "\"Nikon\" e \"COOLPIX\""
+    },
+    "1700110": {
+      "decisao": "reprovada",
+      "motivo": "escultura de madeira, não é câmera"
+    },
+    "2165761": {
+      "decisao": "reprovada",
+      "motivo": "várias marcas legíveis"
+    },
+    "2430571": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "3480569": {
+      "decisao": "reprovada",
+      "motivo": "várias câmeras com marca"
+    },
     "3545828": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"PENTAX\""
+    },
+    "3712272": {
+      "decisao": "reprovada",
+      "motivo": "\"POLAROID LAND CAMERA\""
+    },
+    "4156340": {
+      "decisao": "reprovada",
+      "motivo": "é filmadora, não câmera compacta"
     },
     "4516107": {
       "decisao": "reprovada",
       "motivo": "É um notebook"
     },
+    "4543117": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "4906318": {
+      "decisao": "reprovada",
+      "motivo": "\"ZENIT-E\" e foto impressa com imagem"
+    },
+    "4907231": {
+      "decisao": "reprovada",
+      "motivo": "só um detalhe dos botões, não mostra a câmera"
+    },
+    "5012825": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "5028354": {
+      "decisao": "reprovada",
+      "motivo": "\"Kodak\" e \"INSTAMATIC\""
+    },
+    "5114199": {
+      "decisao": "reprovada",
+      "motivo": "\"PETRI\""
+    },
+    "5128421": {
+      "decisao": "reprovada",
+      "motivo": "foto com imagem e texto na lente"
+    },
+    "5309390": {
+      "decisao": "reprovada",
+      "motivo": "\"OLYMPUS\""
+    },
+    "5416893": {
+      "decisao": "reprovada",
+      "motivo": "\"Kodak\" e \"INSTAMATIC\""
+    },
+    "5416894": {
+      "decisao": "reprovada",
+      "motivo": "\"Kodak\" e \"INSTAMATIC\""
+    },
+    "6538095": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "6835351": {
+      "decisao": "reprovada",
+      "motivo": "visor com imagem e \"Exa\" gravado; não é compacta"
+    },
+    "7376714": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "7376928": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "7376929": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
     "7693094": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"Rollei 35\""
+    },
+    "7825467": {
+      "decisao": "reprovada",
+      "motivo": "\"Rollei 35 S\""
+    },
+    "7825470": {
+      "decisao": "reprovada",
+      "motivo": "\"Rollei 35 S\""
+    },
+    "8208886": {
+      "decisao": "reprovada",
+      "motivo": "não é câmera"
+    },
+    "9202056": {
+      "decisao": "reprovada",
+      "motivo": "pessoa"
+    },
+    "9341083": {
+      "decisao": "reprovada",
+      "motivo": "\"ИНДУСТАР-22\" legível na lente"
     }
   }
 }

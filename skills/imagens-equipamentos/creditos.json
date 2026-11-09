@@ -2,9 +2,24 @@
   "fonte": "API do Pixabay",
   "revisao_humana": {
     "aprovadas": 12,
-    "reservas": 11,
-    "reprovadas": 31,
+    "reservas": 7,
+    "reprovadas": 112,
     "detalhe_reprovadas": [
+      {
+        "patrimonio": "TI-0001",
+        "id": 820281,
+        "motivo": "só o teclado, o notebook não aparece inteiro"
+      },
+      {
+        "patrimonio": "TI-0001",
+        "id": 1478822,
+        "motivo": "notebook cortado; o foco é bolsa, caderno e café"
+      },
+      {
+        "patrimonio": "TI-0001",
+        "id": 1483974,
+        "motivo": "tela com site aberto, tablet com apps e fone com marca"
+      },
       {
         "patrimonio": "TI-0001",
         "id": 2325627,
@@ -12,8 +27,18 @@
       },
       {
         "patrimonio": "TI-0001",
+        "id": 2980690,
+        "motivo": "o foco é o relógio"
+      },
+      {
+        "patrimonio": "TI-0001",
         "id": 4484282,
         "motivo": "Não mostra um notebook"
+      },
+      {
+        "patrimonio": "TI-0001",
+        "id": 5517762,
+        "motivo": "porta-retrato com foto de pessoa"
       },
       {
         "patrimonio": "TI-0001",
@@ -51,6 +76,11 @@
         "motivo": "Está cortado"
       },
       {
+        "patrimonio": "TI-0004",
+        "id": 4906312,
+        "motivo": "mãos e pernas de uma pessoa"
+      },
+      {
         "patrimonio": "TI-0005",
         "id": 1207834,
         "motivo": "É um teclado"
@@ -76,9 +106,119 @@
         "motivo": "É uma sala"
       },
       {
+        "patrimonio": "TI-0006",
+        "id": 2561518,
+        "motivo": "pessoa e tela com conteúdo"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 2825247,
+        "motivo": "maçã e tela com conteúdo"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 2853860,
+        "motivo": "maçã"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 2857423,
+        "motivo": "maçã"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 3114274,
+        "motivo": "maçã da Apple e foto na tela"
+      },
+      {
+        "patrimonio": "TI-0006",
+        "id": 6531146,
+        "motivo": "telas com gráficos"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 224857,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 226738,
+        "motivo": "não é monitor de computador; texto na tela"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 438622,
+        "motivo": "pessoas, \"Canon\" e marca de refrigerante; é câmera"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 498244,
+        "motivo": "não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 604019,
+        "motivo": "não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 757690,
+        "motivo": "pessoas e texto na tela, \"SAMSUNG\""
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 849797,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 867855,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1136093,
+        "motivo": "não é monitor"
+      },
+      {
         "patrimonio": "TI-0007",
         "id": 1155173,
         "motivo": "É um computador, não um monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1284507,
+        "motivo": "não é monitor de computador; pessoa"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1328422,
+        "motivo": "tela com conteúdo, \"wacom\" e logo no livro"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1584223,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1710980,
+        "motivo": "\"CASIO\" e texto; é calculadora"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1749577,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1844964,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 1851483,
+        "motivo": "não é monitor"
       },
       {
         "patrimonio": "TI-0007",
@@ -92,8 +232,18 @@
       },
       {
         "patrimonio": "TI-0007",
+        "id": 2593634,
+        "motivo": "tela com conteúdo; é mesa digitalizadora"
+      },
+      {
+        "patrimonio": "TI-0007",
         "id": 2593896,
         "motivo": "Não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 2853836,
+        "motivo": "maçã da Apple"
       },
       {
         "patrimonio": "TI-0007",
@@ -107,6 +257,31 @@
       },
       {
         "patrimonio": "TI-0007",
+        "id": 2926964,
+        "motivo": "\"wacom\" na borda; é mesa digitalizadora, não monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 3089883,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 3114729,
+        "motivo": "\"Зоркий\" legível; são câmeras, não monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 3539656,
+        "motivo": "\"SAMSUNG\" e fone Beats"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 4679876,
+        "motivo": "pessoa; é câmera"
+      },
+      {
+        "patrimonio": "TI-0007",
         "id": 4919804,
         "motivo": "É uma sala de aula"
       },
@@ -114,6 +289,66 @@
         "patrimonio": "TI-0007",
         "id": 4962269,
         "motivo": "É um computador, não um monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 6856557,
+        "motivo": "é notebook"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 6939592,
+        "motivo": "não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 7000594,
+        "motivo": "mão e tela com conteúdo; é câmera"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 7171649,
+        "motivo": "\"SONY\" e tela com conteúdo; é câmera"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 7439375,
+        "motivo": "\"Nikon\"; é tela de câmera"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 7472862,
+        "motivo": "braço e tela com conteúdo; é câmera"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 7968027,
+        "motivo": "não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 7982617,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 8497705,
+        "motivo": "não é monitor"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 9645835,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0007",
+        "id": 10532581,
+        "motivo": "não é monitor de computador"
+      },
+      {
+        "patrimonio": "TI-0008",
+        "id": 2202226,
+        "motivo": "\"HDMI\" em relevo"
       },
       {
         "patrimonio": "TI-0008",
@@ -157,44 +392,269 @@
       },
       {
         "patrimonio": "TI-0012",
+        "id": 466256,
+        "motivo": "\"Kenko\" e textos; não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 926671,
+        "motivo": "\"AGFAMATIC\" e \"AGFA\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 1283953,
+        "motivo": "\"СМЕНА 8М\" e \"ЛОМО\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 1362419,
+        "motivo": "\"FUJIFILM\" legível na câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 1431734,
+        "motivo": "\"POLAROID LAND CAMERA\" e \"POLATRONIC\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 1500975,
+        "motivo": "\"Nikon\" e \"COOLPIX\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 1700110,
+        "motivo": "escultura de madeira, não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 2165761,
+        "motivo": "várias marcas legíveis"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 2430571,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 3480569,
+        "motivo": "várias câmeras com marca"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 3545828,
+        "motivo": "\"PENTAX\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 3712272,
+        "motivo": "\"POLAROID LAND CAMERA\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 4156340,
+        "motivo": "é filmadora, não câmera compacta"
+      },
+      {
+        "patrimonio": "TI-0012",
         "id": 4516107,
         "motivo": "É um notebook"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 4543117,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 4906318,
+        "motivo": "\"ZENIT-E\" e foto impressa com imagem"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 4907231,
+        "motivo": "só um detalhe dos botões, não mostra a câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5012825,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5028354,
+        "motivo": "\"Kodak\" e \"INSTAMATIC\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5114199,
+        "motivo": "\"PETRI\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5128421,
+        "motivo": "foto com imagem e texto na lente"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5309390,
+        "motivo": "\"OLYMPUS\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5416893,
+        "motivo": "\"Kodak\" e \"INSTAMATIC\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 5416894,
+        "motivo": "\"Kodak\" e \"INSTAMATIC\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 6538095,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 6835351,
+        "motivo": "visor com imagem e \"Exa\" gravado; não é compacta"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 7376714,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 7376928,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 7376929,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 7693094,
+        "motivo": "\"Rollei 35\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 7825467,
+        "motivo": "\"Rollei 35 S\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 7825470,
+        "motivo": "\"Rollei 35 S\""
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 8208886,
+        "motivo": "não é câmera"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 9202056,
+        "motivo": "pessoa"
+      },
+      {
+        "patrimonio": "TI-0012",
+        "id": 9341083,
+        "motivo": "\"ИНДУСТАР-22\" legível na lente"
       }
     ],
     "motivos": {
+      "só o teclado, o notebook não aparece inteiro": 1,
+      "notebook cortado; o foco é bolsa, caderno e café": 1,
+      "tela com site aberto, tablet com apps e fone com marca": 1,
       "Não mostra um notebook": 6,
+      "o foco é o relógio": 1,
+      "porta-retrato com foto de pessoa": 1,
       "Só tem o teclado": 1,
       "O computador está longe": 1,
       "Está cortado": 1,
+      "mãos e pernas de uma pessoa": 1,
       "É um teclado": 1,
       "Não é monitor": 3,
       "Está muito longe": 1,
       "É uma pessoa": 1,
       "É uma sala": 1,
+      "pessoa e tela com conteúdo": 1,
+      "maçã e tela com conteúdo": 1,
+      "maçã": 2,
+      "maçã da Apple e foto na tela": 1,
+      "telas com gráficos": 1,
+      "não é monitor de computador": 10,
+      "não é monitor de computador; texto na tela": 1,
+      "pessoas, \"Canon\" e marca de refrigerante; é câmera": 1,
+      "não é monitor": 7,
+      "pessoas e texto na tela, \"SAMSUNG\"": 1,
       "É um computador, não um monitor": 4,
+      "não é monitor de computador; pessoa": 1,
+      "tela com conteúdo, \"wacom\" e logo no livro": 1,
+      "\"CASIO\" e texto; é calculadora": 1,
       "Foca muito no notebook": 1,
+      "tela com conteúdo; é mesa digitalizadora": 1,
+      "maçã da Apple": 1,
+      "\"wacom\" na borda; é mesa digitalizadora, não monitor": 1,
+      "\"Зоркий\" legível; são câmeras, não monitor": 1,
+      "\"SAMSUNG\" e fone Beats": 1,
+      "pessoa; é câmera": 1,
       "É uma sala de aula": 1,
+      "é notebook": 1,
+      "mão e tela com conteúdo; é câmera": 1,
+      "\"SONY\" e tela com conteúdo; é câmera": 1,
+      "\"Nikon\"; é tela de câmera": 1,
+      "braço e tela com conteúdo; é câmera": 1,
+      "\"HDMI\" em relevo": 1,
       "Não é cabo HDMI": 2,
       "É um tablet": 1,
       "Não é USB-C": 1,
       "Não mostra totalmente o cabo": 1,
       "Mostra um notebook": 3,
-      "É um notebook": 1
+      "\"Kenko\" e textos; não é câmera": 1,
+      "\"AGFAMATIC\" e \"AGFA\"": 1,
+      "\"СМЕНА 8М\" e \"ЛОМО\"": 1,
+      "\"FUJIFILM\" legível na câmera": 1,
+      "\"POLAROID LAND CAMERA\" e \"POLATRONIC\"": 1,
+      "\"Nikon\" e \"COOLPIX\"": 1,
+      "escultura de madeira, não é câmera": 1,
+      "várias marcas legíveis": 1,
+      "não é câmera": 8,
+      "várias câmeras com marca": 1,
+      "\"PENTAX\"": 1,
+      "\"POLAROID LAND CAMERA\"": 1,
+      "é filmadora, não câmera compacta": 1,
+      "É um notebook": 1,
+      "\"ZENIT-E\" e foto impressa com imagem": 1,
+      "só um detalhe dos botões, não mostra a câmera": 1,
+      "\"Kodak\" e \"INSTAMATIC\"": 3,
+      "\"PETRI\"": 1,
+      "foto com imagem e texto na lente": 1,
+      "\"OLYMPUS\"": 1,
+      "visor com imagem e \"Exa\" gravado; não é compacta": 1,
+      "\"Rollei 35\"": 1,
+      "\"Rollei 35 S\"": 2,
+      "pessoa": 1,
+      "\"ИНДУСТАР-22\" legível na lente": 1
     }
   },
   "itens": [
     {
       "patrimonio": "TI-0001",
       "arquivo": "TI-0001.jpg",
-      "pixabay_id": 1483974,
-      "origem": "https://pixabay.com/photos/laptop-workstation-browsing-tablet-1483974/",
-      "autor": "Monoar_CGI_Artist",
-      "autor_id": 2240009,
+      "pixabay_id": 2665794,
+      "origem": "https://pixabay.com/photos/laptop-computer-notebook-2665794/",
+      "autor": "chapay",
+      "autor_id": 565264,
       "licenca": "Pixabay Content License",
       "licenca_url": "https://pixabay.com/service/license-summary/",
       "largura": 800,
       "altura": 600,
-      "sha256": "320452ada74aefbd34747486e3b03a45030af5bfc1d367e16ce68d5f760560ab"
+      "sha256": "e6590a85bf7f79cc6e86dfd5f1de1529fdc7db2fe876d4c24b1b176c6096d39a"
     },
     {
       "patrimonio": "TI-0002",
@@ -225,15 +685,15 @@
     {
       "patrimonio": "TI-0004",
       "arquivo": "TI-0004.jpg",
-      "pixabay_id": 4906312,
-      "origem": "https://pixabay.com/photos/laptop-workstaion-office-work-4906312/",
-      "autor": "Deeezy",
-      "autor_id": 15467098,
+      "pixabay_id": 2425303,
+      "origem": "https://pixabay.com/photos/coffee-caffeine-beverage-table-2425303/",
+      "autor": "Engin_Akyurt",
+      "autor_id": 3656355,
       "licenca": "Pixabay Content License",
       "licenca_url": "https://pixabay.com/service/license-summary/",
       "largura": 800,
       "altura": 600,
-      "sha256": "214aeb506d68b1e327c6b9ef1da5826a7f3e2779e2769c9d9fe697a73862b552"
+      "sha256": "1d29b55d86d9b3f5a572596d00b5756ca05ad459738a630fee1f98bb49892e45"
     },
     {
       "patrimonio": "TI-0005",
@@ -251,41 +711,41 @@
     {
       "patrimonio": "TI-0006",
       "arquivo": "TI-0006.jpg",
-      "pixabay_id": 3114274,
-      "origem": "https://pixabay.com/photos/computer-laptop-technology-desk-3114274/",
-      "autor": "malawiheiko",
-      "autor_id": 1950928,
+      "pixabay_id": 17894,
+      "origem": "https://pixabay.com/photos/blank-business-computer-desktop-17894/",
+      "autor": "PublicDomainPictures",
+      "autor_id": 14,
       "licenca": "Pixabay Content License",
       "licenca_url": "https://pixabay.com/service/license-summary/",
       "largura": 800,
       "altura": 600,
-      "sha256": "a9e354f12cdf95ed359187b0efafb3833f2ff29029e8c6ee58ca111a410dfa06"
+      "sha256": "122606974a304ceddef829e9172ce2031164ed98b1918c1fbd4fceedd3a4392d"
     },
     {
       "patrimonio": "TI-0007",
       "arquivo": "TI-0007.jpg",
-      "pixabay_id": 2853836,
-      "origem": "https://pixabay.com/photos/poster-mockup-mockup-poster-frame-2853836/",
-      "autor": "RaniRamli",
-      "autor_id": 731298,
+      "pixabay_id": 17768,
+      "origem": "https://pixabay.com/photos/blank-business-computer-desktop-17768/",
+      "autor": "PublicDomainPictures",
+      "autor_id": 14,
       "licenca": "Pixabay Content License",
       "licenca_url": "https://pixabay.com/service/license-summary/",
       "largura": 800,
       "altura": 600,
-      "sha256": "76ad9f23fca2524983f1c86816985a840e2488bf94e00b3f6af799f0f49ef6e4"
+      "sha256": "025472417392a7f2f4fb5bb1adb8f174353105fdeb3b5ab4fecf568386bd400b"
     },
     {
       "patrimonio": "TI-0008",
       "arquivo": "TI-0008.jpg",
-      "pixabay_id": 2202226,
-      "origem": "https://pixabay.com/photos/hdmi-connector-cable-plug-2202226/",
-      "autor": "WikimediaImages",
-      "autor_id": 1185597,
+      "pixabay_id": 1827,
+      "origem": "https://pixabay.com/photos/high-definition-multimedia-1827/",
+      "autor": "PublicDomainPictures",
+      "autor_id": 14,
       "licenca": "Pixabay Content License",
       "licenca_url": "https://pixabay.com/service/license-summary/",
       "largura": 800,
       "altura": 600,
-      "sha256": "e8c8a87b9df90f342dccdcf63c6e6c85d380c47f29e6bd6911897319aadab530"
+      "sha256": "aad4775d48ef5904358a4e5c507e5f3cbb81003754deee1b3b62d591e16c5034"
     },
     {
       "patrimonio": "TI-0009",
@@ -329,15 +789,15 @@
     {
       "patrimonio": "TI-0012",
       "arquivo": "TI-0012.jpg",
-      "pixabay_id": 1362419,
-      "origem": "https://pixabay.com/photos/camera-digital-photography-1362419/",
-      "autor": "maddyjaya",
-      "autor_id": 2487048,
+      "pixabay_id": 601528,
+      "origem": "https://pixabay.com/photos/still-life-camera-notebook-pen-cup-601528/",
+      "autor": "stokpic",
+      "autor_id": 692575,
       "licenca": "Pixabay Content License",
       "licenca_url": "https://pixabay.com/service/license-summary/",
       "largura": 800,
       "altura": 600,
-      "sha256": "3fd3eeb021bcf705bdbdc8ca2e41da11ef149ccd443fdc517df853c0b310a7f2"
+      "sha256": "50ca5cf59cb8bb04bb906f3df18fe56ad17489930445d080134f02d6278c1d2b"
     }
   ]
 }

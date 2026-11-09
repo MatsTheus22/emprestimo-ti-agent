@@ -145,6 +145,18 @@ export function classificarEnvio(ok, status, corpo) {
   }
 }
 
+// Foto ausente na URL pública: HTTP 404, ou HTTP 400 com statusCode "404" no corpo, que é
+// como o Storage do Supabase responde (medido no local, spec 005).
+export function publicaAusente(status, corpo) {
+  if (status === 404) return true;
+  if (status !== 400) return false;
+  try {
+    return String(JSON.parse(corpo).statusCode) === '404';
+  } catch {
+    return false;
+  }
+}
+
 // Pré-condições do envio para produção. O agente não tem terminal interativo.
 export function exigirCondicoesDeProducao({ isTTY, url, chave }) {
   if (!isTTY) throw new Error('--alvo producao exige terminal interativo: só o usuário executa.');

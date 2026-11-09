@@ -2,7 +2,7 @@
 // não duplica nada, e o que já existe fica como está.
 //   --alvo local    --env <arquivo do back>   só aceita localhost/127.0.0.1
 //   --alvo producao                           só no terminal do usuário
-//   --substituir                              grava por cima do que já existe
+//   --substituir                              grava por cima só o que difere da URL pública
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { createInterface } from 'node:readline/promises';
@@ -14,6 +14,7 @@ import {
   exigirCondicoesDeProducao,
   exigirHostLocal,
   lerVariavel,
+  publicaAusente,
   semSegredo,
   sha256,
   validarArquivo,
@@ -54,10 +55,28 @@ async function garantirBucketPublico(url, chave) {
   return 'criado';
 }
 
+// O conteúdo atual da URL pública, ou null se a foto estiver ausente. Qualquer outra
+// falha interrompe: sem saber o que está publicado, não se grava por cima.
+async function lerPublica(url, nome) {
+  const resposta = await fetch(`${url}/storage/v1/object/public/${BUCKET}/${nome}`);
+  if (!resposta.ok) {
+    if (publicaAusente(resposta.status, await resposta.text())) return null;
+    throw new Error(`${nome}: URL pública respondeu HTTP ${resposta.status}; esta foto não foi gravada`);
+  }
+  return Buffer.from(await resposta.arrayBuffer());
+}
+
 async function enviarArquivo(url, chave, nome, substituir) {
   const arquivo = path.join(FINAL, nome);
   await validarArquivo(arquivo);
   const conteudo = readFileSync(arquivo);
+  if (substituir) {
+    const atual = await lerPublica(url, nome);
+    if (atual && sha256(atual) === sha256(conteudo)) {
+      console.log(`${nome}: igual ao arquivo local; não regravado`);
+      return 'igual';
+    }
+  }
   const resposta = await fetch(`${url}/storage/v1/object/${BUCKET}/${nome}`, {
     method: 'POST',
     headers: {
@@ -80,6 +99,13 @@ async function enviarArquivo(url, chave, nome, substituir) {
   }
 
   if (situacao === 'enviado') {
+    // A foto antiga também tem 800x600: só o hash mostra que a troca chegou à URL pública.
+    if (substituir && sha256(publicado) !== sha256(conteudo)) {
+      console.log(
+        `${nome}: gravado; URL pública 800x600; AVISO: troca não confirmada, a URL pública ainda entrega outro conteúdo. Confira com conferir.mjs`,
+      );
+      return 'não confirmada';
+    }
     console.log(`${nome}: enviado; URL pública 800x600`);
     return 'enviado';
   }
@@ -148,12 +174,15 @@ async function main() {
   if (arquivos.length === 0) throw new Error('Nenhuma imagem final encontrada.');
 
   console.log(`bucket ${BUCKET}: ${await garantirBucketPublico(url, chave)}`);
-  const contagem = { enviado: 0, 'já existia': 0, diferente: 0 };
+  const contagem = { enviado: 0, 'já existia': 0, diferente: 0, igual: 0, 'não confirmada': 0 };
   for (const nome of arquivos) {
     contagem[await enviarArquivo(url, chave, nome, values.substituir)] += 1;
   }
+  const resumo = `enviados: ${contagem.enviado} · já existiam: ${contagem['já existia'] + contagem.diferente} · com conteúdo diferente: ${contagem.diferente}`;
   console.log(
-    `enviados: ${contagem.enviado} · já existiam: ${contagem['já existia'] + contagem.diferente} · com conteúdo diferente: ${contagem.diferente}`,
+    values.substituir
+      ? `${resumo} · iguais, não regravados: ${contagem.igual} · troca não confirmada: ${contagem['não confirmada']}`
+      : resumo,
   );
   console.log(`objetos no bucket: ${await contarNoBucket(url, chave)}`);
 }
