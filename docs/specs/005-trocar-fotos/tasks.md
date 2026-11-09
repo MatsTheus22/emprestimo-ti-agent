@@ -32,7 +32,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   **CA-06**, **CA-09**
 
 ## Verificação antes de produção
-- [ ] **T11** — Verificador com veredito PRONTA PARA PRODUÇÃO (back limpo; front sem alteração);
+- [x] **T11** — Verificador com veredito PRONTA PARA PRODUÇÃO (back limpo; front sem alteração);
   PR do back, pedindo antes para o push. **CA-01**, **CA-02**, **CA-03**, **CA-04**, **CA-05**,
   **CA-06**, **CA-07**, **CA-08**, **CA-09**, **CA-10**
 
