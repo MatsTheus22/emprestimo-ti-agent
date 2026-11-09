@@ -37,11 +37,11 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   **CA-06**, **CA-07**, **CA-08**, **CA-09**, **CA-10**
 
 ## Usuário: produção (ordem em plan.md)
-- [ ] **P1** — Merge do PR do back. **CA-08**
-- [ ] **P2** — Conferir antes (6 diferentes), enviar com `--substituir` e conferir até 12 de 12;
+- [x] **P1** — Merge do PR do back. **CA-08**
+- [x] **P2** — Conferir antes (6 diferentes), enviar com `--substituir` e conferir até 12 de 12;
   gravar `imagens.txt`. **CA-11**, **CA-12**
-- [ ] **P3** — Colar o SQL e rodar a consulta das 12 linhas; gravar `banco.txt`. **CA-13**
-- [ ] **P4** — Depois do 12 de 12, tirar os prints do catálogo; gravar `telas.md` e os prints, sem
+- [x] **P3** — Colar o SQL e rodar a consulta das 12 linhas; gravar `banco.txt`. **CA-13**
+- [x] **P4** — Depois do 12 de 12, tirar os prints do catálogo; gravar `telas.md` e os prints, sem
   o e-mail da conta de teste nem o ref do projeto. **CA-14**, **CA-15**
 
 ## Fechamento
