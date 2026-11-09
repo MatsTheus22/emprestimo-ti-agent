@@ -21,6 +21,11 @@ fotos cumprem as duas coisas, e os créditos no banco correspondem às fotos pub
   TI-0009, TI-0010 e TI-0011.
 - **Fotos sem nova busca:** o usuário aprovou as reservas 2425303 (TI-0004) e 1827 (TI-0008).
 - **Fotos com nova busca:** TI-0001, TI-0006, TI-0007 e TI-0012.
+- **TI-0007 com a 17768:** a 17768 veio na busca 2 como candidata da TI-0006, porque as duas
+  buscavam monitor com os mesmos termos. O usuário a moveu para a TI-0007 depois de 4 buscas sem
+  monitor para ela. A TI-0006 fica com a 17894 e sem reserva. A mudança foi feita em
+  `saida/candidatas.json` e na pasta das candidatas, que o git ignora, e em `decisoes.json`, sem
+  mudar código.
 - **Créditos no banco:** SQL que o usuário cola no editor de produção, com 6 UPDATE em uma
   transação, setando também `updated_at`. O mesmo SQL roda no banco local. A prova é a consulta
   das 12 linhas contra `creditos.json`. Motivo proposto pelo chat de validação e aceito pelo
@@ -80,9 +85,9 @@ delas; alterar telas, API ou schema; caminho novo para a foto (`image_path` cont
   | TI-0012 | 3545828 | "PENTAX" |
   | TI-0012 | 7693094 | "Rollei 35" |
 
-- **CA-03** — TI-0004 tem 2425303 como `aprovada`, e TI-0008 tem 1827. TI-0001, TI-0006, TI-0007
-  e TI-0012 têm, cada uma, exatamente 1 `aprovada`, que veio da nova busca e não estava entre as
-  candidatas anteriores. Toda aprovação foi dita pelo usuário.
+- **CA-03** — TI-0004 tem 2425303 como `aprovada`, TI-0008 tem 1827, e TI-0007 tem 17768, movida
+  da TI-0006. TI-0001, TI-0006 e TI-0012 têm, cada uma, exatamente 1 `aprovada`, que veio da nova
+  busca e não estava entre as candidatas anteriores. Toda aprovação foi dita pelo usuário.
 - **CA-04** — `fechar.mjs` passa. Em `creditos.json`, os 6 itens trocados trazem origem, autor e
   hash da foto aprovada. TI-0002, TI-0003, TI-0005, TI-0009, TI-0010 e TI-0011 mantêm o mesmo id
   e o mesmo hash. Em `saida/final`, as 12 fotos têm 800x600, sem repetição, e o hash de cada uma
