@@ -24,7 +24,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 
 ## Agente: créditos e banco
 - [x] **T7** — Atualizar `equipamentos-iniciais.json` no back, com o teste. **CA-08**
-- [ ] **T8** — Escrever `atualizar-creditos.sql` na pasta da spec, com os valores de
+- [x] **T8** — Escrever `atualizar-creditos.sql` na pasta da spec, com os valores de
   `creditos.json`. **CA-09**
 - [ ] **T9** — Teste do SQL em Postgres real no back. **CA-09**
 - [ ] **T10** — No ambiente local: `enviar.mjs --alvo local --substituir`, `conferir.mjs --alvo
