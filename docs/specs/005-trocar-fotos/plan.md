@@ -60,14 +60,14 @@ begin;
 update equipment
 set photo_source = 'https://pixabay.com/photos/coffee-caffeine-beverage-table-2425303/',
     photo_author = 'Engin_Akyurt',
-    updated_at = now()
+    updated_at = now() at time zone 'UTC'
 where asset_tag = 'TI-0004'
   and tenant_id = (select id from tenants where slug = 'suporte_ti');
 
 update equipment
 set photo_source = 'https://pixabay.com/photos/high-definition-multimedia-1827/',
     photo_author = 'PublicDomainPictures',
-    updated_at = now()
+    updated_at = now() at time zone 'UTC'
 where asset_tag = 'TI-0008'
   and tenant_id = (select id from tenants where slug = 'suporte_ti');
 
