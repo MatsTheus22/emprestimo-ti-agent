@@ -45,7 +45,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
   o e-mail da conta de teste nem o ref do projeto. **CA-14**, **CA-15**
 
 ## Fechamento
-- [ ] **T12** — Conferir marcadores nas evidências e rodar o verificador até o veredito PRONTA;
+- [x] **T12** — Conferir marcadores nas evidências e rodar o verificador até o veredito PRONTA;
   registrar `Status: PRONTA`; atualizar o estado do projeto em `AGENTS.md`; PR da raiz, pedindo
   antes para o push. `docs/handoff.md` e `docs/entrega/diario.md` são escritos no disco, sem tirar
   a marca `skip-worktree`, e não entram em commit. **CA-11**, **CA-12**, **CA-13**, **CA-14**,

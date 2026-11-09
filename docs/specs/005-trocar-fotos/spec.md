@@ -1,4 +1,5 @@
 # 005 — Trocar fotos em produção
+Status: PRONTA
 
 O enunciado da prática exige: "Nenhuma foto com pessoa, marca ou logo legível, texto ou tela
 com conteúdo chega ao sistema". Na revisão da spec 003, o usuário avaliou só se a foto mostrava

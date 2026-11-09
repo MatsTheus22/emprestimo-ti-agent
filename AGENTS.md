@@ -36,8 +36,9 @@ Três repositórios (ARQUITETURA.md): esta raiz é `emprestimo-ti-agent`, com
 regras, skills, subagentes e docs; `back/` e `front/` são repositórios próprios.
 
 Em produção: login, catálogo, solicitar empréstimo e "Meus empréstimos" (specs 001
-parcial, 002, 003 e 004). Operações e Equipamentos ainda são "Em construção", e a
-devolução ainda não existe. Em andamento: docs/handoff.md.
+parcial, 002, 003 e 004), com as 12 fotos dentro do requisito de direito de imagem
+(spec 005). Operações e Equipamentos ainda são "Em construção", e a devolução ainda
+não existe. Em andamento: docs/handoff.md.
 
 ## Procedimentos
 Sempre siga as seguintes regras:
