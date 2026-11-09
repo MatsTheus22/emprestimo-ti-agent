@@ -17,8 +17,8 @@
       "motivo": "notebook cortado; o foco é bolsa, caderno e café"
     },
     "1483974": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "tela com site aberto, tablet com apps e fone com marca"
     },
     "2325627": {
       "decisao": "reprovada",
@@ -111,12 +111,12 @@
       "motivo": "Está cortado"
     },
     "2425303": {
-      "decisao": "reserva",
+      "decisao": "aprovada",
       "motivo": ""
     },
     "4906312": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "mãos e pernas de uma pessoa"
     }
   },
   "TI-0005": {
@@ -171,16 +171,16 @@
       "motivo": "maçã e tela com conteúdo"
     },
     "2853860": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "maçã"
     },
     "2857423": {
       "decisao": "reprovada",
       "motivo": "maçã"
     },
     "3114274": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "maçã da Apple e foto na tela"
     },
     "4616982": {
       "decisao": "pendente",
@@ -289,8 +289,8 @@
       "motivo": "Não é monitor"
     },
     "2853836": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "maçã da Apple"
     },
     "2853839": {
       "decisao": "reprovada",
@@ -313,8 +313,8 @@
       "motivo": "\"Зоркий\" legível; são câmeras, não monitor"
     },
     "3539656": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"SAMSUNG\" e fone Beats"
     },
     "4679876": {
       "decisao": "reprovada",
@@ -375,12 +375,12 @@
   },
   "TI-0008": {
     "1827": {
-      "decisao": "reserva",
+      "decisao": "aprovada",
       "motivo": ""
     },
     "2202226": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"HDMI\" em relevo"
     },
     "3645129": {
       "decisao": "reprovada",
@@ -463,8 +463,8 @@
       "motivo": "\"СМЕНА 8М\" e \"ЛОМО\""
     },
     "1362419": {
-      "decisao": "aprovada",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"FUJIFILM\" legível na câmera"
     },
     "1431734": {
       "decisao": "reprovada",
@@ -491,8 +491,8 @@
       "motivo": "várias câmeras com marca"
     },
     "3545828": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"PENTAX\""
     },
     "3712272": {
       "decisao": "reprovada",
@@ -567,8 +567,8 @@
       "motivo": "não é câmera"
     },
     "7693094": {
-      "decisao": "reserva",
-      "motivo": ""
+      "decisao": "reprovada",
+      "motivo": "\"Rollei 35\""
     },
     "7825467": {
       "decisao": "reprovada",

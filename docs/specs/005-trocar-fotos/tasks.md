@@ -18,7 +18,7 @@ Spec: [spec.md](spec.md). Plano: [plan.md](plan.md). Uma tarefa = um commit. Bra
 - [x] **T5** — Rodar `buscar.mjs --somente TI-0001,TI-0006,TI-0007,TI-0012`, acrescentando termos
   em `buscas-alternativas.json` se preciso; entregar a folha de contato e PARAR para a revisão do
   usuário. **CA-03**
-- [ ] **T6** — Transcrever em `decisoes.json` o que o usuário decidiu, o que a spec já registra e
+- [x] **T6** — Transcrever em `decisoes.json` o que o usuário decidiu, o que a spec já registra e
   as novas aprovações; rodar `fechar.mjs`; escrever os testes das decisões e dos créditos.
   **CA-01**, **CA-02**, **CA-03**, **CA-04**
 
