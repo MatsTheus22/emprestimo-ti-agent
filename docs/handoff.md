@@ -1,23 +1,23 @@
-# Handoff — 2026-11-07
+# Handoff — 2026-11-09
 
 ## Onde parei
-Spec 004-solicitar-emprestimo concluída: T1 a T12 e P1 a P4, `Status: PRONTA`, rodada 2 com veredito PRONTA (CA-01 a CA-25).
+Specs 003, 004 e 005 concluídas, `Status: PRONTA`, e em produção. Falta a entrega da prática: `ENTREGA.md` na raiz, a tag `entrega-pratica` nos três repositórios e a conferência da seção 07 do enunciado.
 
 ## Commitado
-Back: PR #4 mergeado em `main` (`ec3645a`). Front: PR #2 mergeado em `main` (`3055f55`). Raiz: branch `004-solicitar-emprestimo` com PR aberto para `master`; o merge é do usuário.
+Raiz: `master` em `4d68beb` (PR #7). Back: `main` em `d34e664` (PR #5). Front: `main` em `3055f55` (PR #2 da 004). Diário e handoff restaurados, com a parte da 005, ainda sem commit.
 
 ## Banco local
-Migration `20261106112807_loans_open_index_read_only_grants` aplicada. Tenant, 12 equipamentos e 6 memberships. Pode ter empréstimos do teste local do usuário. Nada aplicado sem commit.
+Fotos e créditos da 005 aplicados. Pode ter empréstimos de testes locais.
 
 ## Publicado
-Migration, API e telas da 004 em produção (2026-11-07). Conta de teste com papel `operacoes` e zero empréstimos depois da limpeza. Conta do Marcelo com zero.
+Catálogo com as 12 fotos dentro do requisito de direito de imagem, créditos atualizados, 9 disponíveis e 3 em manutenção. Conta de teste e conta do Marcelo com zero empréstimos.
 
 ## Não fazer
 - Não aplicar nada em produção nem fazer merge: é do usuário (rules/restrictions.md).
-- Não editar spec nem rodadas da 003 e da 004: mudança nova vai em spec nova.
-- Não remover o `at time zone 'UTC'` de `devolucaoSql` nem o `.min(1)` dos campos anuláveis: há testes que protegem os dois.
-- Adicionar arquivos pelo nome, nunca `git add docs`: levou por engano uma mudança da evidência da 003, já restaurada.
-- Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
+- Não ler produção, nem só para consultar: as leituras são do usuário.
+- Não editar as specs 003, 004 e 005 nem as rodadas e evidências delas.
+- Não citar no mesmo comando Bash o nome de um script e `producao`, nem a pasta `verificacoes/` com redirecionamento: o hook bloqueia.
+- Adicionar arquivos pelo nome. Rodar em primeiro plano com timeout. Ações do usuário na seção final "-- Acoes necessarias:".
 
 ## Próximo passo
-Spec 005, quando o usuário pedir: trocar as fotos TI-0001, TI-0004, TI-0006, TI-0007 e TI-0012, que descumprem o "Direito de imagem". O motivo está em docs/entrega/diario.md, no fim da spec 004.
+Escrever o `ENTREGA.md` a partir de `docs/entrega/diario.md`, com hashes reais, e pedir antes de commitar e marcar a tag.
