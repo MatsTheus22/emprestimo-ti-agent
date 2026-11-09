@@ -166,3 +166,72 @@ Nada falhou. O workflow da migration passou, conferido pelo agente no GitHub. Ro
 
 - Fotos: TI-0004 mostra mãos e pernas, TI-0006 e TI-0007 a maçã, TI-0012 "FUJIFILM", e TI-0001 tela com conteúdo. O agente da 004 apontou pelos prints, e o chat de validação confirmou nas fotos em tamanho real. Na spec 003, revisei pelo critério de mostrar o equipamento certo, e o requisito "Direito de imagem" do enunciado ficou de fora; o chat que transcreveu minhas aprovações também não avisou. Alternativas: manter e declarar; trocar. Decidi trocar as 5 na spec 005, porque é requisito do enunciado e fica visível no catálogo (motivo proposto pelo chat de validação, e eu aceitei). Conferi a TI-0009, que parecia não ser USB-C: é USB-C e fica.
 - Região: o pooler de produção é `aws-0-us-west-2`, e o ADR-001 §9 dizia `sa-east-1`. O ADR estava errado, e eu o corrigi, tirando também os trechos sobre a travessia até São Paulo. O comentário em `loans.repository.ts:27` ainda cita São Paulo: não muda o comportamento e será corrigido na 005.
+
+## Spec 005: como foi feita (2026-11-07 e 08)
+
+Escrita pelo agente da spec, que partiu sem este diário; as notas do chat de validação estão no fim.
+
+### O que foi feito
+
+Seis fotos publicadas descumpriam "nenhuma foto com pessoa, marca ou logo legível, texto ou tela
+com conteúdo": TI-0001, TI-0004, TI-0006, TI-0007, TI-0008 e TI-0012. A TI-0008 entrou depois de o
+agente apontar "HDMI" em relevo no plugue; o pedido inicial era de 5. As 6 foram trocadas pela skill
+`imagens-equipamentos`, sem mudar a URL nem o caminho no bucket, e os créditos no banco de produção
+foram atualizados por um SQL que o usuário rodou.
+
+- Back: comentário de `loans.repository.ts` (T1), cópia dos créditos (T7), teste do SQL em Postgres
+  real (T9) e caso com a sessão em outro fuso. PR #5, mergeado pelo usuário.
+- Raiz: `enviar.mjs --substituir` passou a gravar só o que difere da URL pública; `conferir.mjs`
+  novo, só de leitura; hook nega a conferência de produção ao agente; decisões e créditos.
+- Quatro buscas no Pixabay: 81 candidatas reprovadas pelo usuário, com motivo. As novas aprovadas
+  vieram da segunda busca (TI-0001 e TI-0006) e da quarta (TI-0012); a TI-0007 ficou com a 17768,
+  movida da TI-0006.
+
+### Decisões
+
+| Decisão | Alternativas | Escolhida | Motivo | Quem propôs |
+|---|---|---|---|---|
+| Créditos no banco | Script novo; SQL colado no editor | SQL | Operação única; a consulta prova o resultado | Chat de validação |
+| Regravação | `--somente`; gravar só o que difere | Só o que difere | Sem lista digitada; repetir é seguro | Chat de validação |
+| Objeto ausente | Só HTTP 404; também 400 com `statusCode` 404 | As duas formas | É como o Storage responde, medido no local | Agente |
+| Falha de leitura na conferência | Parar; listar e seguir | Listar e seguir | O script só lê; parar esconderia os outros itens | Agente |
+| TI-0007 | Mais buscas; mover a 17768 da TI-0006 | Mover | 4 buscas sem monitor; sem mudar código | Usuário; forma proposta pelo agente |
+| `updated_at` do SQL | `now()`; `now() at time zone 'UTC'` | UTC | Coluna sem fuso, como o `due_at` da 004 | Usuário |
+
+### Onde o agente assumiu ou errou
+
+- Leu `docs/handoff.md` e o fim deste diário com `git show` antes de saber que o usuário os tinha
+  deixado de fora de propósito, para a sessão partir sem o histórico. Disse isso ao usuário e não
+  os leu de novo.
+- Escreveu o CA-05 com "HTTP 404" sem medir o Storage, que responde objeto ausente como HTTP 400 com
+  `statusCode` 404. Achou na T2, medindo no local, e implementou o que a spec dizia até o usuário
+  decidir.
+- O SQL saiu com `now()` puro. O usuário apontou o mesmo problema do `due_at` da 004; o caso com a
+  sessão em São Paulo falhava por 3 horas antes da correção.
+- Não previu que `buscar.mjs --somente` usa os termos de trás para frente e para no primeiro que
+  enche a cota. Na terceira busca, termos genéricos trouxeram carros e cachorros, e os termos bons
+  não rodaram. O agente só percebeu depois da segunda busca; a causa e a correção foram do usuário.
+- A TI-0006 e a TI-0007 tinham os mesmos termos, e a TI-0006, buscada primeiro, ficou com os dois
+  monitores bons. O agente não antecipou isso ao propor os termos.
+- O primeiro teste do CA-10 proibia "São Paulo" no arquivo inteiro e pegava o fuso do prazo, que
+  está certo. O agente corrigiu o teste, não o código.
+- Transcreveu "marca legível" para 7 câmeras em vez dos motivos de cada uma; o usuário corrigiu.
+- O hook bloqueou dois comandos do agente que só liam: um citava o envio de produção como texto e
+  outro, a pasta `verificacoes/` com um redirecionamento. O agente refez sem contornar a regra.
+
+### Em produção
+
+O usuário fez o merge do PR #5 e rodou tudo no próprio terminal. A conferência antes apontou
+exatamente os 6 itens. No envio, as 6 fotos foram gravadas, mas a URL pública ainda entregava as
+antigas naquele instante, e o script avisou "troca não confirmada: 6"; a conferência seguinte deu
+12 de 12. O SQL deixou os 6 itens com o mesmo `updated_at` em UTC, e a situação ficou com 9
+disponíveis e 3 em manutenção. O primeiro conjunto de prints não mostrava o rodapé "Fotos: Pixabay";
+o usuário tirou mais um. Nas evidências, o ref do projeto foi trocado por marcador.
+
+### Notas do chat de validação
+
+- Em cada folha de contato, o chat de validação conferiu minhas escolhas contra o requisito do enunciado antes da transcrição. Várias mostravam pessoa (porta-retrato), tela com conteúdo ou marca legível (Polaroid, Rollei, "ИНДУСТАР-22"); troquei ou reprovei todas.
+- A causa dos carros e cachorros na terceira busca (termos usados de trás para frente com `--somente`) foi achada pelo chat de validação. Os termos genéricos que causaram o problema também tinham sido sugeridos por ele.
+- O chat de validação leu o Storage de produção duas vezes, só com GET: o hash das 12 fotos, na validação da 003, e o cache da TI-0001, antes da 005. Isso descumpre `rules/operacao.md`, que proíbe o Supabase remoto mesmo para leitura. Ficou registrado na spec 005, e as leituras seguintes foram minhas.
+- O cache medido (`no-cache`, `DYNAMIC`) não impediu a URL de entregar a foto antiga logo depois de gravar. A conferência por hash, e não o "gravado", foi o que provou a troca.
+- O teste de começar sem histórico não foi completo: o agente leu o handoff e o diário pelo `git show`, e contou isso por conta própria.
